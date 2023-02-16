@@ -25,7 +25,7 @@
       <div class="col-md-3 col-xs-11">
         <q-card class="my-card q-mx-lg" flat bordered>
           <q-card-section>
-            <q-img ratio="1" class="col-5" src="src/assets/syringe.svg" />
+            <q-img ratio="1" class="col-5" src="~assets/syringe.svg" />
             <q-card-section>
               <h4>疫苗注射</h4>
               <h6>提供小兒、成人等 <br> 及各式預防針注射</h6>
@@ -36,7 +36,7 @@
       <div class="col-md-3 col-xs-11">
         <q-card class="my-card q-mx-lg" flat bordered>
           <q-card-section>
-            <q-img ratio="1" class="col-5" src="src/assets/a6.svg" />
+            <q-img ratio="1" class="col-5" src="~assets/a6.svg" />
             <q-card-section>
               <h4>減敏治療</h4>
               <h6>找到明確的過敏原 <br> 讓您遠離過敏體質</h6>
@@ -47,7 +47,7 @@
       <div class="col-md-3 col-xs-11">
         <q-card class="my-card q-mx-lg" flat bordered>
           <q-card-section>
-            <q-img class="col-5" ratio="1" src="src/assets/ear.svg" />
+            <q-img class="col-5" ratio="1" src="~assets/ear.svg" />
             <q-card-section>
               <h4>聽力檢測</h4>
               <h6>專業安全聽力檢查<br>提供助聽器可選配</h6>
@@ -58,7 +58,7 @@
       <div class="col-md-3 col-xs-11">
         <q-card class="my-card q-mx-lg" flat bordered>
           <q-card-section>
-            <q-img ratio="1" class="col-5" src="src/assets/7.svg" />
+            <q-img ratio="1" class="col-5" src="~assets/7.svg" />
             <q-card-section>
               <h4>三高預防</h4>
               <h6>提供各大原廠藥物<br>一起守護您的健康</h6>
@@ -77,7 +77,7 @@
     <h3>關於我們</h3>
     <div id="info2" class="row q-px-xl">
       <div class="col-md-4 col-xs-12">
-        <q-img ratio="1" src="src/assets/a1.jpg" />
+        <q-img ratio="1" src="~assets/a1.jpg" />
       </div>
       <div
         class="col-md-4 col-xs-12 text-center justify-center items-center text-teal-8"
@@ -88,7 +88,7 @@
         <div class="text-h4">值得你信賴</div>
       </div>
       <div class="col-md-4 col-xs-12">
-        <q-img ratio="1" src="src/assets/a2.jpg" />
+        <q-img ratio="1" src="~assets/a2.jpg" />
       </div>
     </div>
   </section>
