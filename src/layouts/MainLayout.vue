@@ -61,7 +61,7 @@
       <router-view />
     </q-page-container>
     <div id="footer" class="column justify-center items-center text-center">
-      <q-parallax src="src/assets/parallax.jpg" :speed="0.75">
+      <q-parallax src="~assets/parallax.jpg" :speed="0.75">
         <h4 class="q-ma-md">
           Lorem ipsum dolor sit,<br />
           Lorem ipsum dolor sit,
