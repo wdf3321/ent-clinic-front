@@ -19,8 +19,8 @@ jobs:
       # 步驟二：編譯
       - name: Install and Build
         run: |
-          yarn install
-          yarn run build
+          npm install
+          npm run build
         env:
           VITE_API: ${{secrets.VITE_API}}
 
