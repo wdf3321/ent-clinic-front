@@ -51,7 +51,7 @@ module.exports = configure(function (/* ctx */) {
     build: {
       target: {
         browser: ['es2019', 'edge88', 'firefox78', 'chrome87', 'safari13.1'],
-        node: 'node16'
+        node: 'node18'
       },
 
       vueRouterMode: 'hash', // available values: 'hash', 'history'
@@ -61,7 +61,7 @@ module.exports = configure(function (/* ctx */) {
 
       // rebuildCache: true, // rebuilds Vite/linter/etc cache on startup
 
-      // publicPath: '',
+      publicPath: '/',
       // analyze: true,
       env: {
         VITE_API: process.env.VITE_API
