@@ -4,9 +4,7 @@
       title="可供預約時間"
       :rows="rows"
       :columns="columns"
-      row-key="time"
-      selection="single"
-      v-model:selected="selected"
+      row-key="id"
     >
     </q-table>
   </section>
@@ -79,18 +77,27 @@ const optionsTime = reactive([])
 // --------------------------
 const getReserves = async () => {
   const data = await apiAuth.get('/reserve')
-  // console.log(data.data.result)
   let i = 0
+
   for (i = 0; i < data.data.result.length; i++) {
-    rows.push({
-      date: data.data.result[i].date,
-      time: data.data.result[i].time,
-      member: data.data.result[i].member,
-      id: data.data.result[i]._id
-    })
-    // console.log(data.data.result[i].time)
-    optionsDate.push(data.data.result[i].date)
-    optionsTime.push(data.data.result[i].time)
+    if (data.data.result[i].member <= 0) {
+      continue
+    } else {
+      rows.push({
+        date: data.data.result[i].date,
+        time: data.data.result[i].time,
+        member: data.data.result[i].member,
+        id: data.data.result[i]._id
+      })
+    }
+    // Check if date already exists in optionsDate array
+    if (!optionsDate.includes(data.data.result[i].date)) {
+      optionsDate.push(data.data.result[i].date)
+    }
+    // Check if time already exists in optionsTime array
+    if (!optionsTime.includes(data.data.result[i].time)) {
+      optionsTime.push(data.data.result[i].time)
+    }
   }
   $q.notify({
     color: 'green-4',
@@ -100,19 +107,32 @@ const getReserves = async () => {
   })
 }
 getReserves()
-
+// ------------------------------------------------
 const form = reactive({
   name: '',
   member: '',
-  time: '',
-  date: ''
+  time: selected.value[0]?.time || '',
+  date: selected.value[0]?.date || ''
 })
 
 const submit = async () => {
   try {
     console.log(form)
+    const result = await apiAuth.post('/reserve/make', form)
+    console.log(result)
+    $q.notify({
+      color: 'green-4',
+      textColor: 'white',
+      icon: 'cloud_done',
+      message: '預約成功'
+    })
   } catch (error) {
-    console.log('asdf')
+    $q.notify({
+      color: 'red-4',
+      textColor: 'white',
+      icon: 'cloud_done',
+      message: '預約失敗，請選擇其他時間'
+    })
   }
 }
 
@@ -120,8 +140,8 @@ const columns = [
   {
     name: 'date',
     required: true,
-    label: 'date',
-    align: 'left',
+    label: '日期',
+    align: 'center',
     field: (row) => row.date,
     format: (val) => `${val}`,
     sortable: true
@@ -129,7 +149,7 @@ const columns = [
   {
     name: 'time',
     align: 'center',
-    label: 'time',
+    label: '時間',
     field: 'time',
     sortable: true
   },
@@ -143,4 +163,5 @@ const columns = [
 ]
 
 const rows = reactive([])
+
 </script>

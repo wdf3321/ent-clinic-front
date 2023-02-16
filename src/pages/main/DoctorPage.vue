@@ -146,4 +146,8 @@ border-radius: 20px;
     height: 100vh;
   }
 }
+#pic{
+max-width: 85%;
+margin: auto;
+}
 </style>

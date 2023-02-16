@@ -11,7 +11,7 @@
     >
     </q-table>
 
-    <q-btn icon="delete" @click="deleteUser" class="q-ma-xl" color="teal"></q-btn>
+    <q-btn icon="delete" label="刪除" @click="deleteUser" class="q-ma-xl" color="teal"></q-btn>
   </div>
 </section>
   <!-- <q-input class="text-center" v-model="search" outlined type="search" hint="Search" style="max-width:500px">

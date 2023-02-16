@@ -123,7 +123,7 @@ const menuList = [
   },
   {
     icon: 'article',
-    label: '文章管理',
+    label: '消息管理',
     separator: false,
     a: '/admin/article'
   },
@@ -132,6 +132,12 @@ const menuList = [
     label: '可預約人管理',
     separator: false,
     a: '/admin/limit'
+  },
+  {
+    icon: 'view_carousel',
+    label: 'BANNER管理',
+    separator: false,
+    a: '/admin/banner'
   }
 ]
 </script>

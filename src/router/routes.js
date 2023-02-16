@@ -11,7 +11,7 @@ const routes = [
         name: 'index',
         component: () => import('src/pages/main/IndexPage.vue'),
         meta: {
-          title: 'ENT',
+          title: '泰山耳鼻喉科 | 首頁',
           login: false,
           admin: false
         }
@@ -21,7 +21,7 @@ const routes = [
         name: 'intro',
         component: () => import('src/pages/main/IntroPage.vue'),
         meta: {
-          title: '診所介紹',
+          title: '泰山耳鼻喉科 | 診所介紹',
           login: false,
           admin: false
         }
@@ -31,7 +31,7 @@ const routes = [
         name: 'news',
         component: () => import('src/pages/main/NewsPage.vue'),
         meta: {
-          title: '最新消息',
+          title: '泰山耳鼻喉科 | 最新消息',
           login: false,
           admin: false
         }
@@ -41,7 +41,7 @@ const routes = [
         name: 'contact',
         component: () => import('src/pages/main/ContactPage.vue'),
         meta: {
-          title: '聯絡我們',
+          title: '泰山耳鼻喉科 | 聯絡我們',
           login: false,
           admin: false
         }
@@ -51,7 +51,7 @@ const routes = [
         name: 'doctor',
         component: () => import('src/pages/main/DoctorPage.vue'),
         meta: {
-          title: '醫師介紹',
+          title: '泰山耳鼻喉科 | 醫師介紹',
           login: false,
           admin: false
         }
@@ -60,7 +60,7 @@ const routes = [
         path: '/login',
         component: () => import('src/pages/main/LoginPage.vue'),
         meta: {
-          title: '登入/註冊',
+          title: '泰山耳鼻喉科 | 登入',
           login: false,
           admin: false
         }
@@ -68,7 +68,7 @@ const routes = [
         path: '/register',
         component: () => import('src/pages/main/RegisterPage.vue'),
         meta: {
-          title: '登入/註冊',
+          title: '泰山耳鼻喉科 | 註冊',
           login: false,
           admin: false
         }
@@ -124,7 +124,17 @@ const routes = [
           login: true,
           admin: true
         }
+      },
+      {
+        path: '/admin/banner',
+        component: () => import('pages/admin/BannerAdmin.vue'),
+        meta: {
+          title: 'banner管理',
+          login: true,
+          admin: true
+        }
       }
+
     ]
   },
   {

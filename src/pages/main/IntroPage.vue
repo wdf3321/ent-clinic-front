@@ -22,7 +22,6 @@
             我們希望透過耳鼻喉科的相關專業，仔細探索每個病症的多面向，溫暖地提供全面照護式治療，全然治癒每個生病的身心；讓求診者痊癒，回歸健康生活。
           </div>
         </div>
-
       </div>
       <div class="row">
         <q-img
@@ -37,9 +36,9 @@
     </div>
   </section>
   <!-- -------------- -->
-  <section data-aos="fade-down-right">
+  <section data-aos="fade-down">
     <h3>如何到達</h3>
-    <div class="row justify-center items-center q-pa-xs">
+    <div class="row justify-center items-center q-pa-xs" id="map">
       <div class="col-xs-12 col-md-6 q-mb-xl q-pa-xs">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.5736977893575!2d121.42544693219492!3d25.048537388606263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a7c8a31768a7%3A0x49399b4f4a4ea003!2zMjQz5paw5YyX5biC5rOw5bGx5Y2AMTA357ij6YGTMjM3LTIwOQ!5e0!3m2!1szh-TW!2stw!4v1675383785832!5m2!1szh-TW!2stw"
@@ -51,7 +50,7 @@
           referrerpolicy="no-referrer-when-downgrade"
         ></iframe>
       </div>
-      <div class="col-xs-12 col-md-6 q-mb-xl q-pa-xs">
+      <div class="col-xs-12 col-md-6 q-mb-xl q-pa-md">
         <div class="q-gutter-y-md">
           <q-card>
             <q-tabs
@@ -103,9 +102,9 @@ const tab = ref('car')
 <style lang="scss">
 #pic {
   width: 100%;
-  .row{
-  width: 85%;
-  margin-bottom: 50px;
+  .row {
+    width: 85%;
+    margin-bottom: 50px;
   }
 }
 .flex-break {
@@ -113,14 +112,22 @@ const tab = ref('car')
   width: 0 !important;
 }
 #first {
+  .col-md-7 {
+  margin-top: 20px;
+  padding: 0 20px;
+}
   @media (min-width: 1024px) {
-
+    .col-md-7{
+    margin: auto;
+    }
   }
+}
+#map{
+max-width: 85%;
+margin: auto;
 }
 #footer {
   border-top: 5px solid $secondary;
 }
-.col-md-7{
-margin: auto;
-padding: 0 20px;}
+
 </style>
