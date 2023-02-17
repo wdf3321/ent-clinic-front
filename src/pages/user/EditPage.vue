@@ -89,5 +89,8 @@ getUser()
 </script>
 
 <style lang="scss">
-
+section{
+width: 75%;
+margin: auto;
+}
 </style>

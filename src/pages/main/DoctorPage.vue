@@ -1,8 +1,8 @@
 <template>
-  <section id="first" data-aos="fade-down">
+  <section id="firstdr" data-aos="fade-down">
     <h3>醫師介紹</h3>
-    <div id="pic" class="row q-pa-md">
-      <div class="col-xs-12 col-md-4 q-pa-lg">
+    <div id="picpic" class="row q-pa-md-xs">
+      <div class="col-xs-12 col-md-4 q-pa-md-lg">
         <q-card class="my-card" flat bordered>
           <q-card-section>
             <q-img
@@ -21,7 +21,7 @@
           </q-card-section>
         </q-card>
       </div>
-      <div class="col-xs-12 col-md-4 q-pa-lg">
+      <div class="col-xs-12 col-md-4 q-pa-md-lg">
         <q-card class="my-card" flat bordered>
           <q-card-section>
             <q-img
@@ -40,7 +40,7 @@
           </q-card-section>
         </q-card>
       </div>
-      <div class="col-xs-12 col-md-4 q-pa-lg">
+      <div class="col-xs-12 col-md-4 q-pa-md-lg">
         <q-card class="my-card" flat bordered>
           <q-card-section>
             <q-img
@@ -62,19 +62,21 @@
     </div>
   </section>
   <!-- ------------------------------------------- -->
-  <section data-aos="fade-up">
-    <h3>門診時間</h3>
-    <div class="row justify-center items-center">
-      <q-table
-        id="table"
-        :rows="rows2"
-        :columns="columns2"
-        hide-bottom
-      ></q-table>
+  <section data-aos="fade-up" style="  background: #eee;">
+    <div class="column" id="time">
+      <h3>門診時間</h3>
+      <div class="row justify-center items-center">
+        <q-table
+          id="table"
+          :rows="rows2"
+          :columns="columns2"
+          hide-bottom
+        ></q-table>
+      </div>
+      <h5 class="text-center q-mx-auto text-teal-8" style="width: 100vw">
+        王醫師:🟠 黃醫師:🟢 李醫師:🟤
+      </h5>
     </div>
-   <h5 class="text-center q-mx-auto text-teal-8" style="width: 100vw">
-    王醫師:🟠 黃醫師:🟢 李醫師:🟤
-    </h5>
   </section>
   <!-- ----------------------------------------------- -->
 </template>
@@ -137,17 +139,27 @@ const rows2 = [
 #footer {
   border-top: 5px solid $secondary;
 }
-.q-card{
-border: 1px solid $teal;
-border-radius: 20px;
+.q-card {
+  border: 1px solid $teal;
+  border-radius: 20px;
 }
-#first {
+#firstdr {
+
   @media (min-width: 1024px) {
     height: 100vh;
   }
 }
-#pic{
-max-width: 85%;
-margin: auto;
+#picpic {
+  max-width: 80%;
+  margin: auto;
+  .my-card {
+    @media (max-width: 1023px) {
+      margin-bottom: 20px;
+    }
+  }
+}
+#time {
+
+  width: 75%;
 }
 </style>

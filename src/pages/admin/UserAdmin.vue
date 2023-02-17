@@ -88,7 +88,6 @@ getAllUser()
 // ---------------------------------
 const deleteUser = async () => {
   try {
-    // console.log(selected.value[0].id)
     const result = await apiAuth.delete(`/users/${selected.value[0].id}`)
     console.log(result)
     $q.notify({
@@ -97,6 +96,8 @@ const deleteUser = async () => {
       icon: 'cloud_done',
       message: '刪除成功'
     })
+    while (rows.length) { rows.pop() }
+    getAllUser()
   } catch (error) {
     $q.notify({
       color: 'red-4',
@@ -107,24 +108,9 @@ const deleteUser = async () => {
   }
 }
 
-// const user = reactive([
-// ])
-// const init = async () => {
-//   try {
-//     const { data } = await apiAuth.get('/users/all')
-//     user.push(data.result)
-//     $q.notify({
-//       message: 'Jim pinged you.',
-//       caption: '5 minutes ago',
-//       color: 'secondary'
-//     })
-//     console.log(user)
-//   } catch (error) {
-//     $q.notify({
-//       message: 'Jim pinged you.',
-//       caption: '5 minutes ago',
-//       color: 'secondary'
-//     })
-//   }
-// }
 </script>
+
+<style lang="scss">
+section{
+width: 75%;}
+</style>

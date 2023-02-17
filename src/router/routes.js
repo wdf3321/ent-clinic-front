@@ -84,7 +84,7 @@ const routes = [
         path: '/admin',
         component: () => import('pages/admin/AdminPage.vue'),
         meta: {
-          title: '管理員',
+          title: '管理員 | 首頁',
           login: true,
           admin: true
         }
@@ -93,7 +93,7 @@ const routes = [
         path: '/admin/user',
         component: () => import('pages/admin/UserAdmin.vue'),
         meta: {
-          title: '會員管理',
+          title: '管理員 | 會員管理',
           login: true,
           admin: true
         }
@@ -102,7 +102,7 @@ const routes = [
         path: '/admin/reserve',
         component: () => import('pages/admin/ReserveAdmin.vue'),
         meta: {
-          title: '預約管理',
+          title: '管理員 | 預約管理',
           login: true,
           admin: true
         }
@@ -111,7 +111,7 @@ const routes = [
         path: '/admin/article',
         component: () => import('pages/admin/ArticleAdmin.vue'),
         meta: {
-          title: '文章管理',
+          title: '管理員 | 文章管理',
           login: true,
           admin: true
         }
@@ -120,7 +120,7 @@ const routes = [
         path: '/admin/limit',
         component: () => import('pages/admin/LimitAdmin.vue'),
         meta: {
-          title: '可預約人管理',
+          title: '管理員 | 可預約人管理',
           login: true,
           admin: true
         }
@@ -129,7 +129,7 @@ const routes = [
         path: '/admin/banner',
         component: () => import('pages/admin/BannerAdmin.vue'),
         meta: {
-          title: 'banner管理',
+          title: '管理員 | BANNER管理',
           login: true,
           admin: true
         }
@@ -145,7 +145,7 @@ const routes = [
         path: '/user',
         component: () => import('pages/user/UserPage.vue'),
         meta: {
-          title: '會員資料',
+          title: '使用者 | 會員資料',
           login: true,
           admin: false
         }
@@ -154,7 +154,7 @@ const routes = [
         path: '/user/edit',
         component: () => import('pages/user/EditPage.vue'),
         meta: {
-          title: '編輯會員',
+          title: '使用者 | 編輯會員',
           login: true,
           admin: false
         }
@@ -163,7 +163,7 @@ const routes = [
         path: '/user/reserve',
         component: () => import('pages/user/ReservePage.vue'),
         meta: {
-          title: '預約',
+          title: '使用者 | 預約',
           login: true,
           admin: false
         }
@@ -172,7 +172,7 @@ const routes = [
         path: '/user/see',
         component: () => import('pages/user/SeePage.vue'),
         meta: {
-          title: '預約查詢',
+          title: '使用者 | 預約查詢',
           login: true,
           admin: false
         }

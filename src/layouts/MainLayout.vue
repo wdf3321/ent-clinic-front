@@ -4,19 +4,24 @@
       <q-toolbar>
         <q-toolbar-title>
           <q-icon name="medical_services" size="xl" class=""></q-icon>
-          <q-btn flat size="lg" to="#" class="text-weight-bolder" style="padding-top: 10px;"
+          <q-btn
+            flat
+            size="lg"
+            to="#"
+            class="text-weight-bold"
+            style="padding-top: 10px"
             >泰山耳鼻喉科
           </q-btn>
         </q-toolbar-title>
 
         <q-drawer
-          class="lt-md text-center"
+          class="lt-md text-center bg-primary"
           show-if-above
           v-model="rightDrawerOpen"
           side="right"
           bordered
         >
-          <q-tabs class="lt-md text-black" vertical v-model="tab">
+          <q-tabs class="lt-md text-white" vertical v-model="tab">
             <q-route-tab name="top" label="首頁" to="/" />
             <q-route-tab name="intro" label="診所介紹" to="/intro" />
             <q-route-tab name="doctor" label="醫師介紹" to="doctor" />
@@ -25,7 +30,7 @@
 
             <q-btn
               to="/login"
-              class="bg-orange"
+              class="bg-orange q-mt-xs"
               text-color="white"
               label="會員登入"
               name="login"
@@ -47,44 +52,40 @@
           name="login"
         />
         <q-btn
-          dense
           flat
-          round
           icon="menu"
           @click="toggleRightDrawer"
-          class="lt-md"
+          class="lt-md q-pt-xs"
+          size="md"
         />
       </q-toolbar>
     </q-header>
-    <!-- cyan cyan10 -->
+<!-- -------------------------------------------- -->
     <q-page-container>
       <router-view />
     </q-page-container>
     <div id="footer" class="column justify-center items-center text-center">
-      <q-parallax src="src/assets/parallax.jpg" :speed="0.75">
-        <h4 class="q-ma-md">
-          Lorem ipsum dolor sit,<br />
-          Lorem ipsum dolor sit,
-        </h4>
-
-        <h6 class="q-ma-md">02-94879487</h6>
+      <q-parallax src="~assets/parallax.jpg" :speed="0.75">
+        <div class="q-my-md-md q-my-xs text-h5">不知道如何預約嗎？</div>
+        <div class="q-my-md-md q-my-xs text-h5">點擊下方按鈕，來加入會員吧！</div>
         <q-btn
           class="q-ma-lg bg-orange q-pa-md"
-          to="/login"
+          to="/register"
           text-color="white"
-          label="會員登入"
+          label="會員註冊"
           name="login"
           size="22px"
         />
       </q-parallax>
     </div>
-    <div id="footer2" class="column text-center justify-center items-center">
+    <div id="footer2" class="column text-center justify-center items-center bg-teal-6">
       <q-avatar class="q-ma-md" size="75px">
-        <q-icon name="medical_services" size="75px" color="white"/>
+        <q-icon name="medical_services" size="75px" color="white" />
       </q-avatar>
       <q-btn flat to="/" size="xl" class="q-mx-lg text-weight-bolder text-white"
         >泰山耳鼻喉科
       </q-btn>
+      <div class="text-h6 text-white">02-94879487</div>
       <br />
       <div class="row">
         <q-btn
@@ -113,7 +114,6 @@
         />
       </div>
     </div>
-
   </q-layout>
 </template>
 
@@ -144,20 +144,18 @@ AOS.init()
   h4 h6 {
     backdrop-filter: hue-rotate(180deg);
   }
-
 }
 #footer2 {
   width: 100%;
-  background: $secondary;
 }
-.q-parallax{
+.q-parallax {
   position: relative;
-.q-btn{
-width: 150px;
-height: 80px;
-position: absolute;
-top: 0;
-left: 0;
-}
+  .q-btn {
+    width: 150px;
+    height: 80px;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 }
 </style>

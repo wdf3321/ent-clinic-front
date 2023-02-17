@@ -91,6 +91,8 @@ const upload = async () => {
     })
     loading.value = false
     prompt.value = false
+    while (rows.length) { rows.pop() }
+    getBanner()
   } catch (error) {
     $q.notify({
       color: 'red-4',
@@ -104,13 +106,14 @@ const upload = async () => {
 const delete1 = async () => {
   const data = await apiAuth.delete(`/banner/${selected.value[0]._id}`)
   console.log(data)
-
   $q.notify({
     color: 'green-4',
     textColor: 'white',
     icon: 'cloud_done',
     message: '刪除成功'
   })
+  while (rows.length) { rows.pop() }
+  getBanner()
 }
 
 const columns = [
@@ -153,4 +156,6 @@ img {
   margin: auto;
 width: 300px;height: 300px;
 }
+section{
+width: 75%;}
 </style>

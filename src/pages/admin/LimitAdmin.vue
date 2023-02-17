@@ -15,10 +15,11 @@
 </section>
 
   <!--新增  -->
-  <div class="text-center q-ma-xl">
-    <q-btn icon=add label="新增" color="primary" @click="prompt = true" class="q-mr-xl" />
-    <q-btn icon=add_box label="新增一周" color="primary" @click="prompt2 = true" class="q-mr-xl" />
+  <div class="text-center q-ma-xl column row-md justify-center">
+    <q-btn icon=add label="新增" color="primary" @click="prompt = true" class="q-mr-xl " />
+    <q-btn icon=add_box label="新增多天" color="primary" @click="prompt2 = true" class="q-mr-xl q-my-xs-xs" />
     <q-btn color="teal" label="刪除" icon=delete v-close-popup @click="deleteSubmit" />
+    </div>
     <!-- ---------------------------------------------------------------- -->
     <q-dialog v-model="prompt" persistent>
       <q-card style="min-width: 400px">
@@ -178,7 +179,6 @@
       </q-card>
     </q-dialog>
     <!-- --------------------------------------- -->
-  </div>
 </template>
 
 <script setup>
@@ -235,6 +235,8 @@ const Submit = async () => {
     icon: 'cloud_done',
     message: '新增成功'
   })
+  while (rows.length) { rows.pop() }
+  getReserves()
 }
 const SubmitWeek = async () => {
   try {
@@ -266,6 +268,8 @@ const deleteSubmit = async () => {
       icon: 'cloud_done',
       message: '刪除成功'
     })
+    while (rows.length) { rows.pop() }
+    getReserves()
   } catch (error) {
     $q.notify({
       color: 'red-4',
@@ -303,3 +307,9 @@ const columns = [
   { name: 'member', label: '可預約人數', field: 'member', sortable: true }
 ]
 </script>
+
+<style lang="scss">
+section{
+
+width: 75%;}
+</style>

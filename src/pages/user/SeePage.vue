@@ -1,19 +1,19 @@
 <template>
   <section>
-  <h4 class="text-center">預約查詢</h4>
-  <div class="q-pa-xl text-center">
-    <q-table
-      class="my-sticky-header-table "
-      title=""
-      :rows="rows"
-      :columns="columns"
-      row-key="name"
-      flat
-      bordered
-      no-data-label="哭喔，你尚未預約任何時間"
-    />
-  </div>
-</section>
+    <h4 class="text-center">預約查詢</h4>
+    <div class="q-pa-xl text-center">
+      <q-table
+        class="my-sticky-header-table"
+        title=""
+        :rows="rows"
+        :columns="columns"
+        row-key="name"
+        flat
+        bordered
+        no-data-label="哭阿，你尚未預約任何時間"
+      />
+    </div>
+  </section>
 </template>
 <script setup>
 import { reactive } from 'vue'
@@ -25,12 +25,6 @@ const getUser = async () => {
   try {
     const { data } = await apiAuth.get('/users')
     console.log(data.result.reserve)
-    $q.notify({
-      color: 'green-4',
-      textColor: 'white',
-      icon: 'cloud_done',
-      message: '取得成功'
-    })
     let i = 0
     for (i = 0; i < data.result.reserve.length; i++) {
       rows.push({
@@ -65,8 +59,7 @@ const columns = [
     required: true,
     label: '日期',
     align: 'center',
-    field: (row) => row.date,
-    format: (val) => `${val}`,
+    field: 'date',
     sortable: true
   },
   {
@@ -94,3 +87,10 @@ const columns = [
 
 const rows = reactive([])
 </script>
+
+<style lang="scss">
+section{
+width: 75%;
+margin: auto;
+}
+</style>

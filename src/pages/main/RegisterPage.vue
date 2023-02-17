@@ -1,12 +1,10 @@
 <template>
-  <div id="sm" class="row q-pa-md justify-center text-center">
-    <div class="col-xs-12 col-md-6 q-mb-xl " data-aos="fade-left">
-      <h4>註冊帳號可以?</h4>
-      <h5>1.享受更多福利</h5>
-      <h5>2.了解更多</h5>
-      <q-btn id="register1" label="去登入" type="button" color="primary" to="/login" />
-    </div>
-    <div class="text-center col-xs-12 col-md-6" id="register" data-aos="fade-right">
+  <div id="sm" class="row q-pa-md justify-center text-center reverse-md">
+    <div
+      class="text-center col-xs-12 col-md-6"
+      id="register"
+      data-aos="fade-right"
+    >
       <h5>註冊</h5>
       <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
         <q-input
@@ -47,7 +45,12 @@
         />
         <q-checkbox v-model="accept" label="我同意註冊新帳號" />
         <div>
-          <q-btn label="送出" type="submit" color="primary" :loading="loading" />
+          <q-btn
+            label="送出"
+            type="submit"
+            color="primary"
+            :loading="loading"
+          />
           <q-btn
             label="重寫"
             type="reset"
@@ -57,10 +60,20 @@
           />
         </div>
       </q-form>
-
+    </div>
+    <div class="col-xs-12 col-md-6 q-mb-xl" data-aos="fade-left">
+      <h4>註冊帳號可以?</h4>
+      <h5>1.享受更多福利</h5>
+      <h5>2.了解更多福利</h5>
+      <q-btn
+        id="register1"
+        label="去登入"
+        type="button"
+        color="primary"
+        to="/login"
+      />
     </div>
   </div>
-
 </template>
 
 <script setup>
@@ -90,7 +103,8 @@ const onSubmit = async () => {
       message: '你必須同意申請'
     })
     return
-  } try {
+  }
+  try {
     loading.value = true
     await api.post('/users', form)
     loading.value = false
@@ -121,25 +135,26 @@ function onReset () {
 </script>
 
 <style lang="scss">
-
-#register1{
-margin-top: 2rem;
-width: 100px;
-height: 70px;
+#register1 {
+  margin-top: 2rem;
+  width: 100px;
+  height: 70px;
 }
-#sm{
-width: 100vw;
-margin-top: 50px;
+#sm {
+  width: 100vw;
+  margin-top: 50px;
 }
-#register{
-height: 80vh;
-width: 500px;
-background: #eee;
-padding: 20px;
-border-radius: 5%;
-@media (max-width:1024px){
-height:80vh
-}
-
+#register {
+  height: 80vh;
+  width: 500px;
+  background: #eee;
+  padding: 20px;
+  border-radius: 5%;
+  @media (max-width: 1024px) {
+    height: 80vh;
+  }
+  .q-form {
+    width: 100%;
+  }
 }
 </style>

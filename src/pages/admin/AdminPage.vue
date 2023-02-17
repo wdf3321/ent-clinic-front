@@ -1,4 +1,5 @@
 <template>
+  <section>
   <div class="column justify-center items-center q-mt-md">
     <q-avatar size="200px" color="secondary" text-color="white" class="q-mb-xl"  >
       <img src='https://source.boringavatars.com/beam/256/$%7B${{user.name}}colors=ffabab,ffdaab,ddffab,abe4ff,d9abff'>
@@ -34,6 +35,7 @@
         </div>
       </q-form>
   </div>
+</section>
 </template>
 
 <script setup>
@@ -47,14 +49,15 @@ const user = useUserStore()
 const form = reactive({
   name: user.name,
   account: user.account,
-  phone: '0' + user.phone
+  phone: user.phone
 })
 
 </script>
 
 <style lang="scss">
 .q-form{
-width: 75%;
-
+width: 100%;
 }
+section{
+width: 75%;}
 </style>

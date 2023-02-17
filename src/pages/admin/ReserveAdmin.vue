@@ -93,6 +93,8 @@ const deleteSubmit = async () => {
       icon: 'cloud_done',
       message: '預約取得成功'
     })
+    while (rows.length) { rows.pop() }
+    getReserves()
   } catch (error) {
     console.log(error)
     $q.notify({
@@ -152,3 +154,8 @@ function exportTable () {
   }
 }
 </script>
+
+<style lang="scss">
+section{
+width: 75%;}
+</style>

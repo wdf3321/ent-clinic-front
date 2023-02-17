@@ -172,6 +172,8 @@ const Submit = () => {
   form.date = ''
   form.title = ''
   form.inside = ''
+  while (articles.length) { articles.pop() }
+  store.getArticles()
 }
 
 const columns = [
@@ -199,3 +201,8 @@ const columns = [
   }
 ]
 </script>
+<style lang="scss">
+
+section{
+width: 75%;}
+</style>

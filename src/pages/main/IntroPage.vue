@@ -103,8 +103,11 @@ const tab = ref('car')
 #pic {
   width: 100%;
   .row {
-    width: 85%;
+    width: 75%;
     margin-bottom: 50px;
+  }
+  .q-img {
+    border-radius: 16px;
   }
 }
 .flex-break {
@@ -113,21 +116,24 @@ const tab = ref('car')
 }
 #first {
   .col-md-7 {
-  margin-top: 20px;
-  padding: 0 20px;
-}
+    margin-top: 20px;
+    padding: 0 20px;
+  }
   @media (min-width: 1024px) {
-    .col-md-7{
-    margin: auto;
+    .col-md-7 {
+      margin: auto;
     }
   }
 }
-#map{
-max-width: 85%;
-margin: auto;
+#map {
+  max-width: 75%;
+  margin: auto;
+  .q-card{
+  border: 1px solid $teal;
+  border-radius: 10px;
+  }
 }
 #footer {
   border-top: 5px solid $secondary;
 }
-
 </style>

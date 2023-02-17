@@ -1,4 +1,5 @@
 <template>
+  <section>
   <div class="column justify-center items-center q-mt-md">
     <q-avatar size="200px" color="secondary" text-color="white" class="q-mb-xl"  >
       <img src='https://source.boringavatars.com/beam/256/$%7B$%7D?{{user.name}}colors=ffabab,ffdaab,ddffab,abe4ff,d9abff'>
@@ -29,6 +30,7 @@
 
       </q-form>
   </div>
+  </section>
 </template>
 
 <script setup>
@@ -67,8 +69,12 @@ getUser()
 </script>
 
 <style lang="scss">
-.q-form{
-width: 75%;
 
+section{
+width: 75%;
+margin: auto;
+.q-form{
+width: 100%;
+}
 }
 </style>

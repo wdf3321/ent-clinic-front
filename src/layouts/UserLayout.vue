@@ -4,10 +4,10 @@
       <q-toolbar>
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
         <q-toolbar-title>
-          使用者
+          泰山耳鼻喉科 | 使用者
         </q-toolbar-title>
         <q-spacer></q-spacer>
-        <q-span>你好、{{ user.name }} </q-span>
+        <q-span>歡迎您，{{ user.name }} </q-span>
       </q-toolbar>
     </q-header>
 
@@ -51,7 +51,7 @@
     <q-footer bordered class="bg-teal-6 text-white">
       <q-toolbar>
         <q-toolbar-title>
-          <div>Title</div>
+          <q-icon name="medical_services" size="xl" class=""/>
         </q-toolbar-title>
         <q-fab
           color="teal"

@@ -5,8 +5,10 @@
       :rows="rows"
       :columns="columns"
       row-key="id"
+
     >
     </q-table>
+
   </section>
   <div class="q-pa-md text-center">
     <h4 class="">我要預約</h4>
@@ -43,14 +45,24 @@
         </q-card-section>
 
         <q-card-section class="q-pt-none">
-          <q-select v-model="form.date" :options="optionsDate" label="日期" />
+          <q-select
+            v-model="form.date"
+            :options="optionsDate"
+            label="日期"
+            :loading="loading"
+          />
         </q-card-section>
         <q-card-section>
           <div class="text-h6">時間</div>
         </q-card-section>
 
         <q-card-section class="q-pt-none">
-          <q-select v-model="form.time" :options="optionsTime" label="時間" />
+          <q-select
+            v-model="form.time"
+            :options="optionsTime"
+            label="時間"
+            :loading="loading"
+          />
         </q-card-section>
         <q-card-actions align="right" class="text-white">
           <q-btn flat label="取消" v-close-popup color="secondary" />
@@ -68,7 +80,7 @@ import { useQuasar } from 'quasar'
 // import { useUserStore } from 'src/stores/user'
 // const user = useUserStore()
 const $q = useQuasar()
-const prompt = ref('false')
+const prompt = ref(false)
 const dense = ref(false)
 const selected = ref([])
 const optionsDate = reactive([])
@@ -126,6 +138,9 @@ const submit = async () => {
       icon: 'cloud_done',
       message: '預約成功'
     })
+    prompt.value = false
+    while (rows.length) { rows.pop() }
+    getReserves()
   } catch (error) {
     $q.notify({
       color: 'red-4',
@@ -163,5 +178,10 @@ const columns = [
 ]
 
 const rows = reactive([])
-
 </script>
+<style lang="scss">
+section{
+width: 75%;
+margin: auto;
+}
+</style>

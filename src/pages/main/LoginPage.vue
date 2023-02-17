@@ -1,17 +1,5 @@
 <template>
-  <div id="sm" class="row q-pa-xs justify-center text-center ">
-    <div class="col-xs-12 col-md-6 q-mb-xl" data-aos="fade-right">
-      <h4>註冊帳號可以?</h4>
-      <h5>1.享受更多福利</h5>
-      <h5>2.了解更多福利</h5>
-      <q-btn
-        id="register1"
-        label="去註冊"
-        type="button"
-        color="primary"
-        to="/register"
-      />
-    </div>
+  <div id="sm" class="row q-pa-xs justify-center text-center reverse-md">
     <div
       id="login"
       class="text-center col-xs-12 col-md-6 q-mb-xl"
@@ -54,6 +42,18 @@
           />
         </div>
       </q-form>
+    </div>
+    <div class="col-xs-12 col-md-6 q-mb-xl" data-aos="fade-right">
+      <h4>註冊帳號可以?</h4>
+      <h5>1.享受更多福利</h5>
+      <h5>2.了解更多福利</h5>
+      <q-btn
+        id="register1"
+        label="去註冊"
+        type="button"
+        color="primary"
+        to="/register"
+      />
     </div>
   </div>
 </template>
@@ -141,6 +141,9 @@ function onReset () {
   border-radius: 5%;
   @media (max-width: 1024px) {
     height: 55vh;
+  }
+  .q-form{
+  width: 100%;
   }
 }
 </style>

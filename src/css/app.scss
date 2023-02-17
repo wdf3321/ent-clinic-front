@@ -9,8 +9,7 @@ body {
   overflow-x: hidden;
   font-family: 'customfont';
 }
-section 
-{
+section {
   width: 100vw;
 }
 h3 
@@ -31,10 +30,11 @@ left:50%;
 transform: translateX(-50%);
 border-radius: 10px;
 }
-
-
+h4 {
+  color: $teal;
+}
 h5 {
-  color: $accent;
+  color: $teal;
 }
 .flex-break {
   flex: 1 0 100% !important;
