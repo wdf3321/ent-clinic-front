@@ -10,7 +10,7 @@
 
 const { configure } = require('quasar/wrappers')
 const path = require('path')
-require('dotenv').config().parsed// eslint-disable-line
+require("dotenv").config().parsed; // eslint-disable-line
 module.exports = configure(function (/* ctx */) {
   return {
     eslint: {
@@ -51,9 +51,11 @@ module.exports = configure(function (/* ctx */) {
     build: {
       target: {
         browser: ['es2019', 'edge88', 'firefox78', 'chrome87', 'safari13.1'],
-        node: 'node16'
+        node: 'node18'
       },
-
+      alias: {
+        '@': path.join(__dirname, './src')
+      },
       vueRouterMode: 'hash', // available values: 'hash', 'history'
       // vueRouterBase,
       // vueDevtools,
@@ -66,6 +68,10 @@ module.exports = configure(function (/* ctx */) {
       env: {
         VITE_API: process.env.VITE_API
       },
+      extendViteConf (viteConf) {
+        viteConf.base = ''
+      },
+
       // rawDefine: {}
       // ignorePublicFolder: true,
       // minify: false,
