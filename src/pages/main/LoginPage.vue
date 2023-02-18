@@ -49,10 +49,11 @@
       <h5>2.了解更多福利</h5>
       <q-btn
         id="register1"
-        label="去註冊"
+        label="我要註冊"
         type="button"
         color="primary"
         to="/register"
+
       />
     </div>
   </div>

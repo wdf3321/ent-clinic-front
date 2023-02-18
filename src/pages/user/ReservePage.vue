@@ -5,7 +5,6 @@
       :rows="rows"
       :columns="columns"
       row-key="id"
-
     >
     </q-table>
 

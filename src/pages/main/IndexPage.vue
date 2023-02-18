@@ -235,6 +235,10 @@ getBanner()
 }
 .q-carousel {
   width: 100%;
+  @media (min-width:1024px) {
+    height: 500px;
+  }
+
 }
 section {
   width: 100vw;
@@ -243,7 +247,7 @@ section {
   font-weight: 100;
   margin: 2.5rem 0;
   @media (min-width: 1024px) {
-    margin: 4rem 0;
+    margin: 0 0 4rem 0;
   }
 }
 </style>

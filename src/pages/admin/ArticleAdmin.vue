@@ -1,51 +1,20 @@
 <template>
-  <section>
-  <h4 class="text-center">消息管理</h4>
+  <section >
   <q-spinner v-if="loading" color="primary" size="500px" />
   <p v-if="error">{{ error.message }}</p>
-  <div class="q-pa-md">
+  <div class="q-pa-md text-center">
     <q-table
+    title="消息管理"
       :rows="articles"
       :columns="columns"
-      row-key="id"
-      v-model:expanded="expanded"
+      row-key="title"
+      selection="single"
+      v-model:selected="selected"
     >
-      <template v-slot:header="props">
-        <q-tr :props="props">
-          <q-th auto-width />
-          <q-th v-for="col in props.cols" :key="col.name" :props="props">
-            {{ col.label }}
-          </q-th>
-        </q-tr>
-      </template>
-
-      <template v-slot:body="props">
-        <q-tr :props="props">
-          <q-td auto-width>
-            <q-btn
-              size="md"
-              color="accent"
-              round
-              dense
-              @click="props.row.expand = !props.row.expand"
-              :icon="props.row.expand ? 'remove' : 'add'"
-            />
-          </q-td>
-          <q-td v-for="col in props.cols" :key="col.name" :props="props">
-            {{ col.value }}
-          </q-td>
-        </q-tr>
-        <q-tr v-show="props.row.expand" :props="props">
-          <q-td colspan="100%" v-model="form.inside">
-            {{ props.row.inside }}
-            <div class="text-left">
-              <q-btn label="刪除" @click="store.deleteArticle()" />
-            </div>
-          </q-td>
-        </q-tr>
-      </template>
     </q-table>
+    <div class="q-mt-xl">內容預覽：{{ selected[0]?.inside }}</div>
   </div>
+
   <!-- --------------------- -->
   <!--新增  -->
   <div class="text-center q-pa-xl">
@@ -62,6 +31,14 @@
       color="teal"
       icon="delete"
       label="刪除最舊"
+      class="q-mx-lg"
+    />
+    <q-btn
+      @click="deleteSelectArcticle"
+      type="submit"
+      color="teal"
+      icon="delete"
+      label="刪除選擇"
       class="q-mx-lg"
     />
   </div>
@@ -143,8 +120,10 @@ import { useQuasar } from 'quasar'
 import { reactive, ref } from 'vue' //, ref
 // import { useRouter } from 'vue-router'
 import { storeToRefs } from 'pinia'
+import { apiAuth } from 'src/boot/axios'
 const { articles, loading, error } = storeToRefs(useArticleStore())
 
+const selected = ref([])
 const prompt = ref(false)
 const $q = useQuasar()
 // -----------------------------------
@@ -158,6 +137,28 @@ store.getArticles()
 
 const deleteArcticle = () => {
   store.deleteArticle()
+}
+const deleteSelectArcticle = async () => {
+  try {
+    const result = await apiAuth.delete(`/articles/delete/${selected.value[0]?._id}`)
+    console.log(result)
+    $q.notify({
+      color: 'green-4',
+      textColor: 'white',
+      icon: 'cloud_done',
+      message: '刪除成功'
+    })
+    while (articles.length) { articles.pop() }
+    store.getArticles()
+  } catch (error) {
+    console.log(error)
+    $q.notify({
+      color: 'red-4',
+      textColor: 'white',
+      icon: 'cloud_done',
+      message: '刪除失敗'
+    })
+  }
 }
 
 const Submit = () => {

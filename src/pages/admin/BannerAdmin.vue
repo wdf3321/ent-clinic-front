@@ -22,7 +22,7 @@
   <section>
     <div class="q-pa-md text-center">
       <q-table
-        title="banner"
+        title="BANNER"
         :rows="rows"
         :columns="columns"
         row-key="id"

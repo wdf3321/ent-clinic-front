@@ -84,14 +84,20 @@ getReserves()
 
 const deleteSubmit = async () => {
   try {
-    console.log(selected.value[0].id)
-    const result = await apiAuth.delete(`/reserve/delete/${selected.value[0].id}`)
+    console.log(selected.value[0])
+    const body = {
+      id: selected.value[0].id,
+      time: selected.value[0].time,
+      date: selected.value[0].date,
+      member: selected.value[0].member
+    }
+    const result = await apiAuth.post('/reserve/cancel', body)
     console.log(result)
     $q.notify({
       color: 'green-4',
       textColor: 'white',
       icon: 'cloud_done',
-      message: '預約取得成功'
+      message: '預約刪除成功'
     })
     while (rows.length) { rows.pop() }
     getReserves()
@@ -101,7 +107,7 @@ const deleteSubmit = async () => {
       color: 'red-4',
       textColor: 'white',
       icon: 'cloud_done',
-      message: '預約取得成功'
+      message: '預約刪除失敗'
     })
   }
 }
@@ -143,7 +149,10 @@ function exportTable () {
     )
     .join('\r\n')
 
-  const status = exportFile('table-export.csv', content, 'text/csv')
+  const status = exportFile(
+    'table-export.csv',
+    '\ufeff' + content,
+    'text/csv')
 
   if (status !== true) {
     $q.notify({

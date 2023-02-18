@@ -1,5 +1,5 @@
 <template>
-  <section data-aos="fade-up">
+  <section data-aos="fade-down">
     <h3>最新消息</h3>
     <div class="row items-center justify-center">
     <div id="table1" class="q-ma-xl">

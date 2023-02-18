@@ -209,6 +209,9 @@ const getReserves = async () => {
   console.log(data.data.result)
   let i = 0
   for (i = 0; i < data.data.result.length; i++) {
+    if (data.data.result[i].member === 0) {
+      continue
+    }
     rows.push({
       date: data.data.result[i].date,
       time: data.data.result[i].time,
@@ -248,6 +251,8 @@ const SubmitWeek = async () => {
       icon: 'cloud_done',
       message: '新增成功'
     })
+    while (rows.length) { rows.pop() }
+    getReserves()
   } catch (error) {
     $q.notify({
       color: 'red-4',

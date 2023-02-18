@@ -67,7 +67,7 @@
       <h5>2.了解更多福利</h5>
       <q-btn
         id="register1"
-        label="去登入"
+        label="我要登入"
         type="button"
         color="primary"
         to="/login"

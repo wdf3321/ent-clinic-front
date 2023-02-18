@@ -66,7 +66,6 @@
     </q-page-container>
     <div id="footer" class="column justify-center items-center text-center">
       <q-parallax src="~assets/parallax.jpg" :speed="0.75">
-
         <div class="q-my-md-md q-my-xs text-h5">不知道如何預約嗎？</div>
         <div class="q-my-md-md q-my-xs text-h5">點擊下方按鈕，來加入會員吧！</div>
         <q-btn

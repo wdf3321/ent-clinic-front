@@ -73,7 +73,7 @@ const getAllUser = async () => {
       id: data.data.result.data[i]._id,
       account: data.data.result.data[i].account,
       name: data.data.result.data[i].name,
-      phone: '0' + data.data.result.data[i].phone,
+      phone: data.data.result.data[i].phone,
       role: data.data.result.data[i].role
     })
   }
