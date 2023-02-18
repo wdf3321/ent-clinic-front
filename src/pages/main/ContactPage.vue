@@ -5,7 +5,7 @@
       <div class="col-xs-12 col-md-6 q-mb-xl q-pa-xs">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.5736977893575!2d121.42544693219492!3d25.048537388606263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a7c8a31768a7%3A0x49399b4f4a4ea003!2zMjQz5paw5YyX5biC5rOw5bGx5Y2AMTA357ij6YGTMjM3LTIwOQ!5e0!3m2!1szh-TW!2stw!4v1675383785832!5m2!1szh-TW!2stw"
-          width="90%"
+          width="100%"
           height="400"
           style="border: 0"
           allowfullscreen=""
@@ -120,7 +120,7 @@ const tab = ref('car')
 #footer {
   border-top: 5px solid $secondary;
 }
-#contact {
+#contact1 {
   width: 100%;
   @media (min-width: 1024px) {
     width: 80%;
@@ -131,11 +131,13 @@ const tab = ref('car')
     border-radius: 16px;
   }
 }
-#contact1 {
-  width: 75%;
+#contact{
+
+@media (min-width: 1024px){
+  max-width: 85%;
   margin: auto;
-  @media (min-width: 1024px) {
-  }
+  margin-bottom: 48px;
+}
 }
 .mycontact-card {
   height: 400px;

@@ -1,184 +1,204 @@
 <template>
   <section>
-  <div class="q-pa-md">
-    <q-table
-      title="可預約人數管理"
-      :rows="rows"
-      :columns="columns"
-      row-key="id"
-      selection="single"
-      v-model:selected="selected"
-    >
-
-    </q-table>
-  </div>
-</section>
+    <div class="q-pa-md">
+      <q-table
+        title="可預約人數管理"
+        :rows="rows"
+        :columns="columns"
+        row-key="id"
+        selection="single"
+        v-model:selected="selected"
+      >
+      </q-table>
+    </div>
+  </section>
 
   <!--新增  -->
-  <div class="text-center q-ma-xl column row-md justify-center">
-    <q-btn icon=add label="新增" color="primary" @click="prompt = true" class="q-mr-xl " />
-    <q-btn icon=add_box label="新增多天" color="primary" @click="prompt2 = true" class="q-mr-xl q-my-xs-xs" />
-    <q-btn color="teal" label="刪除" icon=delete v-close-popup @click="deleteSubmit" />
+  <section>
+    <div class="text-center" id="btns">
+      <q-btn
+        icon="add"
+        label="新增一天"
+        color="primary"
+        @click="prompt = true"
+        class="q-mr-md-xl q-my-xs-xs"
+      />
+      <q-btn
+        icon="add_box"
+        label="新增多天"
+        color="primary"
+        @click="prompt2 = true"
+        class="q-mr-md-xl q-my-xs-xs"
+      />
+      <q-btn
+        color="teal"
+        label="刪除選擇"
+        icon="delete"
+        v-close-popup
+        @click="deleteSubmit"
+        class="q-mr-md-xl q-my-xs-xs"
+      />
     </div>
-    <!-- ---------------------------------------------------------------- -->
-    <q-dialog v-model="prompt" persistent>
-      <q-card style="min-width: 400px">
-        <q-card-section>
-          <div class="text-h6">日期</div>
-        </q-card-section>
+  </section>
+  <!-- ---------------------------------------------------------------- -->
+  <q-dialog v-model="prompt" persistent>
+    <q-card style="min-width: 400px">
+      <q-card-section>
+        <div class="text-h6">日期</div>
+      </q-card-section>
 
-        <q-card-section class="q-pt-none">
-          <q-input filled v-model="form.date" mask="date" :rules="['date']">
-            <template v-slot:append>
-              <q-icon name="calendar_today" class="cursor-pointer">
-                <q-popup-proxy
-                  cover
-                  transition-show="scale"
-                  transition-hide="scale"
-                >
-                  <q-date v-model="form.date" today-btn>
-                    <div class="row items-center justify-end">
-                      <q-btn v-close-popup label="Close" color="primary" flat />
-                    </div>
-                  </q-date>
-                </q-popup-proxy>
-              </q-icon>
-            </template>
-          </q-input>
-        </q-card-section>
-        <q-card-section>
-          <div class="text-h6">時間</div>
-        </q-card-section>
+      <q-card-section class="q-pt-none">
+        <q-input filled v-model="form.date" mask="date" :rules="['date']">
+          <template v-slot:append>
+            <q-icon name="calendar_today" class="cursor-pointer">
+              <q-popup-proxy
+                cover
+                transition-show="scale"
+                transition-hide="scale"
+              >
+                <q-date v-model="form.date" today-btn>
+                  <div class="row items-center justify-end">
+                    <q-btn v-close-popup label="Close" color="primary" flat />
+                  </div>
+                </q-date>
+              </q-popup-proxy>
+            </q-icon>
+          </template>
+        </q-input>
+      </q-card-section>
+      <q-card-section>
+        <div class="text-h6">時間</div>
+      </q-card-section>
 
-        <q-card-section class="q-pt-none">
-          <q-input filled v-model="form.time" mask="time" :rules="['time']">
-            <template v-slot:append>
-              <q-icon name="access_time" class="cursor-pointer">
-                <q-popup-proxy
-                  cover
-                  transition-show="scale"
-                  transition-hide="scale"
-                >
-                  <q-time v-model="form.time" now-btn>
-                    <div class="row items-center justify-end">
-                      <q-btn v-close-popup label="Close" color="primary" flat />
-                    </div>
-                  </q-time>
-                </q-popup-proxy>
-              </q-icon>
-            </template>
-          </q-input>
-        </q-card-section>
-        <q-card-section>
-          <div class="text-h6">人數</div>
-        </q-card-section>
+      <q-card-section class="q-pt-none">
+        <q-input filled v-model="form.time" mask="time" :rules="['time']">
+          <template v-slot:append>
+            <q-icon name="access_time" class="cursor-pointer">
+              <q-popup-proxy
+                cover
+                transition-show="scale"
+                transition-hide="scale"
+              >
+                <q-time v-model="form.time" now-btn>
+                  <div class="row items-center justify-end">
+                    <q-btn v-close-popup label="Close" color="primary" flat />
+                  </div>
+                </q-time>
+              </q-popup-proxy>
+            </q-icon>
+          </template>
+        </q-input>
+      </q-card-section>
+      <q-card-section>
+        <div class="text-h6">人數</div>
+      </q-card-section>
 
-        <q-card-section class="q-pt-none">
-          <q-input
-            dense
-            v-model="form.member"
-            autofocus
-            @keyup.enter="prompt = false"
-          />
-        </q-card-section>
+      <q-card-section class="q-pt-none">
+        <q-input
+          dense
+          v-model="form.member"
+          autofocus
+          @keyup.enter="prompt = false"
+        />
+      </q-card-section>
 
-        <q-card-actions align="right" class="text-white">
-          <q-btn flat color="secondary" label="取消" v-close-popup />
-          <q-btn color="teal" label="新增" v-close-popup @click="Submit" />
-        </q-card-actions>
-      </q-card>
-    </q-dialog>
-    <!-- ------------------------------------------------- -->
-    <q-dialog v-model="prompt2" persistent>
-      <q-card style="min-width: 400px">
-        <q-card-section>
-          <div class="text-h6">開始日期</div>
-        </q-card-section>
+      <q-card-actions align="right" class="text-white">
+        <q-btn flat color="secondary" label="取消" v-close-popup />
+        <q-btn color="teal" label="新增" v-close-popup @click="Submit" />
+      </q-card-actions>
+    </q-card>
+  </q-dialog>
+  <!-- ------------------------------------------------- -->
+  <q-dialog v-model="prompt2" persistent>
+    <q-card style="min-width: 400px">
+      <q-card-section>
+        <div class="text-h6">開始日期</div>
+      </q-card-section>
 
-        <q-card-section class="q-pt-none">
-          <q-input filled v-model="form2.startDate" mask="date" :rules="['date']">
-            <template v-slot:append>
-              <q-icon name="calendar_today" class="cursor-pointer">
-                <q-popup-proxy
-                  cover
-                  transition-show="scale"
-                  transition-hide="scale"
-                >
-                  <q-date v-model="form2.startDate" today-btn>
-                    <div class="row items-center justify-end">
-                      <q-btn v-close-popup label="Close" color="primary" flat />
-                    </div>
-                  </q-date>
-                </q-popup-proxy>
-              </q-icon>
-            </template>
-          </q-input>
-        </q-card-section>
-        <q-card-section>
-          <div class="text-h6">結束日期</div>
-        </q-card-section>
+      <q-card-section class="q-pt-none">
+        <q-input filled v-model="form2.startDate" mask="date" :rules="['date']">
+          <template v-slot:append>
+            <q-icon name="calendar_today" class="cursor-pointer">
+              <q-popup-proxy
+                cover
+                transition-show="scale"
+                transition-hide="scale"
+              >
+                <q-date v-model="form2.startDate" today-btn>
+                  <div class="row items-center justify-end">
+                    <q-btn v-close-popup label="Close" color="primary" flat />
+                  </div>
+                </q-date>
+              </q-popup-proxy>
+            </q-icon>
+          </template>
+        </q-input>
+      </q-card-section>
+      <q-card-section>
+        <div class="text-h6">結束日期</div>
+      </q-card-section>
 
-        <q-card-section class="q-pt-none">
-          <q-input filled v-model="form2.endDate" mask="date" :rules="['date']">
-            <template v-slot:append>
-              <q-icon name="calendar_today" class="cursor-pointer">
-                <q-popup-proxy
-                  cover
-                  transition-show="scale"
-                  transition-hide="scale"
-                >
-                  <q-date v-model="form2.endDate" today-btn>
-                    <div class="row items-center justify-end">
-                      <q-btn v-close-popup label="Close" color="primary" flat />
-                    </div>
-                  </q-date>
-                </q-popup-proxy>
-              </q-icon>
-            </template>
-          </q-input>
-        </q-card-section>
-        <q-card-section>
-          <div class="text-h6">人數</div>
-        </q-card-section>
+      <q-card-section class="q-pt-none">
+        <q-input filled v-model="form2.endDate" mask="date" :rules="['date']">
+          <template v-slot:append>
+            <q-icon name="calendar_today" class="cursor-pointer">
+              <q-popup-proxy
+                cover
+                transition-show="scale"
+                transition-hide="scale"
+              >
+                <q-date v-model="form2.endDate" today-btn>
+                  <div class="row items-center justify-end">
+                    <q-btn v-close-popup label="Close" color="primary" flat />
+                  </div>
+                </q-date>
+              </q-popup-proxy>
+            </q-icon>
+          </template>
+        </q-input>
+      </q-card-section>
+      <q-card-section>
+        <div class="text-h6">人數</div>
+      </q-card-section>
 
-        <q-card-section class="q-pt-none">
-          <q-input
-            dense
-            v-model="form2.member"
-            autofocus
-            @keyup.enter="prompt2 = false"
-          />
-        </q-card-section>
-        <q-card-section>
-          <div class="text-h6">時間</div>
-        </q-card-section>
+      <q-card-section class="q-pt-none">
+        <q-input
+          dense
+          v-model="form2.member"
+          autofocus
+          @keyup.enter="prompt2 = false"
+        />
+      </q-card-section>
+      <q-card-section>
+        <div class="text-h6">時間</div>
+      </q-card-section>
 
-        <q-card-section class="q-pt-none">
-          <q-input filled v-model="form2.time" mask="time" :rules="['time']">
-            <template v-slot:append>
-              <q-icon name="access_time" class="cursor-pointer">
-                <q-popup-proxy
-                  cover
-                  transition-show="scale"
-                  transition-hide="scale"
-                >
-                  <q-time v-model="form2.time" now-btn>
-                    <div class="row items-center justify-end">
-                      <q-btn v-close-popup label="Close" color="primary" flat />
-                    </div>
-                  </q-time>
-                </q-popup-proxy>
-              </q-icon>
-            </template>
-          </q-input>
-        </q-card-section>
-        <q-card-actions align="right" class="text-white">
-          <q-btn flat color="secondary" label="取消" v-close-popup />
-          <q-btn color="teal" label="新增" v-close-popup @click="SubmitWeek" />
-        </q-card-actions>
-      </q-card>
-    </q-dialog>
-    <!-- --------------------------------------- -->
+      <q-card-section class="q-pt-none">
+        <q-input filled v-model="form2.time" mask="time" :rules="['time']">
+          <template v-slot:append>
+            <q-icon name="access_time" class="cursor-pointer">
+              <q-popup-proxy
+                cover
+                transition-show="scale"
+                transition-hide="scale"
+              >
+                <q-time v-model="form2.time" now-btn>
+                  <div class="row items-center justify-end">
+                    <q-btn v-close-popup label="Close" color="primary" flat />
+                  </div>
+                </q-time>
+              </q-popup-proxy>
+            </q-icon>
+          </template>
+        </q-input>
+      </q-card-section>
+      <q-card-actions align="right" class="text-white">
+        <q-btn flat color="secondary" label="取消" v-close-popup />
+        <q-btn color="teal" label="新增" v-close-popup @click="SubmitWeek" />
+      </q-card-actions>
+    </q-card>
+  </q-dialog>
+  <!-- --------------------------------------- -->
 </template>
 
 <script setup>
@@ -238,7 +258,9 @@ const Submit = async () => {
     icon: 'cloud_done',
     message: '新增成功'
   })
-  while (rows.length) { rows.pop() }
+  while (rows.length) {
+    rows.pop()
+  }
   getReserves()
 }
 const SubmitWeek = async () => {
@@ -251,7 +273,9 @@ const SubmitWeek = async () => {
       icon: 'cloud_done',
       message: '新增成功'
     })
-    while (rows.length) { rows.pop() }
+    while (rows.length) {
+      rows.pop()
+    }
     getReserves()
   } catch (error) {
     $q.notify({
@@ -273,7 +297,9 @@ const deleteSubmit = async () => {
       icon: 'cloud_done',
       message: '刪除成功'
     })
-    while (rows.length) { rows.pop() }
+    while (rows.length) {
+      rows.pop()
+    }
     getReserves()
   } catch (error) {
     $q.notify({
@@ -314,7 +340,18 @@ const columns = [
 </script>
 
 <style lang="scss">
-section{
-
-width: 75%;}
+section {
+  @media (max-width: 1023px) {
+    width: 100%;
+  }
+  width: 75%;
+}
+#btns {
+  width: 200px;
+  margin: auto;
+  @media (min-width: 1024px) {
+    width: 100%;
+    text-align: center;
+  }
+}
 </style>

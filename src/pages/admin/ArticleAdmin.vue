@@ -1,48 +1,50 @@
 <template>
-  <section >
-  <q-spinner v-if="loading" color="primary" size="500px" />
-  <p v-if="error">{{ error.message }}</p>
-  <div class="q-pa-md text-center">
-    <q-table
-    title="消息管理"
-      :rows="articles"
-      :columns="columns"
-      row-key="title"
-      selection="single"
-      v-model:selected="selected"
-    >
-    </q-table>
-    <div class="q-mt-xl">內容預覽：{{ selected[0]?.inside }}</div>
-  </div>
+  <section>
+    <q-spinner v-if="loading" color="primary" size="500px" />
+    <p v-if="error">{{ error.message }}</p>
+    <div class="q-pa-md text-center">
+      <q-table
+        title="消息管理"
+        :rows="articles"
+        :columns="columns"
+        row-key="title"
+        selection="single"
+        v-model:selected="selected"
+      >
+      </q-table>
+      <div class="q-mt-xl">內容預覽：{{ selected[0]?.inside }}</div>
+    </div>
 
-  <!-- --------------------- -->
-  <!--新增  -->
-  <div class="text-center q-pa-xl">
-    <q-btn
-      icon="add"
-      color="primary"
-      @click="prompt = true"
-      class="q-mx-lg"
-      label="新增消息"
-    />
-    <q-btn
-      @click="deleteArcticle"
-      type="submit"
-      color="teal"
-      icon="delete"
-      label="刪除最舊"
-      class="q-mx-lg"
-    />
-    <q-btn
-      @click="deleteSelectArcticle"
-      type="submit"
-      color="teal"
-      icon="delete"
-      label="刪除選擇"
-      class="q-mx-lg"
-    />
-  </div>
-</section>
+    <!-- --------------------- -->
+    <!--新增  -->
+    <section>
+      <div class="text-center" id="btns">
+        <q-btn
+          icon="add"
+          color="primary"
+          @click="prompt = true"
+          class="q-mr-md-xl q-my-xs-xs"
+          label="新增消息"
+        />
+        <q-btn
+          @click="deleteArcticle"
+          type="submit"
+          color="teal"
+          icon="delete"
+          label="刪除最舊"
+          class="q-mr-md-xl q-my-xs-xs"
+        />
+        <q-btn
+          @click="deleteSelectArcticle"
+          type="submit"
+          color="teal"
+          icon="delete"
+          label="刪除選擇"
+          class="q-mr-md-xl q-my-xs-xs"
+        />
+      </div>
+    </section>
+  </section>
   <!-- ------------------------------- -->
   <q-dialog v-model="prompt" persistent>
     <q-card style="min-width: 400px">
@@ -140,7 +142,9 @@ const deleteArcticle = () => {
 }
 const deleteSelectArcticle = async () => {
   try {
-    const result = await apiAuth.delete(`/articles/delete/${selected.value[0]?._id}`)
+    const result = await apiAuth.delete(
+      `/articles/delete/${selected.value[0]?._id}`
+    )
     console.log(result)
     $q.notify({
       color: 'green-4',
@@ -148,7 +152,9 @@ const deleteSelectArcticle = async () => {
       icon: 'cloud_done',
       message: '刪除成功'
     })
-    while (articles.length) { articles.pop() }
+    while (articles.length) {
+      articles.pop()
+    }
     store.getArticles()
   } catch (error) {
     console.log(error)
@@ -173,7 +179,9 @@ const Submit = () => {
   form.date = ''
   form.title = ''
   form.inside = ''
-  while (articles.length) { articles.pop() }
+  while (articles.length) {
+    articles.pop()
+  }
   store.getArticles()
 }
 
@@ -203,7 +211,18 @@ const columns = [
 ]
 </script>
 <style lang="scss">
-
-section{
-width: 75%;}
+#btns {
+  width: 200px;
+  margin: auto;
+  @media (min-width: 1024px) {
+    width: 100%;
+    text-align: center;
+  }
+}
+section {
+  @media (max-width: 1023px) {
+    width: 100%;
+  }
+  width: 75%;
+}
 </style>

@@ -6,7 +6,6 @@
         <q-card class="my-card" flat bordered>
           <q-card-section>
             <q-img
-              class="col-5"
               src="https://img.freepik.com/free-photo/smiling-asian-male-doctor-pointing-upwards_1262-18321.jpg?w=1800&t=st=1675698262~exp=1675698862~hmac=5b3d473f70726df38a7b9abe69d96fd4a3b8720398458f2136e3c551aa0487d9"
             />
             <q-card-section>
@@ -62,21 +61,20 @@
     </div>
   </section>
   <!-- ------------------------------------------- -->
-  <section data-aos="fade-up" style="  background: #eee;">
-    <div class="column" id="time">
-      <h3>門診時間</h3>
-      <div class="row justify-center items-center">
-        <q-table
-          id="table"
-          :rows="rows2"
-          :columns="columns2"
-          hide-bottom
-        ></q-table>
-      </div>
-      <h5 class="text-center q-mx-auto text-teal-8" style="width: 100vw">
-        王醫師:🟠 黃醫師:🟢 李醫師:🟤
-      </h5>
-    </div>
+  <section data-aos="fade-up" style="background: #eee;" id="time">
+    <h3>門診時間</h3>
+    <q-row class="justify-center items-center row">
+      <q-table
+        id="table"
+        class="q-mx-xl"
+        :rows="rows2"
+        :columns="columns2"
+        hide-bottom
+      ></q-table>
+    </q-row>
+    <h5 class="text-center q-mx-md-auto text-teal-8" style="width: 100vw">
+      王醫師:🟠 黃醫師:🟢 李醫師:🟤
+    </h5>
   </section>
   <!-- ----------------------------------------------- -->
 </template>
@@ -144,22 +142,26 @@ const rows2 = [
   border-radius: 20px;
 }
 #firstdr {
-
   @media (min-width: 1024px) {
     height: 100vh;
   }
 }
 #picpic {
-  max-width: 80%;
-  margin: auto;
+  max-width: 100%;
+  @media (min-width: 1024px) {
+    max-width: 80%;
+    margin: auto;
+  }
   .my-card {
+    max-width: 100%;
     @media (max-width: 1023px) {
+      max-width: 92%;
+      margin: auto;
       margin-bottom: 20px;
     }
   }
 }
-#time {
-
-  width: 75%;
+#time{
+padding: 20px 0;
 }
 </style>

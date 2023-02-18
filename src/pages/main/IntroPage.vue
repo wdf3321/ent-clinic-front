@@ -103,6 +103,9 @@ const tab = ref('car')
 #pic {
   width: 100%;
   .row {
+    @media (max-width: 1023px) {
+      width: 92%;
+    }
     width: 75%;
     margin-bottom: 50px;
   }
@@ -128,9 +131,12 @@ const tab = ref('car')
 #map {
   max-width: 75%;
   margin: auto;
-  .q-card{
-  border: 1px solid $teal;
-  border-radius: 10px;
+  .q-card {
+    border: 1px solid $teal;
+    border-radius: 10px;
+  }
+  @media (max-width: 1023px) {
+    max-width: 100%;
   }
 }
 #footer {

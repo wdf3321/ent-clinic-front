@@ -1,6 +1,5 @@
 <template>
   <div class="text-center">
-
     <q-dialog v-model="prompt" persistent>
       <q-card style="min-width: 350px">
         <q-card-section>
@@ -19,6 +18,7 @@
       </q-card>
     </q-dialog>
   </div>
+  <!-- ------------------- -->
   <section>
     <div class="q-pa-md text-center">
       <q-table
@@ -30,14 +30,30 @@
         v-model:selected="selected"
       >
       </q-table>
-      <q-btn label="新增圖片" icon="add" color="primary" @click="prompt = true" class="q-mx-xl"/>
-      <q-btn @click="delete1"  label="刪除圖片" icon="delete" color="teal" class="q-my-xl" />
-    </div>
-    <div class="q-mt-md" id="pic">
-      預覽；
-      <q-img :src="selected[0]?.image"></q-img>
     </div>
   </section>
+  <section>
+    <div class="text-center" id="btns">
+      <q-btn
+        label="新增圖片"
+        icon="add"
+        color="primary"
+        @click="prompt = true"
+        class="q-mr-md-xl q-my-xs-xs"
+      />
+      <q-btn
+        @click="delete1"
+        label="刪除圖片"
+        icon="delete"
+        color="teal"
+        class="q-mr-md-xl q-my-xs-xs"
+      />
+    </div>
+  </section>
+  <div class="q-mt-md" id="pic">
+    預覽；
+    <q-img :src="selected[0]?.image"></q-img>
+  </div>
 </template>
 
 <script setup>
@@ -91,7 +107,9 @@ const upload = async () => {
     })
     loading.value = false
     prompt.value = false
-    while (rows.length) { rows.pop() }
+    while (rows.length) {
+      rows.pop()
+    }
     getBanner()
   } catch (error) {
     $q.notify({
@@ -112,7 +130,9 @@ const delete1 = async () => {
     icon: 'cloud_done',
     message: '刪除成功'
   })
-  while (rows.length) { rows.pop() }
+  while (rows.length) {
+    rows.pop()
+  }
   getBanner()
 }
 
@@ -141,7 +161,7 @@ const columns = [
 ]
 </script>
 
-<style>
+<style lang="scss">
 img {
   width: 300px;
   height: 300px;
@@ -152,10 +172,24 @@ img {
   margin: auto;
   text-align: center;
 }
-#pic{
+#pic {
   margin: auto;
-width: 300px;height: 300px;
+  width: 300px;
+  height: 300px;
 }
-section{
-width: 75%;}
+
+section {
+  @media (max-width: 1023px) {
+    width: 100%;
+  }
+  width: 75%;
+}
+#btns {
+  width: 200px;
+  margin: auto;
+  @media (min-width: 1024px) {
+    width: 100%;
+    text-align: center;
+  }
+}
 </style>
