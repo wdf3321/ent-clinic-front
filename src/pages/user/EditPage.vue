@@ -22,6 +22,14 @@
         />
         <q-input
           outlined
+          type="password"
+          v-model="form.password"
+          label="密碼"
+          lazy-rules
+          :rules="[(val) => (val && val.length >= 4) || '最少4位數以上']"
+        />
+        <q-input
+          outlined
           type="tel"
           v-model="form.phone"
           label="手機"
@@ -55,6 +63,7 @@ const getUser = async () => {
     form.name = data.result.name
     form.account = data.result.account
     form.phone = data.result.phone
+    form.password = data.result.password
     user._id = data.result._id
     $q.notify({
       color: 'green-4',

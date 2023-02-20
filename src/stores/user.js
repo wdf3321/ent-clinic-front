@@ -46,7 +46,7 @@ export const useUserStore = defineStore(
           color: 'red-4',
           textColor: 'white',
           icon: 'info',
-          message: '登入失敗'
+          message: '登入失敗，是密碼錯誤嗎？'
         })
       }
     }

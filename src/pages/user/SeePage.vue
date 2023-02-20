@@ -1,7 +1,7 @@
 <template>
   <section>
     <h4 class="text-center">預約查詢</h4>
-    <div class="q-pa-xl text-center">
+    <div class="q-pa-md-xl text-center">
       <q-table
         class="my-sticky-header-table"
         title=""
@@ -89,8 +89,11 @@ const rows = reactive([])
 </script>
 
 <style lang="scss">
-section{
-width: 75%;
-margin: auto;
+section {
+  @media (max-width: 1023px) {
+    width: 95%;
+  }
+  width: 75%;
+  margin: auto;
 }
 </style>

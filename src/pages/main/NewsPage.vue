@@ -2,43 +2,44 @@
   <section data-aos="fade-down">
     <h3>最新消息</h3>
     <div class="row items-center justify-center">
-    <div id="table1" class="q-ma-xl">
-      <q-table :rows="rows" :columns="columns" row-key="name" virtual-scroll>
-        <template v-slot:header="props">
-          <q-tr :props="props">
-            <q-th auto-width />
-            <q-th v-for="col in props.cols" :key="col.name" :props="props">
-              {{ col.label }}
-            </q-th>
-          </q-tr>
-        </template>
+      <div id="table1" class="q-ma-md-xl">
+        <q-table :rows="rows" :columns="columns" row-key="name" virtual-scroll>
+          <template v-slot:header="props">
+            <q-tr :props="props">
+              <q-th auto-width />
+              <q-th v-for="col in props.cols" :key="col.name" :props="props">
+                {{ col.label }}
+              </q-th>
+            </q-tr>
+          </template>
 
-        <template v-slot:body="props">
-          <q-tr :props="props">
-            <q-td auto-width>
-              <q-btn
-                size="md"
-                color="accent"
-                round
-                dense
-                @click="props.row.expand = !props.row.expand"
-                :icon="props.row.expand ? 'remove' : 'add'"
-              />
-            </q-td>
-            <q-td v-for="col in props.cols" :key="col.name" :props="props">
-              {{ col.value }}
-            </q-td>
-          </q-tr>
-          <q-tr v-show="props.row.expand" :props="props">
-            <q-td auto-width="true" colspan="100%">
-              <div class="text-center">
-                {{ props.row.inside }}
-              </div>
-            </q-td>
-          </q-tr>
-        </template>
-      </q-table>
-    </div></div>
+          <template v-slot:body="props">
+            <q-tr :props="props">
+              <q-td auto-width>
+                <q-btn
+                  size="md"
+                  color="accent"
+                  round
+                  dense
+                  @click="props.row.expand = !props.row.expand"
+                  :icon="props.row.expand ? 'remove' : 'add'"
+                />
+              </q-td>
+              <q-td v-for="col in props.cols" :key="col.name" :props="props">
+                {{ col.value }}
+              </q-td>
+            </q-tr>
+            <q-tr v-show="props.row.expand" :props="props">
+              <q-td auto-width="true" colspan="100%">
+                <div class="text-center">
+                  {{ props.row.inside }}
+                </div>
+              </q-td>
+            </q-tr>
+          </template>
+        </q-table>
+      </div>
+    </div>
   </section>
 </template>
 <script setup>
@@ -89,6 +90,9 @@ getArticles()
   border-top: 5px solid $secondary;
 }
 #table1 {
+  @media (max-width: 1023px) {
+    width: 90%;
+  }
   width: 75%;
 }
 .q-td {

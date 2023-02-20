@@ -10,21 +10,25 @@
         v-model:selected="selected"
       >
       </q-table>
-      <q-btn
+    </div>
+    <div class="row-xs column justify-center">
+        <q-btn
         color="primary"
         icon="archive"
         label="產生csv"
         no-caps
         @click="exportTable"
+        class="q-mx-md"
       />
       <q-btn
+        v-if="selected[0]"
         color="teal"
         icon="delete"
         @click="deleteSubmit"
-        class="q-ma-xl"
         label="刪除"
+        class="q-mx-md"
       />
-    </div>
+      </div>
   </section>
 </template>
 
@@ -99,7 +103,9 @@ const deleteSubmit = async () => {
       icon: 'cloud_done',
       message: '預約刪除成功'
     })
-    while (rows.length) { rows.pop() }
+    while (rows.length) {
+      rows.pop()
+    }
     getReserves()
   } catch (error) {
     console.log(error)
@@ -149,10 +155,7 @@ function exportTable () {
     )
     .join('\r\n')
 
-  const status = exportFile(
-    'table-export.csv',
-    '\ufeff' + content,
-    'text/csv')
+  const status = exportFile('table-export.csv', '\ufeff' + content, 'text/csv')
 
   if (status !== true) {
     $q.notify({
@@ -165,6 +168,10 @@ function exportTable () {
 </script>
 
 <style lang="scss">
-section{
-width: 75%;}
+section {
+  @media (max-width: 1023px) {
+    width: 95%;
+  }
+  width: 75%;
+}
 </style>

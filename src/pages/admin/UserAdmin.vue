@@ -1,24 +1,117 @@
 <template>
   <section>
-  <div class="q-pa-md text-center">
-    <q-table
-      title="會員管理"
-      :rows="rows"
-      :columns="columns"
-      row-key="name"
-      selection="single"
-      v-model:selected="selected"
-    >
-    </q-table>
-
-    <q-btn icon="delete" label="刪除" @click="deleteUser" class="q-ma-xl" color="teal"></q-btn>
+    <div class="q-pa-md text-center">
+      <q-table
+        title="會員管理"
+        :rows="rows"
+        :columns="columns"
+        row-key="name"
+        selection="single"
+        v-model:selected="selected"
+      >
+      </q-table>
+      </div>
+      <div class="q-pa-md text-center column row-xs justify-center">
+      <q-btn
+        v-if="selected[0]"
+        icon="edit"
+        label="修改"
+        @click="promptOpen"
+        class="q-ma-xl"
+        color="teal"
+      />
+      <q-btn
+        v-if="selected[0]"
+        icon="delete"
+        label="刪除"
+        @click="deleteUser"
+        class="q-ma-xl"
+        color="teal"
+      />
+    </div>
+    <div v-if="!selected[0]" class="q-pa-md text-center column row-xs">
+    <q-input
+      outlined
+      v-model="form.search"
+      label="搜尋"
+      stack-label
+      style="margin: auto; width: 400px; margin-bottom: 32px"
+    />
+</div>
+<div v-if="!selected[0]" class="q-pa-md text-center column row-xs justify-center">
+    <q-btn
+      icon="search"
+      label="名字"
+      @click="searchName"
+      class="q-mr-md-xl q-my-md"
+      color="primary"
+    />
+    <q-btn
+      icon="search"
+      label="帳號"
+      @click="searchAccount"
+      class="q-mr-md-xl q-my-md"
+      color="primary"
+    />
+    <q-btn
+      icon="search"
+      label="電話"
+      @click="searchPhone"
+      class="q-my-md"
+      color="primary"
+    />
   </div>
-</section>
-  <!-- <q-input class="text-center" v-model="search" outlined type="search" hint="Search" style="max-width:500px">
-        <template v-slot:append>
-          <q-icon name="search"/>
-        </template>
-      </q-input> -->
+  <div class="row justify-center">
+  <q-btn
+      icon="reply"
+      label="返回"
+      class="q-mt-xl"
+      @click="getAllUser"
+      color="teal"
+    />
+  </div>
+  </section>
+
+  <!-- ------------------------------------------------------------------------------ -->
+  <q-dialog v-model="prompt" persistent>
+    <q-card style="width: 400px">
+      <q-card-section>
+        <div class="text-h6">id</div>
+      </q-card-section>
+      <q-card-section class="q-pt-none">
+        <q-input outline v-model="selected[0].id" readonly />
+      </q-card-section>
+      <q-card-section>
+        <div class="text-h6">名字</div>
+      </q-card-section>
+      <q-card-section class="q-pt-none">
+        <q-input outline v-model="selected[0].name" />
+      </q-card-section>
+      <q-card-section>
+        <div class="text-h6">帳號</div>
+      </q-card-section>
+      <q-card-section class="q-pt-none">
+        <q-input outline v-model="selected[0].account" />
+      </q-card-section>
+      <q-card-section>
+        <div class="text-h6">手機</div>
+      </q-card-section>
+      <q-card-section class="q-pt-none">
+        <q-input outline v-model="selected[0].phone" />
+      </q-card-section>
+      <q-card-section>
+        <div class="text-h6">權限:管理員:1 使用者:0</div>
+      </q-card-section>
+      <q-card-section class="q-pt-none">
+        <q-input outline v-model="selected[0].role" />
+      </q-card-section>
+
+      <q-card-actions align="right" class="text-primary">
+        <q-btn flat label="取消" v-close-popup />
+        <q-btn flat label="更改" v-close-popup @click="edit" />
+      </q-card-actions>
+    </q-card>
+  </q-dialog>
 </template>
 
 <script setup>
@@ -28,6 +121,7 @@ import { reactive, ref } from 'vue' // ref
 import { useQuasar } from 'quasar'
 const $q = useQuasar()
 const selected = ref([])
+const prompt = ref(false)
 const columns = [
   {
     name: 'id',
@@ -61,12 +155,14 @@ const columns = [
   },
   { name: 'role', align: 'left', label: 'role', field: 'role', sortable: true }
 ]
-
+function promptOpen () {
+  prompt.value = true
+}
 const rows = reactive([])
 // -------------------------------------
 const getAllUser = async () => {
   const data = await apiAuth.get('/users/all')
-  console.log(data.data.result.data)
+  rows.splice(0, rows.length)
   let i = 0
   for (i = 0; i < data.data.result.data.length; i++) {
     rows.push({
@@ -86,6 +182,85 @@ const getAllUser = async () => {
 }
 getAllUser()
 // ---------------------------------
+const form = reactive({ search: '' })
+const searchName = async () => {
+  try {
+    const result = await apiAuth.post('users/search/name', form)
+    rows.splice(0, rows.length)
+    console.log(result.data.message)
+    let i = 0
+    for (i = 0; i <= result.data.message.length; i++) {
+      rows.push({
+        id: result.data.message[i]._id,
+        account: result.data.message[i].account,
+        name: result.data.message[i].name,
+        phone: result.data.message[i].phone,
+        role: result.data.message[i].role
+      })
+      $q.notify({
+        color: 'green-4',
+        textColor: 'white',
+        icon: 'cloud_done',
+        message: '搜尋成功'
+      })
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+// ---------------------------
+const searchAccount = async () => {
+  try {
+    const result = await apiAuth.post('users/search/account', form)
+    rows.splice(0, rows.length)
+    console.log(result.data.message)
+    let i = 0
+    for (i = 0; i <= result.data.message.length; i++) {
+      rows.push({
+        id: result.data.message[i]._id,
+        account: result.data.message[i].account,
+        name: result.data.message[i].name,
+        phone: result.data.message[i].phone,
+        role: result.data.message[i].role
+      })
+      $q.notify({
+        color: 'green-4',
+        textColor: 'white',
+        icon: 'cloud_done',
+        message: '搜尋成功'
+      })
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+// ---------------------------------
+const searchPhone = async () => {
+  try {
+    const result = await apiAuth.post('users/search/phone', form)
+    rows.splice(0, rows.length)
+    console.log(result.data.message)
+    let i = 0
+    for (i = 0; i <= result.data.message.length; i++) {
+      rows.push({
+        id: result.data.message[i]._id,
+        account: result.data.message[i].account,
+        name: result.data.message[i].name,
+        phone: result.data.message[i].phone,
+        role: result.data.message[i].role
+      })
+      $q.notify({
+        color: 'green-4',
+        textColor: 'white',
+        icon: 'cloud_done',
+        message: '搜尋成功'
+      })
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+// ----------------------------------
 const deleteUser = async () => {
   try {
     const result = await apiAuth.delete(`/users/${selected.value[0].id}`)
@@ -96,7 +271,9 @@ const deleteUser = async () => {
       icon: 'cloud_done',
       message: '刪除成功'
     })
-    while (rows.length) { rows.pop() }
+    while (rows.length) {
+      rows.pop()
+    }
     getAllUser()
   } catch (error) {
     $q.notify({
@@ -107,10 +284,39 @@ const deleteUser = async () => {
     })
   }
 }
-
+const edit = async () => {
+  try {
+    console.log(selected?.value[0])
+    await apiAuth.patch(`/users/${selected?.value[0].id}`, selected.value[0])
+    await $q.notify({
+      color: 'green-4',
+      textColor: 'white',
+      icon: 'cloud_done',
+      message: '修改成功'
+    })
+  } catch (error) {
+    $q.notify({
+      color: 'red-4',
+      textColor: 'white',
+      icon: 'info',
+      message: error.message
+    })
+  }
+}
 </script>
 
 <style lang="scss">
-section{
-width: 75%;}
+section {
+  width: 75%;
+  @media (max-width: 1023px) {
+  width: 95%;
+  }
+  .q-btn {
+  @media (max-width: 1023px) {
+    width: 130px;
+    margin: auto;
+    margin-bottom: 16px;
+  }
+}
+}
 </style>

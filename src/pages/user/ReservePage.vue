@@ -5,9 +5,10 @@
       :rows="rows"
       :columns="columns"
       row-key="id"
+      selection="single"
+      v-model:selected="selected"
     >
     </q-table>
-
   </section>
   <div class="q-pa-md text-center">
     <h4 class="">我要預約</h4>
@@ -24,6 +25,7 @@
             placeholder="姓名"
             hint="姓名"
             :dense="dense"
+            :rules="[(val) => (val && val.length > 1) || '請輸入二字以上']"
           />
         </q-card-section>
         <q-card-section>
@@ -37,47 +39,49 @@
             placeholder="人數"
             hint="人數"
             :dense="dense"
+            :rules="[(val) => (val >= 1) || '最少需預約1位']"
           />
+        </q-card-section>
+        <q-card-section>
+          <div class="text-h6">手機</div>
+        </q-card-section>
+        <q-card-section class="q-pt-none">
+          <q-input outlined v-model="form.phone" :dense="dense" />
         </q-card-section>
         <q-card-section>
           <div class="text-h6">日期</div>
         </q-card-section>
-
         <q-card-section class="q-pt-none">
-          <q-select
-            v-model="form.date"
-            :options="optionsDate"
-            label="日期"
-            :loading="loading"
-          />
+          <q-input outlined v-model="form.date" :dense="dense" readonly />
         </q-card-section>
         <q-card-section>
           <div class="text-h6">時間</div>
         </q-card-section>
-
         <q-card-section class="q-pt-none">
-          <q-select
-            v-model="form.time"
-            :options="optionsTime"
-            label="時間"
-            :loading="loading"
-          />
+          <q-input outlined v-model="form.time" :dense="dense" readonly />
         </q-card-section>
+
         <q-card-actions align="right" class="text-white">
           <q-btn flat label="取消" v-close-popup color="secondary" />
           <q-btn @click="submit" label="預約" color="teal" />
         </q-card-actions>
       </q-card>
     </q-dialog>
-    <q-btn label="我要預約" color="primary" @click="prompt = true" />
+    <div v-if="!selected[0]" class="text-h6">請先選擇想預約的時間</div>
+    <q-btn
+      v-if="selected[0]"
+      label="我要預約"
+      color="primary"
+      @click="promptOpen"
+    />
   </div>
 </template>
 <script setup>
 import { reactive, ref } from 'vue'
 import { apiAuth } from 'src/boot/axios'
 import { useQuasar } from 'quasar'
-// import { useUserStore } from 'src/stores/user'
-// const user = useUserStore()
+import { useUserStore } from 'src/stores/user'
+const user = useUserStore()
 const $q = useQuasar()
 const prompt = ref(false)
 const dense = ref(false)
@@ -119,11 +123,19 @@ const getReserves = async () => {
 }
 getReserves()
 // ------------------------------------------------
+const promptOpen = () => {
+  form.time = selected.value[0].time
+  form.date = selected.value[0].date
+  form.phone = user.phone
+  form.name = user.name
+  prompt.value = true
+}
 const form = reactive({
   name: '',
   member: '',
-  time: selected.value[0]?.time || '',
-  date: selected.value[0]?.date || ''
+  time: '',
+  date: '',
+  phone: ''
 })
 
 const submit = async () => {
@@ -138,7 +150,9 @@ const submit = async () => {
       message: '預約成功'
     })
     prompt.value = false
-    while (rows.length) { rows.pop() }
+    while (rows.length) {
+      rows.pop()
+    }
     getReserves()
   } catch (error) {
     $q.notify({
@@ -179,8 +193,11 @@ const columns = [
 const rows = reactive([])
 </script>
 <style lang="scss">
-section{
-width: 75%;
-margin: auto;
+section {
+  @media (max-width: 1023px) {
+    width: 95%;
+  }
+  width: 75%;
+  margin: auto;
 }
 </style>

@@ -5,16 +5,20 @@
         <q-card-section>
           <q-form @submit="upload">
             <img-input v-model="form.image" :width="300" :height="200" />
-            <q-input outlined v-model="form.id" label="第幾張"></q-input>
-            <q-btn flat label="取消" v-close-popup />
+            <q-input outlined v-model="form.id" label="第幾張" class="q-mt-xl"/>
+
+          </q-form>
+        </q-card-section>
+        <q-card-actions align="right" class="text-primary">
+          <q-btn flat label="取消" v-close-popup />
             <q-btn
               type="submit"
               icon="upload"
               color="teal"
+              label="上傳"
               :loading="loading"
             ></q-btn>
-          </q-form>
-        </q-card-section>
+        </q-card-actions>
       </q-card>
     </q-dialog>
   </div>
@@ -42,6 +46,7 @@
         class="q-mr-md-xl q-my-xs-xs"
       />
       <q-btn
+        v-if="selected[0]"
         @click="delete1"
         label="刪除圖片"
         icon="delete"

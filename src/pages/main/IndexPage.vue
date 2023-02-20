@@ -97,15 +97,15 @@
   <!-- ------------------------ -->
   <section data-aos="fade-up">
     <h3>門診時間</h3>
-    <q-row class="justify-center items-center row">
+    <div class="justify-center items-center row">
       <q-table
         id="table"
-        class="q-mx-xl"
+        class="q-mx-xl-md"
         :rows="rows2"
         :columns="columns2"
         hide-bottom
-      ></q-table>
-    </q-row>
+      />
+    </div>
     <h5 class="text-center q-mx-md-auto text-teal-8" style="width: 100vw">
       王醫師:🟠 黃醫師:🟢 李醫師:🟤
     </h5>
@@ -202,6 +202,10 @@ getBanner()
     border-radius: 16px;
     margin-bottom: 32px;
   }
+  .q-card:hover{
+  transition: .25s;
+  transform: scale(1.05);
+  }
   .col-md-4 .q-img {
     border-radius: 20px;
   }
@@ -235,10 +239,9 @@ getBanner()
 }
 .q-carousel {
   width: 100%;
-  @media (min-width:1024px) {
+  @media (min-width: 1024px) {
     height: 500px;
   }
-
 }
 section {
   width: 100vw;
@@ -249,5 +252,14 @@ section {
   @media (min-width: 1024px) {
     margin: 0 0 4rem 0;
   }
+  @media(min-width:1441px){
+    margin: 3rem 0 5rem 0;
+  }
+}
+#table {
+  @media (max-width: 1023px) {
+    width: 95%;
+  }
+  width: 75%;
 }
 </style>

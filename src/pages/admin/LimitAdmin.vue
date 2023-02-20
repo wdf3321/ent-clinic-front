@@ -31,6 +31,7 @@
         class="q-mr-md-xl q-my-xs-xs"
       />
       <q-btn
+        v-if="selected[0]"
         color="teal"
         label="刪除選擇"
         icon="delete"
