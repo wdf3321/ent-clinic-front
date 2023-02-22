@@ -4,11 +4,9 @@
       <q-toolbar>
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
 
-        <q-toolbar-title>
-          泰山耳鼻喉科 | 管理員
-        </q-toolbar-title>
+        <q-toolbar-title> 泰山耳鼻喉科 | 管理員 </q-toolbar-title>
         <q-spacer> </q-spacer>
-        <q-span>歡迎您，{{ user.name }} </q-span>
+        <q-span>{{ $t('hi') }}，{{ user.name }} </q-span>
       </q-toolbar>
     </q-header>
 
@@ -37,10 +35,9 @@
                 <q-icon :name="menuItem.icon" />
               </q-item-section>
               <q-item-section>
-                {{ menuItem.label }}
+                {{ $t(menuItem.label) }}
               </q-item-section>
             </q-item>
-            <q-separator :key="'sep' + index" v-if="menuItem.separator" />
           </template>
         </q-list>
       </q-scroll-area>
@@ -52,7 +49,7 @@
     <q-footer bordered class="bg-teal text-white">
       <q-toolbar>
         <q-toolbar-title>
-          <q-icon name="medical_services" size="xl" class=""></q-icon>
+          wdf3321 © 2023
         </q-toolbar-title>
         <q-fab
           color="primary"
@@ -67,6 +64,18 @@
             icon="logout"
             @click="logout"
           />
+          <q-fab-action
+            color="teal"
+            text-color="white"
+            icon="fa-solid fa-j"
+            @click="$i18n.locale='ja-JP'"
+          />
+          <q-fab-action
+            color="teal"
+            text-color="white"
+            icon="fa-solid fa-a"
+            @click="$i18n.locale='en-US'"
+          />
         </q-fab>
       </q-toolbar>
     </q-footer>
@@ -79,10 +88,16 @@ import { useUserStore } from 'src/stores/user'
 import { useRouter } from 'vue-router'
 import { storeToRefs } from 'pinia'
 import { useQuasar } from 'quasar'
+// import { useI18n } from 'vue-i18n'
+
+// ------------------------------------------------------------------------------------------------
+// eslint-disable-nextline
+// const { t } = useI18n()
 const $q = useQuasar()
 const user = useUserStore()
 const users = storeToRefs(user)
 const router = useRouter()
+
 if (users.isAdmin.value === false) {
   router.push('/login')
   $q.notify({
@@ -105,46 +120,43 @@ const logout = async () => {
 const menuList = [
   {
     icon: 'home',
-    label: '管理員',
+    label: 'admin',
     separator: false,
     a: '/admin'
   },
   {
     icon: 'face',
-    label: '會員管理',
+    label: 'useradmin',
     separator: false,
     a: '/admin/user'
   },
   {
     icon: 'book_online',
-    label: '預約管理',
+    label: 'reserveadmin',
     separator: false,
     a: '/admin/reserve'
   },
   {
     icon: 'article',
-    label: '消息管理',
+    label: 'articleadmin',
     separator: false,
     a: '/admin/article'
   },
   {
     icon: 'settings',
-    label: '可預約人管理',
+    label: 'limitadmin',
     separator: false,
     a: '/admin/limit'
   },
   {
     icon: 'view_carousel',
-    label: 'BANNER管理',
+    label: 'banneradmin',
     separator: false,
     a: '/admin/banner'
   }
 ]
 </script>
 
-<style>
-section{
-width: 75%;
-margin: auto;
-}
+<style lang="scss">
+
 </style>

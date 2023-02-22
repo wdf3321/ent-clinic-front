@@ -10,7 +10,7 @@
           outlined
           type="text"
           v-model="form.name"
-          label="姓名"
+          :label="$t('name')"
           lazy-rules
 
         />
@@ -18,7 +18,7 @@
           outlined
           type="text"
           v-model="form.account"
-          label="帳號"
+          :label="$t('account')"
           lazy-rules
 
         />
@@ -26,7 +26,7 @@
           outlined
           type="tel"
           v-model="form.phone"
-          label="手機"
+          :label="$t('phone')"
           lazy-rules
 
         />

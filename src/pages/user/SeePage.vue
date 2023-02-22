@@ -11,7 +11,12 @@
         flat
         bordered
         no-data-label="哭阿，你尚未預約任何時間"
-      />
+      >
+    <template v-slot:body-cell-success>
+      <q-icon name="check" size="40px" color="primary"/>
+
+    </template>
+    </q-table>
     </div>
   </section>
 </template>
@@ -46,6 +51,7 @@ const getUser = async () => {
   }
 }
 getUser()
+
 const columns = [
   {
     name: 'name',

@@ -2,15 +2,36 @@
   <section>
     <div class="q-pa-md text-center">
       <q-table
-        title="預約管理"
+        :title="$t('reserveadmin')"
         :rows="rows"
         :columns="columns"
-        row-key="id"
+        :row-key="rowkey"
         selection="single"
         v-model:selected="selected"
+        :filter="filter"
       >
+      <template v-slot:top-right>
+        <q-input filled v-model="filter" mask="date">
+          <template v-slot:append>
+            <q-icon name="calendar_today" class="cursor-pointer">
+              <q-popup-proxy
+                cover
+                transition-show="scale"
+                transition-hide="scale"
+              >
+                <q-date v-model="filter" today-btn>
+                  <div class="row items-center justify-end">
+                    <q-btn v-close-popup label="Close" color="primary" flat />
+                  </div>
+                </q-date>
+              </q-popup-proxy>
+            </q-icon>
+          </template>
+        </q-input>
+      </template>
       </q-table>
     </div>
+
     <div class="row-xs column justify-center">
         <q-btn
         color="primary"
@@ -28,6 +49,23 @@
         label="刪除"
         class="q-mx-md"
       />
+      <q-btn
+        v-if="!selected[0]"
+        color="teal"
+        icon="delete"
+        @click="deleteall"
+        label="一鍵全刪"
+        class="q-mx-md"
+      />
+      </div>
+      <div class="row justify-center">
+        <q-btn
+        icon="reply"
+        label="返回"
+        class="q-mt-xl"
+        @click="zero"
+        color="teal"
+      />
       </div>
   </section>
 </template>
@@ -40,6 +78,9 @@ import { apiAuth } from 'src/boot/axios'
 // -----------------------
 const selected = ref([])
 const $q = useQuasar()
+const filter = ref('')
+const val = ref('false')
+const rowkey = ref('id')
 const columns = [
   {
     name: '_id',
@@ -66,6 +107,7 @@ const rows = reactive([])
 const getReserves = async () => {
   const data = await apiAuth.get('/reserve/all')
   console.log(data.data.message)
+  rows.splice(0, rows.length)
   let i = 0
   for (i = 0; i < data.data.message.length; i++) {
     rows.push({
@@ -85,7 +127,12 @@ const getReserves = async () => {
   })
 }
 getReserves()
-
+function zero () {
+  getReserves()
+  filter.value = ''
+  val.value = false
+  selected.value = []
+}
 const deleteSubmit = async () => {
   try {
     console.log(selected.value[0])
@@ -115,6 +162,22 @@ const deleteSubmit = async () => {
       icon: 'cloud_done',
       message: '預約刪除失敗'
     })
+  }
+}
+// --------------------------------------------
+const deleteall = async () => {
+  try {
+    rows.splice(0, rows.length)
+    const result = await apiAuth.post('/reserve/cancelall')
+    console.log(result)
+    $q.notify({
+      color: 'green-4',
+      textColor: 'white',
+      icon: 'cloud_done',
+      message: '預約刪除成功'
+    })
+  } catch (error) {
+    console.log(error)
   }
 }
 // -----------------------------------------------

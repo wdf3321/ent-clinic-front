@@ -136,17 +136,9 @@ AOS.init()
 <style lang="scss">
 .q-toolbar {
   height: 80px;
-}
-
-#footer {
-  color: #fff;
-  width: 100%;
-  h4 h6 {
-    backdrop-filter: hue-rotate(180deg);
+  @media (max-width:1023px) {
+    height: 70px;
   }
-}
-#footer2 {
-  width: 100%;
 }
 .q-parallax {
   position: relative;
@@ -158,4 +150,5 @@ AOS.init()
     left: 0;
   }
 }
+
 </style>

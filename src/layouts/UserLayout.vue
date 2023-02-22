@@ -130,9 +130,6 @@ const menuList = [
 ]
 </script>
 
-<style>
-section{
-width: 75%;
-margin: auto;
-}
+<style lang="scss">
+
 </style>

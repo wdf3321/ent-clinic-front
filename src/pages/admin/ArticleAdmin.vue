@@ -35,6 +35,7 @@
           class="q-mr-md-xl q-my-xs-xs"
         />
         <q-btn
+        v-if="selected[0]"
           @click="deleteSelectArcticle"
           type="submit"
           color="teal"

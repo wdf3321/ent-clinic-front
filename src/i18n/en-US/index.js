@@ -2,6 +2,16 @@
 // so you can safely delete all default props below
 
 export default {
-  failed: 'Action failed',
-  success: 'Action was successful'
+  hi: '您好',
+  admin: '管理員',
+  useradmin: '會員管理',
+  reserveadmin: '預約管理',
+  articleadmin: '消息管理',
+  limitadmin: '可預約人管理',
+  banneradmin: '輪播圖管理',
+  account: '帳號',
+  name: '姓名',
+  phone: '電話',
+  role: '管理者:1｜使用者:0',
+  image: '圖片'
 }

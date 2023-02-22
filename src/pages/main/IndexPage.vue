@@ -107,7 +107,7 @@
       />
     </div>
     <h5 class="text-center q-mx-md-auto text-teal-8" style="width: 100vw">
-      王醫師:🟠 黃醫師:🟢 李醫師:🟤
+      王醫師:🟠 張醫師:🟢 李醫師:🟤
     </h5>
   </section>
   <!-- -------------------- -->

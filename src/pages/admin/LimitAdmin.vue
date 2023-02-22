@@ -39,6 +39,7 @@
         @click="deleteSubmit"
         class="q-mr-md-xl q-my-xs-xs"
       />
+      <q-btn icon="delete" color="teal" label="一鍵全刪" @click="deleteall" />
     </div>
   </section>
   <!-- ---------------------------------------------------------------- -->
@@ -311,7 +312,26 @@ const deleteSubmit = async () => {
     })
   }
 }
-
+// ------------------------------------------------------------
+const deleteall = async () => {
+  try {
+    const result = await apiAuth.delete('/reserve/delete/all')
+    console.log(result)
+    $q.notify({
+      color: 'green-4',
+      textColor: 'white',
+      icon: 'cloud_done',
+      message: '刪除成功'
+    })
+  } catch (error) {
+    $q.notify({
+      color: 'red-4',
+      textColor: 'white',
+      icon: 'cloud_done',
+      message: '刪除失敗'
+    })
+  }
+}
 const columns = [
   {
     name: 'id',
