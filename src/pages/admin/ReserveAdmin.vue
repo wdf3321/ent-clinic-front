@@ -74,6 +74,8 @@
 import { reactive, ref } from 'vue'
 import { exportFile, useQuasar } from 'quasar'
 import { apiAuth } from 'src/boot/axios'
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 
 // -----------------------
 const selected = ref([])
@@ -94,13 +96,13 @@ const columns = [
   {
     name: 'name',
     align: 'center',
-    label: 'name',
+    label: t('name'),
     field: 'name',
     sortable: true
   },
-  { name: 'date', label: 'date', field: 'date', sortable: true },
-  { name: 'time', label: 'time', field: 'time', sortable: true },
-  { name: 'member', label: 'member', field: 'member', sortable: true }
+  { name: 'date', label: t('date'), field: 'date', sortable: true },
+  { name: 'time', label: t('time'), field: 'time', sortable: true },
+  { name: 'member', label: t('member'), field: 'member', sortable: true }
 ]
 const rows = reactive([])
 

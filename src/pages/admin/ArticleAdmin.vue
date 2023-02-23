@@ -4,7 +4,7 @@
     <p v-if="error">{{ error.message }}</p>
     <div class="q-pa-md text-center">
       <q-table
-        title="消息管理"
+        :title="$t('articleadmin')"
         :rows="articles"
         :columns="columns"
         row-key="title"

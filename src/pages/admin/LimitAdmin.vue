@@ -2,7 +2,7 @@
   <section>
     <div class="q-pa-md">
       <q-table
-        title="可預約人數管理"
+      :title="$t('limitadmin')"
         :rows="rows"
         :columns="columns"
         row-key="id"
@@ -40,6 +40,7 @@
         class="q-mr-md-xl q-my-xs-xs"
       />
       <q-btn icon="delete" color="teal" label="一鍵全刪" @click="deleteall" />
+
     </div>
   </section>
   <!-- ---------------------------------------------------------------- -->
@@ -317,12 +318,14 @@ const deleteall = async () => {
   try {
     const result = await apiAuth.delete('/reserve/delete/all')
     console.log(result)
+    rows.splice(0, rows.length)
     $q.notify({
       color: 'green-4',
       textColor: 'white',
       icon: 'cloud_done',
       message: '刪除成功'
     })
+    getReserves()
   } catch (error) {
     $q.notify({
       color: 'red-4',

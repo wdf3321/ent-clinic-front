@@ -51,7 +51,7 @@
     <q-footer bordered class="bg-teal-6 text-white">
       <q-toolbar>
         <q-toolbar-title>
-          <q-icon name="medical_services" size="xl" class=""/>
+          wdf3321 © 2023
         </q-toolbar-title>
         <q-fab
           color="teal"

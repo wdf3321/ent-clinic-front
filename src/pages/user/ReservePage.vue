@@ -12,8 +12,21 @@
   </section>
   <div class="q-pa-md text-center">
     <h4 class="">我要預約</h4>
+    <!-- ------------------------------------------ -->
     <q-dialog v-model="prompt" persistent>
       <q-card style="min-width: 400px">
+      <q-card-section>
+          <div class="text-h6">日期</div>
+        </q-card-section>
+        <q-card-section class="q-pt-none">
+          <q-input outlined v-model="form.date" :dense="dense" readonly />
+        </q-card-section>
+        <q-card-section>
+          <div class="text-h6">時間</div>
+        </q-card-section>
+        <q-card-section class="q-pt-none">
+          <q-input outlined v-model="form.time" :dense="dense" readonly />
+        </q-card-section>
         <q-card-section>
           <div class="text-h6">姓名</div>
         </q-card-section>
@@ -48,18 +61,6 @@
         <q-card-section class="q-pt-none">
           <q-input outlined v-model="form.phone" :dense="dense" />
         </q-card-section>
-        <q-card-section>
-          <div class="text-h6">日期</div>
-        </q-card-section>
-        <q-card-section class="q-pt-none">
-          <q-input outlined v-model="form.date" :dense="dense" readonly />
-        </q-card-section>
-        <q-card-section>
-          <div class="text-h6">時間</div>
-        </q-card-section>
-        <q-card-section class="q-pt-none">
-          <q-input outlined v-model="form.time" :dense="dense" readonly />
-        </q-card-section>
 
         <q-card-actions align="right" class="text-white">
           <q-btn flat label="取消" v-close-popup color="secondary" />
@@ -67,20 +68,24 @@
         </q-card-actions>
       </q-card>
     </q-dialog>
+    <!-- ------------------------------------------ -->
     <div v-if="!selected[0]" class="text-h6">請先選擇想預約的時間</div>
+    <div v-if="selected[0]" class="text-h6" >您選擇的是:{{selected[0].date}} {{ selected[0].time }} ,醫師為:{{doctor}}</div>
     <q-btn
       v-if="selected[0]"
       label="我要預約"
       color="primary"
       @click="promptOpen"
+      class="q-mt-md"
     />
   </div>
 </template>
 <script setup>
-import { reactive, ref } from 'vue'
+import { reactive, ref, watch } from 'vue'
 import { apiAuth } from 'src/boot/axios'
 import { useQuasar } from 'quasar'
 import { useUserStore } from 'src/stores/user'
+import moment from 'moment'
 const user = useUserStore()
 const $q = useQuasar()
 const prompt = ref(false)
@@ -88,7 +93,7 @@ const dense = ref(false)
 const selected = ref([])
 const optionsDate = reactive([])
 const optionsTime = reactive([])
-
+const doctor = ref('')
 // --------------------------
 const getReserves = async () => {
   const data = await apiAuth.get('/reserve')
@@ -191,6 +196,59 @@ const columns = [
 ]
 
 const rows = reactive([])
+// -------------------------------------------------------------
+watch(selected, (newValue, oldValue) => {
+  const format = 'hh:mm:ss'
+  const time = moment(newValue[0].time, format),
+    beforemorn = moment('08:30:00', format),
+    beforeTime = moment('15:00:00', format),
+    afterTime = moment('18:00:00', format)
+  if (moment(newValue[0].date).format('dddd') === 'Monday') {
+    if (time.isBetween(beforeTime, afterTime) === true) {
+      doctor.value = '張醫師'
+    } else {
+      doctor.value = '王醫師'
+    }
+  } else if (moment(newValue[0].date).format('dddd') === 'Tuesday') {
+    if (time.isBetween(beforeTime, afterTime) === true) {
+      doctor.value = '張醫師'
+    } else {
+      doctor.value = '王醫師'
+    }
+  } else if (moment(newValue[0].date).format('dddd') === 'Wednesday') {
+    if (time.isBetween(beforemorn, beforeTime) === true) {
+      doctor.value = '張醫師'
+    } else if (time.isBetween(beforeTime, afterTime) === true) {
+      doctor.value = '李醫師'
+    } else {
+      doctor.value = '王醫師'
+    }
+  } else if (moment(newValue[0].date).format('dddd') === 'Thursday') {
+    if (time.isBetween(beforemorn, beforeTime) === true) {
+      doctor.value = '李醫師'
+    } else {
+      console.log(time)
+      doctor.value = '張醫師'
+    }
+  } else if (moment(newValue[0].date).format('dddd') === 'Friday') {
+    if (time.isBetween(beforeTime, afterTime) === true) {
+      doctor.value = '張醫師'
+    } else {
+      console.log(time)
+      doctor.value = '王醫師'
+    }
+  } else if (moment(newValue[0].date).format('dddd') === 'Saturday') {
+    if (time.isBetween(beforemorn, beforeTime) === true) {
+      doctor.value = '王醫師'
+    } else {
+      console.log(time)
+      doctor.value = '李醫師'
+    }
+  } else if (moment(newValue[0].date).format('dddd') === 'Sunday') {
+    doctor.value = '張醫師'
+  }
+})
+// -----------------------------------------------------------------------
 </script>
 <style lang="scss">
 section {

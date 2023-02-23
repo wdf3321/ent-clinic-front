@@ -16,6 +16,7 @@
               icon="upload"
               color="teal"
               label="上傳"
+              @click="upload"
               :loading="loading"
             ></q-btn>
         </q-card-actions>
@@ -26,7 +27,7 @@
   <section>
     <div class="q-pa-md text-center">
       <q-table
-        title="BANNER"
+      :title="$t('banneradmin')"
         :rows="rows"
         :columns="columns"
         row-key="id"

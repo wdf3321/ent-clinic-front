@@ -13,6 +13,9 @@ export default {
   name: '名前',
   phone: '電話番号',
   role: '管理者:1｜使用者:0',
-  image: '写真'
+  image: '写真',
+  date: '日付',
+  time: '時間',
+  member: '人'
 
 }

@@ -5,10 +5,11 @@
       <q-carousel
         animated
         v-model="slide"
-        arrows
         thumbnails
         infinite
-        autoplay="true"
+        transition-prev="slide-right"
+        transition-next="slide-left"
+
       >
         <q-carousel-slide
           v-for="image in images"
@@ -240,7 +241,7 @@ getBanner()
 .q-carousel {
   width: 100%;
   @media (min-width: 1024px) {
-    height: 500px;
+    height: 600px;
   }
 }
 section {

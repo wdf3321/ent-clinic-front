@@ -13,5 +13,8 @@ export default {
   name: '姓名',
   phone: '電話',
   role: '管理者:1｜使用者:0',
-  image: '圖片'
+  image: '圖片',
+  date: '日期',
+  time: '時間',
+  member: '人數'
 }
