@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section id="useradmin">
     <div class="q-pa-md text-center">
       <q-table
         :title="$t('useradmin')"
@@ -312,16 +312,5 @@ const edit = async () => {
 </script>
 
 <style lang="scss">
-section {
-  .q-btn {
-    @media (max-width: 1023px) {
-      width: 130px;
-      margin: auto;
-      margin-bottom: 16px;
-    }
-  }
-}
-#option {
-  width: 100px;
-}
+
 </style>

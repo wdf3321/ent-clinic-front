@@ -66,16 +66,17 @@
     </q-page-container>
     <div id="footer" class="column justify-center items-center text-center">
       <q-parallax src="~assets/parallax.jpg" :speed="0.75">
-        <div class="q-my-md-md q-my-xs text-h5">不知道如何預約嗎？</div>
-        <div class="q-my-md-md q-my-xs text-h5">點擊下方按鈕，來加入會員吧！</div>
-        <q-btn
+        <div class="row justify-center items-center q-my-md-md q-my-xs text-h5">不知道如何預約嗎？</div>
+        <div class="row justify-center items-center q-my-md-md q-my-xs text-h5">點擊下方按鈕，來加入會員吧！</div>
+        <div class="row justify-center items-center"><q-btn
           class="q-ma-lg bg-orange q-pa-md"
           to="/register"
           text-color="white"
           label="會員註冊"
           name="login"
           size="22px"
-        />
+        /></div>
+
       </q-parallax>
     </div>
     <div id="footer2" class="column text-center justify-center items-center bg-teal-6">
@@ -134,21 +135,5 @@ AOS.init()
 </script>
 
 <style lang="scss">
-.q-toolbar {
-  height: 80px;
-  @media (max-width:1023px) {
-    height: 70px;
-  }
-}
-.q-parallax {
-  position: relative;
-  .q-btn {
-    width: 150px;
-    height: 80px;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-}
 
 </style>

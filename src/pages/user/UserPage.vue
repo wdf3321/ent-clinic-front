@@ -70,11 +70,4 @@ getUser()
 
 <style lang="scss">
 
-section{
-width: 75%;
-margin: auto;
-.q-form{
-width: 100%;
-}
-}
 </style>

@@ -55,9 +55,5 @@ const form = reactive({
 </script>
 
 <style lang="scss">
-.q-form{
-width: 100%;
-}
-section{
-width: 75%;}
+
 </style>

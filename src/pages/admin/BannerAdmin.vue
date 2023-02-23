@@ -3,7 +3,7 @@
     <q-dialog v-model="prompt" persistent>
       <q-card style="min-width: 350px">
         <q-card-section>
-          <q-form @submit="upload">
+          <q-form @submit="upload" id="upload">
             <img-input v-model="form.image" :width="300" :height="200" />
             <q-input outlined v-model="form.id" label="第幾張" class="q-mt-xl"/>
 
@@ -56,9 +56,12 @@
       />
     </div>
   </section>
-  <div class="q-mt-md" id="pic">
-    預覽；
+  <div class="q-mt-md" id="picpreview">
+    <div class="row justify-center">
+      預覽:
     <q-img :src="selected[0]?.image"></q-img>
+    </div>
+
   </div>
 </template>
 
@@ -168,34 +171,5 @@ const columns = [
 </script>
 
 <style lang="scss">
-img {
-  width: 300px;
-  height: 300px;
-}
-.q-form {
-  width: 300px;
-  height: 500px;
-  margin: auto;
-  text-align: center;
-}
-#pic {
-  margin: auto;
-  width: 300px;
-  height: 300px;
-}
 
-section {
-  @media (max-width: 1023px) {
-    width: 100%;
-  }
-  width: 75%;
-}
-#btns {
-  width: 200px;
-  margin: auto;
-  @media (min-width: 1024px) {
-    width: 100%;
-    text-align: center;
-  }
-}
 </style>

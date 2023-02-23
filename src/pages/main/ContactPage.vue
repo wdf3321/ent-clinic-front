@@ -1,5 +1,5 @@
 <template>
-  <section data-aos="fade-down">
+  <section data-aos="fade-down" id="indexsection">
     <h3>聯絡我們</h3>
     <div class="row justify-center items-center q-pa-xs" id="contact1">
       <div class="col-xs-12 col-md-6 q-mb-xl q-pa-xs">
@@ -53,7 +53,7 @@
       </div>
     </div>
   </section>
-  <section data-aos="fade-up">
+  <section data-aos="fade-up" id="indexsection">
     <div class="row justify-center items-center" id="contact">
       <!-- <p>地址:新北市泰山區明志路三段887號</p> -->
       <div class="col-md-4 col-xs-12 q-pa-lg">
@@ -117,18 +117,12 @@ const tab = ref('car')
 </script>
 
 <style lang="scss">
-#footer {
-  border-top: 5px solid $secondary;
-}
+
 #contact1 {
   width: 100%;
   @media (min-width: 1024px) {
     width: 80%;
     margin: auto;
-  }
-  .q-card {
-    border: 1px solid $teal;
-    border-radius: 16px;
   }
 }
 #contact{

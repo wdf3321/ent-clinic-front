@@ -233,10 +233,4 @@ function exportTable () {
 </script>
 
 <style lang="scss">
-section {
-  @media (max-width: 1023px) {
-    width: 95%;
-  }
-  width: 75%;
-}
 </style>

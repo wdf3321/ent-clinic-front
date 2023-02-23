@@ -61,7 +61,7 @@
     </div>
   </section>
   <!-- ------------------------------------------- -->
-  <section data-aos="fade-up" style="background: #eee;" id="time">
+  <section data-aos="fade-up" style="background: #eee" id="time">
     <h3>門診時間</h3>
     <q-row class="justify-center items-center row">
       <q-table
@@ -134,34 +134,5 @@ const rows2 = [
 </script>
 
 <style lang="scss">
-#footer {
-  border-top: 5px solid $secondary;
-}
-.q-card {
-  border: 1px solid $teal;
-  border-radius: 20px;
-}
-#firstdr {
-  @media (min-width: 1024px) {
-    height: 100vh;
-  }
-}
-#picpic {
-  max-width: 100%;
-  @media (min-width: 1024px) {
-    max-width: 80%;
-    margin: auto;
-  }
-  .my-card {
-    max-width: 100%;
-    @media (max-width: 1023px) {
-      max-width: 92%;
-      margin: auto;
-      margin-bottom: 20px;
-    }
-  }
-}
-#time{
-padding: 20px 0;
-}
+
 </style>

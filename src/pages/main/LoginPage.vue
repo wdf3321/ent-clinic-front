@@ -124,27 +124,5 @@ function onReset () {
 </script>
 
 <style lang="scss">
-#register1 {
-  margin-top: 2rem;
-  width: 100px;
-  height: 70px;
-}
-#sm {
-  width: 100vw;
-  margin: 50px 0;
-}
-#login {
-  height: 50vh;
-  width: 500px;
-  background: #eeeeee;
-  padding: 20px;
-  border: 5px solid #eeeeee;
-  border-radius: 5%;
-  @media (max-width: 1024px) {
-    height: 55vh;
-  }
-  .q-form{
-  width: 100%;
-  }
-}
+
 </style>

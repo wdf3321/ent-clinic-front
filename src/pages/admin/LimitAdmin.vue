@@ -364,18 +364,5 @@ const columns = [
 </script>
 
 <style lang="scss">
-section {
-  @media (max-width: 1023px) {
-    width: 100%;
-  }
-  width: 75%;
-}
-#btns {
-  width: 200px;
-  margin: auto;
-  @media (min-width: 1024px) {
-    width: 100%;
-    text-align: center;
-  }
-}
+
 </style>

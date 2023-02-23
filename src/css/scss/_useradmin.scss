@@ -1,0 +1,12 @@
+#option {
+  width: 100px;
+}
+#useradmin {
+  .q-btn {
+    @media (max-width: 1023px) {
+      width: 130px;
+      margin: auto;
+      margin-bottom: 16px;
+    }
+  }
+}

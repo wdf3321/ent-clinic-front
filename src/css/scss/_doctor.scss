@@ -1,0 +1,25 @@
+#firstdr {
+  width: 100vw;
+  @media (min-width: 1024px) {
+    height: 100vh;
+  }
+}
+#picpic {
+  max-width: 100%;
+  @media (min-width: 1024px) {
+    max-width: 80%;
+    margin: auto;
+  }
+  .my-card {
+    max-width: 100%;
+    @media (max-width: 1023px) {
+      max-width: 92%;
+      margin: auto;
+      margin-bottom: 20px;
+    }
+  }
+}
+#time {
+  padding: 20px 0;
+  width: 100vw;
+}

@@ -1,5 +1,5 @@
 <template>
-  <section data-aos="fade-down">
+  <section data-aos="fade-down" id="indexsection">
     <h3>最新消息</h3>
     <div class="row items-center justify-center">
       <div id="table1" class="q-ma-md-xl">
@@ -86,20 +86,5 @@ getArticles()
 </script>
 
 <style lang="scss">
-#footer {
-  border-top: 5px solid $secondary;
-}
-#table1 {
-  @media (max-width: 1023px) {
-    width: 90%;
-  }
-  width: 75%;
-}
-.q-td {
-  p {
-    font-size: 1rem;
-    word-break: break-all;
-    max-width: 100vw;
-  }
-}
+
 </style>

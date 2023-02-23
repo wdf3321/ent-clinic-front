@@ -251,11 +251,5 @@ watch(selected, (newValue, oldValue) => {
 // -----------------------------------------------------------------------
 </script>
 <style lang="scss">
-section {
-  @media (max-width: 1023px) {
-    width: 95%;
-  }
-  width: 75%;
-  margin: auto;
-}
+
 </style>

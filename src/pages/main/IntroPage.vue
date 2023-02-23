@@ -1,8 +1,8 @@
 <template>
-  <section id="first" data-aos="fade-down">
-    <h3>本院特色</h3>
+  <section id="first">
+    <h3 data-aos="fade-down">本院特色</h3>
     <div id="pic" class="column q-pa-md justify-center items-center">
-      <div class="row">
+      <div class="row" data-aos="fade-down">
         <q-img
           class="col-md-5 col-xs-12"
           src="https://img.freepik.com/free-photo/doctor-using-inspection-spatula-examine-patient-throat-ent-doctor-doing-throat-exam-woman-patient-opened-her-mouth-throat-checkup_657921-246.jpg?w=1800&t=st=1675698198~exp=1675698798~hmac=c83264f53caa61f4cbd509404eff99c6c22cb5dbc5dcc6e9248f7aa351a830c6"
@@ -12,7 +12,7 @@
           透過探索單一病症的多面向，搭配專業儀器、溫暖仔細問診，提供全面照護式的治療，使求診者真正痊癒，享受健康生活。提供一般門診與特約門診
         </div>
       </div>
-      <div class="row reverse-md">
+      <div class="row reverse-md" data-aos="fade-down">
         <q-img
           class="col-md-5 col-xs-12"
           src="https://img.freepik.com/free-photo/close-up-physician-using-otoscope-ear-consultation-with-patient-woman-otologist-checking-infection-with-otolaryngology-instrument-medical-visit-during-coronavirus-pandemic_482257-38496.jpg?w=1800&t=st=1675698107~exp=1675698707~hmac=d12e080aebb239de77bd4d4a76bbc7c509b2cede1ff460946f5dfe2001c83c7f"
@@ -23,7 +23,7 @@
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row" data-aos="fade-down">
         <q-img
           class="col-md-5 col-xs-12"
           src="https://img.freepik.com/free-photo/doctor-otorhinolaryngologist-checking-nose-with-otoscope-patient-hospital-nasal-congestion-sinusitis-allergy-concept_657921-192.jpg?w=1800&t=st=1675698177~exp=1675698777~hmac=981d4c51e3d090b14af74fca22c214e2d72f7bcdc74a8dccba7f13123be461e9"
@@ -36,7 +36,7 @@
     </div>
   </section>
   <!-- -------------- -->
-  <section data-aos="fade-down">
+  <section id="indexsection" data-aos="fade-down" >
     <h3>如何到達</h3>
     <div class="row justify-center items-center q-pa-xs" id="map">
       <div class="col-xs-12 col-md-6 q-mb-xl q-pa-xs">
@@ -100,46 +100,5 @@ const tab = ref('car')
 </script>
 
 <style lang="scss">
-#pic {
-  width: 100%;
-  .row {
-    @media (max-width: 1023px) {
-      width: 92%;
-    }
-    width: 75%;
-    margin-bottom: 50px;
-  }
-  .q-img {
-    border-radius: 16px;
-  }
-}
-.flex-break {
-  flex: 1 0 100% !important;
-  width: 0 !important;
-}
-#first {
-  .col-md-7 {
-    margin-top: 20px;
-    padding: 0 20px;
-  }
-  @media (min-width: 1024px) {
-    .col-md-7 {
-      margin: auto;
-    }
-  }
-}
-#map {
-  max-width: 75%;
-  margin: auto;
-  .q-card {
-    border: 1px solid $teal;
-    border-radius: 10px;
-  }
-  @media (max-width: 1023px) {
-    max-width: 100%;
-  }
-}
-#footer {
-  border-top: 5px solid $secondary;
-}
+
 </style>
