@@ -39,7 +39,7 @@
         @click="deleteSubmit"
         class="q-mr-md-xl q-my-xs-xs"
       />
-      <q-btn icon="delete" color="teal" label="一鍵全刪" @click="deleteall" />
+      <q-btn v-if="!selected[0]" icon="delete" color="teal" label="一鍵全刪" @click="deleteall" />
 
     </div>
   </section>
@@ -208,6 +208,8 @@
 import { apiAuth } from 'src/boot/axios'
 import { reactive, ref } from 'vue'
 import { useQuasar } from 'quasar'
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 const prompt = ref(false)
 const prompt2 = ref(false)
 const $q = useQuasar()
@@ -346,7 +348,7 @@ const columns = [
   {
     name: 'date',
     required: true,
-    label: '日期',
+    label: t('date'),
     align: 'left',
     field: (row) => row.date,
     format: (val) => `${val}`,
@@ -355,11 +357,11 @@ const columns = [
   {
     name: 'time',
     align: 'center',
-    label: '時間',
+    label: t('time'),
     field: 'time',
     sortable: true
   },
-  { name: 'member', label: '可預約人數', field: 'member', sortable: true }
+  { name: 'member', label: t('limit'), field: 'member', sortable: true }
 ]
 </script>
 

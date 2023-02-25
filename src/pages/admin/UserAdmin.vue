@@ -41,7 +41,7 @@
         v-model="form.search"
         label="搜尋"
         stack-label
-        style="margin: auto; width: 400px; margin-bottom: 32px"
+        style="margin: auto; width: 400px; margin-bottom: 8px"
       />
     </div>
     <div
@@ -65,10 +65,11 @@
     </div>
     <div class="row justify-center">
       <q-btn
+      v-if="selected[0]"
         icon="reply"
         label="返回"
-        class="q-mt-xl"
-        @click="getAllUser"
+        class="q-mt-xs"
+        @click="cancel"
         color="teal"
       />
     </div>
@@ -308,6 +309,11 @@ const edit = async () => {
       message: error.message
     })
   }
+}
+
+const cancel = () => {
+  selected.value = []
+  getAllUser()
 }
 </script>
 

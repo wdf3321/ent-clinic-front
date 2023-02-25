@@ -46,7 +46,7 @@
         color="teal"
         icon="delete"
         @click="deleteSubmit"
-        label="刪除"
+        label="刪除選擇"
         class="q-mx-md"
       />
       <q-btn

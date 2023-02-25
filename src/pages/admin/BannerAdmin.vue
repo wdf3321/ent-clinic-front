@@ -70,7 +70,8 @@ import ImgInput from 'vue3-img-input'
 import { reactive, ref } from 'vue' // reactive
 import { apiAuth } from 'src/boot/axios'
 import { useQuasar } from 'quasar'
-
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 const $q = useQuasar()
 const rows = reactive([])
 const selected = ref([])
@@ -162,7 +163,7 @@ const columns = [
   },
   {
     name: 'image',
-    label: 'image',
+    label: t('image'),
     align: 'center',
     field: 'image',
     sortable: true

@@ -7,9 +7,10 @@
         v-model="slide"
         thumbnails
         infinite
+        autoplay
+        arrows
         transition-prev="slide-right"
         transition-next="slide-left"
-
       >
         <q-carousel-slide
           v-for="image in images"
@@ -76,7 +77,12 @@
     </div>
   </section>
   <!-- ------------------------------------------ -->
-  <section id="indexsection" class="q-pa-lg" style="background: #eee" data-aos="fade-up">
+  <section
+    id="indexsection"
+    class="q-pa-lg"
+    style="background: #eee"
+    data-aos="fade-up"
+  >
     <h3>關於我們</h3>
     <div id="info2" class="row q-px-md-xl">
       <div class="col-md-4 col-xs-12">
@@ -96,19 +102,70 @@
     </div>
   </section>
   <!-- ------------------------ -->
-  <section  id="indexsection" data-aos="fade-up">
+  <section id="indexsection" data-aos="fade-up">
     <h3>門診時間</h3>
     <div class="justify-center items-center row">
       <q-table
         id="table"
         class="q-mx-xl-md"
-        :rows="rows2"
+        :rows="rowsdoctor"
         :columns="columns2"
         hide-bottom
-      />
+      >
+      <!-- eslint-disable -->
+      <template v-slot:body-cell-mon="props" id="template">
+        <q-td>
+          <q-img v-if="props.row.mon==='a'" src="~assets/circlea.svg"/>
+          <q-img v-if="props.row.mon==='b'" src="~assets/circleb.svg"/>
+          <q-img v-if="props.row.mon==='c'" src="~assets/circlec.svg"/>
+        </q-td>
+        </template>
+        <template v-slot:body-cell-tue="props">
+        <q-td>
+          <q-img v-if="props.row.tue==='a'" src="~assets/circlea.svg"/>
+          <q-img v-if="props.row.tue==='b'" src="~assets/circleb.svg"/>
+          <q-img v-if="props.row.tue==='c'" src="~assets/circlec.svg"/>
+        </q-td>
+        </template>
+        <template v-slot:body-cell-wed="props">
+        <q-td>
+          <q-img v-if="props.row.wed==='a'" src="~assets/circlea.svg"/>
+          <q-img v-if="props.row.wed==='b'" src="~assets/circleb.svg"/>
+          <q-img v-if="props.row.wed==='c'" src="~assets/circlec.svg"/>
+        </q-td>
+        </template>
+        <template v-slot:body-cell-thur="props">
+        <q-td>
+          <q-img v-if="props.row.thur==='a'" src="~assets/circlea.svg"/>
+          <q-img v-if="props.row.thur==='b'" src="~assets/circleb.svg"/>
+          <q-img v-if="props.row.thur==='c'" src="~assets/circlec.svg"/>
+        </q-td>
+        </template>
+        <template v-slot:body-cell-fri="props">
+        <q-td>
+          <q-img v-if="props.row.fri==='a'" src="~assets/circlea.svg"/>
+          <q-img v-if="props.row.fri==='b'" src="~assets/circleb.svg"/>
+          <q-img v-if="props.row.fri==='c'" src="~assets/circlec.svg"/>
+        </q-td>
+        </template>
+        <template v-slot:body-cell-sat="props">
+        <q-td>
+          <q-img v-if="props.row.sat==='a'" src="~assets/circlea.svg"/>
+          <q-img v-if="props.row.sat==='b'" src="~assets/circleb.svg"/>
+          <q-img v-if="props.row.sat==='c'" src="~assets/circlec.svg"/>
+        </q-td>
+        </template>
+        <template v-slot:body-cell-sun="props">
+        <q-td>
+          <q-img v-if="props.row.sun==='a'" src="~assets/circlea.svg"/>
+          <q-img v-if="props.row.sun==='b'" src="~assets/circleb.svg"/>
+          <q-img v-if="props.row.sun==='c'" src="~assets/circlec.svg"/>
+        </q-td>
+        </template>
+    </q-table>
     </div>
     <h5 class="text-center q-mx-md-auto text-teal-8" style="width: 100vw">
-      王醫師:🟠 張醫師:🟢 李醫師:🟤
+      王醫師:<q-img src="~assets/circlea.svg" width="30px" ratio="1"/> 張醫師:<q-img src="~assets/circleb.svg" width="30px" ratio="1"/>  李醫師:<q-img src="~assets/circlec.svg" width="30px" ratio="1"/> 
     </h5>
   </section>
   <!-- -------------------- -->
@@ -126,53 +183,52 @@ const columns2 = [
     required: true,
     label: '',
     align: 'left',
-    field: (row) => row.name,
-    format: (val) => `${val}`,
+    field: 'time',
     sortable: false
   },
-  { name: 'mon', label: '一', field: 'mon', sortable: false },
-  { name: 'tue', label: '二', field: 'tue', sortable: false },
-  { name: 'wed', label: '三', field: 'wed', sortable: false },
-  { name: 'thur', label: '四', field: 'thur', sortable: false },
-  { name: 'fri', label: '五', field: 'fri', sortable: false },
-  { name: 'sat', label: '六', field: 'sat', sortable: false },
-  { name: 'sun', label: '日', field: 'sun', sortable: false }
+  { name: 'mon', label: '一', field: 'mon', sortable: false, align: 'center' },
+  { name: 'tue', label: '二', field: 'tue', sortable: false, align: 'center' },
+  { name: 'wed', label: '三', field: 'wed', sortable: false, align: 'center' },
+  { name: 'thur', label: '四', field: 'thur', sortable: false, align: 'center' },
+  { name: 'fri', label: '五', field: 'fri', sortable: false, align: 'center' },
+  { name: 'sat', label: '六', field: 'sat', sortable: false, align: 'center' },
+  { name: 'sun', label: '日', field: 'sun', sortable: false, align: 'center' }
 ]
 
-const rows2 = [
-  {
-    name: '8:30-12:00',
-    mon: '🟠',
-    tue: '🟠',
-    wed: '🟢',
-    thur: '🟤',
-    fri: '🟠',
-    sat: '🟠',
-    sun: '🟢'
-  },
-  {
-    name: '15:00-18:00',
-    mon: '🟢',
-    tue: '🟢',
-    wed: '🟤',
-    thur: '🟢',
-    fri: '🟢',
-    sat: '🟤',
-    sun: '🟢'
-  },
-  {
-    name: '18:30-22:00',
-    mon: '🟠',
-    tue: '🟠',
-    wed: '🟠',
-    thur: '🟢',
-    fri: '🟠',
-    sat: '🟤',
-    sun: '🟢'
-  }
-]
+// const rows2 = [
+//   {
+//     time: '8:30-12:00',
+//     mon: '🟠',
+//     tue: '🟠',
+//     wed: '🟢',
+//     thur: '🟤',
+//     fri: '🟠',
+//     sat: '🟠',
+//     sun: '🟢'
+//   },
+//   {
+//     time: '15:00-18:00',
+//     mon: '🟢',
+//     tue: '🟢',
+//     wed: '🟤',
+//     thur: '🟢',
+//     fri: '🟢',
+//     sat: '🟤',
+//     sun: '🟢'
+//   },
+//   {
+//     time: '18:30-22:00',
+//     mon: '🟠',
+//     tue: '🟠',
+//     wed: '🟠',
+//     thur: '🟢',
+//     fri: '🟠',
+//     sat: '🟤',
+//     sun: '🟢'
+//   }
+// ]
 const images = reactive([])
-
+const rowsdoctor = reactive([])
 const getBanner = async () => {
   const data = await api.get('/banner')
   console.log(data.data.result)
@@ -186,8 +242,27 @@ const getBanner = async () => {
   }
 }
 getBanner()
+// eslint-disable-next-line
+
+const getDoctor = async () => {
+  const data = await api.get('/doctors')
+  console.log(data.data.result)
+  let i = 0
+  for (i = 0; i < data.data.result.length; i++) {
+    rowsdoctor.push({
+      time: data.data.result[i].time,
+      mon: data.data.result[i].mon,
+      tue: data.data.result[i].tue,
+      wed: data.data.result[i].wed,
+      thur: data.data.result[i].thur,
+      fri: data.data.result[i].fri,
+      sat: data.data.result[i].sat,
+      sun: data.data.result[i].sun
+
+    })
+  }
+}
+getDoctor()
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>

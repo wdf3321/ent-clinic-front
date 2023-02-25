@@ -74,4 +74,12 @@ width: 100vw;
     width: 95%;
   }
   width: 75%;
+  .q-img .q-img__image{
+    object-fit: none !important;
+    height: 40px!important;
+    }
+  .q-img{
+  height: 40px!important;}
 }
+
+

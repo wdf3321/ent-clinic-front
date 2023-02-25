@@ -2,7 +2,7 @@
   <section>
   <div class="column justify-center items-center q-mt-md">
     <q-avatar size="200px" color="secondary" text-color="white" class="q-mb-xl"  >
-      <img src='https://source.boringavatars.com/beam/256/$%7B${{user.name}}colors=ffabab,ffdaab,ddffab,abe4ff,d9abff'>
+      <img src='https://source.boringavatars.com/beam/256/{{user.name}}colors=ffabab,ffdaab,ddffab,abe4ff,d9abff'>
     </q-avatar>
 
     <q-form @submit="onSubmit"  class="q-gutter-md text-center">

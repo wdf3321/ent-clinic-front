@@ -27,6 +27,7 @@
           label="新增消息"
         />
         <q-btn
+          v-if="!selected[0]"
           @click="deleteArcticle"
           type="submit"
           color="teal"
@@ -119,6 +120,7 @@
 
 <script setup>
 import { useArticleStore } from 'src/stores/articles'
+import { useI18n } from 'vue-i18n'
 import { useQuasar } from 'quasar'
 import { reactive, ref } from 'vue' //, ref
 // import { useRouter } from 'vue-router'
@@ -126,6 +128,7 @@ import { storeToRefs } from 'pinia'
 import { apiAuth } from 'src/boot/axios'
 const { articles, loading, error } = storeToRefs(useArticleStore())
 
+const { t } = useI18n()
 const selected = ref([])
 const prompt = ref(false)
 const $q = useQuasar()
@@ -190,7 +193,7 @@ const columns = [
   {
     name: 'date',
     required: true,
-    label: '時間',
+    label: t('time'),
     align: 'left',
     field: (row) => row.date,
     sortable: true
@@ -198,7 +201,7 @@ const columns = [
   {
     name: 'title',
     align: 'left',
-    label: '標題',
+    label: t('title'),
     field: 'title',
     sortable: true
   },

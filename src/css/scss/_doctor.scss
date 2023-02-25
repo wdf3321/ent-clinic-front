@@ -3,6 +3,7 @@
   @media (min-width: 1024px) {
     height: 100vh;
   }
+
 }
 #picpic {
   max-width: 100%;
@@ -17,9 +18,24 @@
       margin: auto;
       margin-bottom: 20px;
     }
+    
   }
 }
 #time {
   padding: 20px 0;
   width: 100vw;
 }
+#table {
+  @media (max-width: 1023px) {
+    width: 95%;
+  }
+  width: 75%;
+  .q-img .q-img__image{
+    object-fit: none !important;
+    height: 40px!important;
+    }
+  .q-img{
+  height: 40px!important;}
+}
+
+

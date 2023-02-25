@@ -4,7 +4,7 @@
       <q-toolbar>
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
 
-        <q-toolbar-title> 泰山耳鼻喉科 | 管理員 </q-toolbar-title>
+        <q-toolbar-title> {{ $t('maintitle') }}</q-toolbar-title>
         <q-spacer> </q-spacer>
         <q-span>{{ $t('hi') }}，{{ user.name }} </q-span>
       </q-toolbar>
@@ -153,6 +153,12 @@ const menuList = [
     label: 'banneradmin',
     separator: false,
     a: '/admin/banner'
+  },
+  {
+    icon: 'view_carousel',
+    label: 'doctoradmin',
+    separator: false,
+    a: '/admin/doctor'
   }
 ]
 </script>

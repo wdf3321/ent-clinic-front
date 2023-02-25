@@ -133,6 +133,15 @@ const routes = [
           login: true,
           admin: true
         }
+      },
+      {
+        path: '/admin/doctor',
+        component: () => import('pages/admin/DoctorAdmin.vue'),
+        meta: {
+          title: '管理員 | 班表管理',
+          login: true,
+          admin: true
+        }
       }
 
     ]

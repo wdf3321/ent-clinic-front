@@ -74,3 +74,7 @@ h5 {
   border: 1px solid $teal;
   border-radius: 20px;
 }
+.my-card:hover{
+  transition: .5s;
+transform: scale(1.03);
+}
