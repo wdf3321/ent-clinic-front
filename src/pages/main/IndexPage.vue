@@ -261,6 +261,7 @@ const getDoctor = async () => {
 
     })
   }
+  console.log(rowsdoctor)
 }
 getDoctor()
 </script>
