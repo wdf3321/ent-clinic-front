@@ -65,7 +65,6 @@
     </div>
     <div class="row justify-center">
       <q-btn
-      v-if="selected[0]"
         icon="reply"
         label="返回"
         class="q-mt-xs"
@@ -313,6 +312,7 @@ const edit = async () => {
 
 const cancel = () => {
   selected.value = []
+  form.search = ''
   getAllUser()
 }
 </script>

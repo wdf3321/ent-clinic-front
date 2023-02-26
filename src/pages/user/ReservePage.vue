@@ -15,7 +15,7 @@
     <!-- ------------------------------------------ -->
     <q-dialog v-model="prompt" persistent>
       <q-card style="min-width: 400px">
-      <q-card-section>
+        <q-card-section>
           <div class="text-h6">日期</div>
         </q-card-section>
         <q-card-section class="q-pt-none">
@@ -52,7 +52,7 @@
             placeholder="人數"
             hint="人數"
             :dense="dense"
-            :rules="[(val) => (val >= 1) || '最少需預約1位']"
+            :rules="[(val) => val >= 1 || '最少需預約1位']"
           />
         </q-card-section>
         <q-card-section>
@@ -70,7 +70,11 @@
     </q-dialog>
     <!-- ------------------------------------------ -->
     <div v-if="!selected[0]" class="text-h6">請先選擇想預約的時間</div>
-    <div v-if="selected[0]" class="text-h6" >您選擇的是:{{selected[0].date}} {{ selected[0].time }} ,醫師為:{{doctor}}</div>
+    <div v-if="selected[0]" class="text-h6">
+      您選擇的是:{{ selected[0].date }} {{ selected[0].time }} ,醫師為:{{
+        doctor
+      }}
+    </div>
     <q-btn
       v-if="selected[0]"
       label="我要預約"
@@ -82,7 +86,7 @@
 </template>
 <script setup>
 import { reactive, ref, watch } from 'vue'
-import { apiAuth } from 'src/boot/axios'
+import { apiAuth, api } from 'src/boot/axios'
 import { useQuasar } from 'quasar'
 import { useUserStore } from 'src/stores/user'
 import moment from 'moment'
@@ -194,8 +198,28 @@ const columns = [
     sortable: true
   }
 ]
-
+// ----------------------------------------------------------------
 const rows = reactive([])
+const rowsdoctor = reactive([])
+const getDoctor = async () => {
+  const data = await api.get('/doctors')
+  console.log(data.data.result)
+  let i = 0
+  for (i = 0; i < data.data.result.length; i++) {
+    rowsdoctor.push({
+      time: data.data.result[i].time,
+      mon: data.data.result[i].mon,
+      tue: data.data.result[i].tue,
+      wed: data.data.result[i].wed,
+      thur: data.data.result[i].thur,
+      fri: data.data.result[i].fri,
+      sat: data.data.result[i].sat,
+      sun: data.data.result[i].sun
+    })
+  }
+  console.log(rowsdoctor[0].mon)
+}
+getDoctor()
 // -------------------------------------------------------------
 watch(selected, (newValue, oldValue) => {
   const format = 'hh:mm:ss'
@@ -203,53 +227,191 @@ watch(selected, (newValue, oldValue) => {
     beforemorn = moment('08:30:00', format),
     beforeTime = moment('15:00:00', format),
     afterTime = moment('18:00:00', format)
+  console.log(moment(newValue[0].date).format('dddd'))
   if (moment(newValue[0].date).format('dddd') === 'Monday') {
-    if (time.isBetween(beforeTime, afterTime) === true) {
-      doctor.value = '張醫師'
+    if (time.isBetween(beforemorn, beforeTime) === true) {
+      if (rowsdoctor[0].mon === 'a') {
+        doctor.value = '王醫師'
+      } else if (rowsdoctor[0].mon === 'b') {
+        doctor.value = '張醫師'
+      } else if (rowsdoctor[0].mon === 'c') {
+        doctor.value = '李醫師'
+      }
+    } else if (time.isBetween(beforeTime, afterTime) === true) {
+      if (rowsdoctor[1].mon === 'a') {
+        doctor.value = '王醫師'
+      } else if (rowsdoctor[1].mon === 'b') {
+        doctor.value = '張醫師'
+      } else if (rowsdoctor[1].mon === 'c') {
+        doctor.value = '李醫師'
+      }
     } else {
-      doctor.value = '王醫師'
+      if (rowsdoctor[2].mon === 'a') {
+        doctor.value = '王醫師'
+      } else if (rowsdoctor[2].mon === 'b') {
+        doctor.value = '張醫師'
+      } else if (rowsdoctor[2].mon === 'c') {
+        doctor.value = '李醫師'
+      }
     }
   } else if (moment(newValue[0].date).format('dddd') === 'Tuesday') {
-    if (time.isBetween(beforeTime, afterTime) === true) {
-      doctor.value = '張醫師'
+    if (time.isBetween(beforemorn, beforeTime) === true) {
+      if (rowsdoctor[0].tue === 'a') {
+        doctor.value = '王醫師'
+      } else if (rowsdoctor[0].tue === 'b') {
+        doctor.value = '張醫師'
+      } else if (rowsdoctor[0].tue === 'c') {
+        doctor.value = '李醫師'
+      }
+    } else if (time.isBetween(beforeTime, afterTime) === true) {
+      if (rowsdoctor[1].tue === 'a') {
+        doctor.value = '王醫師'
+      } else if (rowsdoctor[1].tue === 'b') {
+        doctor.value = '張醫師'
+      } else if (rowsdoctor[1].tue === 'c') {
+        doctor.value = '李醫師'
+      }
     } else {
-      doctor.value = '王醫師'
+      if (rowsdoctor[2].tue === 'a') {
+        doctor.value = '王醫師'
+      } else if (rowsdoctor[2].tue === 'b') {
+        doctor.value = '張醫師'
+      } else if (rowsdoctor[2].tue === 'c') {
+        doctor.value = '李醫師'
+      }
     }
   } else if (moment(newValue[0].date).format('dddd') === 'Wednesday') {
     if (time.isBetween(beforemorn, beforeTime) === true) {
-      doctor.value = '張醫師'
+      if (rowsdoctor[0].wed === 'a') {
+        doctor.value = '王醫師'
+      } else if (rowsdoctor[0].wed === 'b') {
+        doctor.value = '張醫師'
+      } else if (rowsdoctor[0].wed === 'c') {
+        doctor.value = '李醫師'
+      }
     } else if (time.isBetween(beforeTime, afterTime) === true) {
-      doctor.value = '李醫師'
+      if (rowsdoctor[1].wed === 'a') {
+        doctor.value = '王醫師'
+      } else if (rowsdoctor[1].wed === 'b') {
+        doctor.value = '張醫師'
+      } else if (rowsdoctor[1].wed === 'c') {
+        doctor.value = '李醫師'
+      }
     } else {
-      doctor.value = '王醫師'
+      if (rowsdoctor[2].wed === 'a') {
+        doctor.value = '王醫師'
+      } else if (rowsdoctor[2].wed === 'b') {
+        doctor.value = '張醫師'
+      } else if (rowsdoctor[2].wed === 'c') {
+        doctor.value = '李醫師'
+      }
     }
   } else if (moment(newValue[0].date).format('dddd') === 'Thursday') {
     if (time.isBetween(beforemorn, beforeTime) === true) {
-      doctor.value = '李醫師'
+      if (rowsdoctor[0].thur === 'a') {
+        doctor.value = '王醫師'
+      } else if (rowsdoctor[0].thur === 'b') {
+        doctor.value = '張醫師'
+      } else if (rowsdoctor[0].thur === 'c') {
+        doctor.value = '李醫師'
+      }
+    } else if (time.isBetween(beforeTime, afterTime) === true) {
+      if (rowsdoctor[1].thur === 'a') {
+        doctor.value = '王醫師'
+      } else if (rowsdoctor[1].thur === 'b') {
+        doctor.value = '張醫師'
+      } else if (rowsdoctor[1].thur === 'c') {
+        doctor.value = '李醫師'
+      }
     } else {
-      console.log(time)
-      doctor.value = '張醫師'
+      if (rowsdoctor[2].thur === 'a') {
+        doctor.value = '王醫師'
+      } else if (rowsdoctor[2].thur === 'b') {
+        doctor.value = '張醫師'
+      } else if (rowsdoctor[2].thur === 'c') {
+        doctor.value = '李醫師'
+      }
     }
   } else if (moment(newValue[0].date).format('dddd') === 'Friday') {
-    if (time.isBetween(beforeTime, afterTime) === true) {
-      doctor.value = '張醫師'
+    if (time.isBetween(beforemorn, beforeTime) === true) {
+      if (rowsdoctor[0].fri === 'a') {
+        doctor.value = '王醫師'
+      } else if (rowsdoctor[0].fri === 'b') {
+        doctor.value = '張醫師'
+      } else if (rowsdoctor[0].fri === 'c') {
+        doctor.value = '李醫師'
+      }
+    } else if (time.isBetween(beforeTime, afterTime) === true) {
+      if (rowsdoctor[1].fri === 'a') {
+        doctor.value = '王醫師'
+      } else if (rowsdoctor[1].fri === 'b') {
+        doctor.value = '張醫師'
+      } else if (rowsdoctor[1].fri === 'c') {
+        doctor.value = '李醫師'
+      }
     } else {
-      console.log(time)
-      doctor.value = '王醫師'
+      if (rowsdoctor[2].fri === 'a') {
+        doctor.value = '王醫師'
+      } else if (rowsdoctor[2].fri === 'b') {
+        doctor.value = '張醫師'
+      } else if (rowsdoctor[2].fri === 'c') {
+        doctor.value = '李醫師'
+      }
     }
   } else if (moment(newValue[0].date).format('dddd') === 'Saturday') {
     if (time.isBetween(beforemorn, beforeTime) === true) {
-      doctor.value = '王醫師'
+      if (rowsdoctor[0].sat === 'a') {
+        doctor.value = '王醫師'
+      } else if (rowsdoctor[0].sat === 'b') {
+        doctor.value = '張醫師'
+      } else if (rowsdoctor[0].sat === 'c') {
+        doctor.value = '李醫師'
+      }
+    } else if (time.isBetween(beforeTime, afterTime) === true) {
+      if (rowsdoctor[1].sat === 'a') {
+        doctor.value = '王醫師'
+      } else if (rowsdoctor[1].sat === 'b') {
+        doctor.value = '張醫師'
+      } else if (rowsdoctor[1].sat === 'c') {
+        doctor.value = '李醫師'
+      }
     } else {
-      console.log(time)
-      doctor.value = '李醫師'
+      if (rowsdoctor[2].sat === 'a') {
+        doctor.value = '王醫師'
+      } else if (rowsdoctor[2].sat === 'b') {
+        doctor.value = '張醫師'
+      } else if (rowsdoctor[2].sat === 'c') {
+        doctor.value = '李醫師'
+      }
     }
   } else if (moment(newValue[0].date).format('dddd') === 'Sunday') {
-    doctor.value = '張醫師'
+    if (time.isBetween(beforemorn, beforeTime) === true) {
+      if (rowsdoctor[0].sun === 'a') {
+        doctor.value = '王醫師'
+      } else if (rowsdoctor[0].sun === 'b') {
+        doctor.value = '張醫師'
+      } else if (rowsdoctor[0].sun === 'c') {
+        doctor.value = '李醫師'
+      }
+    } else if (time.isBetween(beforeTime, afterTime) === true) {
+      if (rowsdoctor[1].sun === 'a') {
+        doctor.value = '王醫師'
+      } else if (rowsdoctor[1].sun === 'b') {
+        doctor.value = '張醫師'
+      } else if (rowsdoctor[1].sun === 'c') {
+        doctor.value = '李醫師'
+      }
+    } else {
+      if (rowsdoctor[2].sun === 'a') {
+        doctor.value = '王醫師'
+      } else if (rowsdoctor[2].sun === 'b') {
+        doctor.value = '張醫師'
+      } else if (rowsdoctor[2].sun === 'c') {
+        doctor.value = '李醫師'
+      }
+    }
   }
 })
 // -----------------------------------------------------------------------
 </script>
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>

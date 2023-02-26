@@ -155,7 +155,7 @@ const menuList = [
     a: '/admin/banner'
   },
   {
-    icon: 'view_carousel',
+    icon: 'group',
     label: 'doctoradmin',
     separator: false,
     a: '/admin/doctor'

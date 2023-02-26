@@ -53,7 +53,7 @@
         v-if="!selected[0]"
         color="teal"
         icon="delete"
-        @click="deleteall"
+        @click="confirm=true"
         label="一鍵全刪"
         class="q-mx-md"
       />
@@ -68,6 +68,20 @@
       />
       </div>
   </section>
+  <q-dialog v-model="confirm" persistent >
+      <q-card style="min-width: 200px;">
+        <q-card-section class="row items-center justify-center">
+          <q-avatar icon="help" color="teal" text-color="white" />
+          <span class="q-ml-sm">你確定要刪除？</span>
+        </q-card-section>
+
+        <q-card-actions align="center">
+          <q-btn flat label="Cancel" color="primary" v-close-popup />
+          <q-btn flat label="Yes" color="primary" @click="deleteall" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
+
 </template>
 
 <script setup>
@@ -83,6 +97,7 @@ const $q = useQuasar()
 const filter = ref('')
 const val = ref('false')
 const rowkey = ref('id')
+const confirm = ref('false')
 const columns = [
   {
     name: '_id',
@@ -169,6 +184,7 @@ const deleteSubmit = async () => {
 // --------------------------------------------
 const deleteall = async () => {
   try {
+    confirm.value = true
     rows.splice(0, rows.length)
     const result = await apiAuth.post('/reserve/cancelall')
     console.log(result)

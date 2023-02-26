@@ -39,7 +39,7 @@
         @click="deleteSubmit"
         class="q-mr-md-xl q-my-xs-xs"
       />
-      <q-btn v-if="!selected[0]" icon="delete" color="teal" label="一鍵全刪" @click="deleteall" />
+      <q-btn v-if="!selected[0]" icon="delete" color="teal" label="一鍵全刪" @click="confirm=true" />
 
     </div>
   </section>
@@ -202,6 +202,20 @@
     </q-card>
   </q-dialog>
   <!-- --------------------------------------- -->
+  <q-dialog v-model="confirm" persistent >
+      <q-card style="min-width: 200px;">
+        <q-card-section class="row items-center justify-center">
+          <q-avatar icon="help" color="teal" text-color="white" />
+          <span class="q-ml-sm">你確定要刪除？</span>
+        </q-card-section>
+
+        <q-card-actions align="center">
+          <q-btn flat label="Cancel" color="primary" v-close-popup />
+          <q-btn flat label="Yes" color="primary" @click="deleteall" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
+    <!-- ---------------------------- -->
 </template>
 
 <script setup>
@@ -228,6 +242,7 @@ const form2 = reactive({
 // ------------------------------------
 const rows = reactive([])
 const selected = ref([])
+const confirm = ref(false)
 // ---------------------------------
 const getReserves = async () => {
   const data = await apiAuth.get('/reserve')
