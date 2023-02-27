@@ -223,6 +223,7 @@ import { apiAuth } from 'src/boot/axios'
 import { reactive, ref } from 'vue'
 import { useQuasar } from 'quasar'
 import { useI18n } from 'vue-i18n'
+import moment from 'moment'
 const { t } = useI18n()
 const prompt = ref(false)
 const prompt2 = ref(false)
@@ -251,13 +252,16 @@ const getReserves = async () => {
   for (i = 0; i < data.data.result.length; i++) {
     if (data.data.result[i].member === 0) {
       continue
+    } else if (moment(data.data.result[i].date).isBefore(moment().format('YYYY/MM/DD'))) {
+      continue
+    } else {
+      rows.push({
+        date: data.data.result[i].date,
+        time: data.data.result[i].time,
+        member: data.data.result[i].member,
+        id: data.data.result[i]._id
+      })
     }
-    rows.push({
-      date: data.data.result[i].date,
-      time: data.data.result[i].time,
-      member: data.data.result[i].member,
-      id: data.data.result[i]._id
-    })
     // console.log(rows)
   }
   $q.notify({

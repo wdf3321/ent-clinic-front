@@ -104,7 +104,10 @@ const getReserves = async () => {
   let i = 0
 
   for (i = 0; i < data.data.result.length; i++) {
+    console.log()
     if (data.data.result[i].member <= 0) {
+      continue
+    } else if (moment(data.data.result[i].date).isBefore(moment().format('YYYY/MM/DD'))) {
       continue
     } else {
       rows.push({

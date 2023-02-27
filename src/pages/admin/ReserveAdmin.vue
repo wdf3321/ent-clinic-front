@@ -89,6 +89,7 @@ import { reactive, ref } from 'vue'
 import { exportFile, useQuasar } from 'quasar'
 import { apiAuth } from 'src/boot/axios'
 import { useI18n } from 'vue-i18n'
+import moment from 'moment'
 const { t } = useI18n()
 
 // -----------------------
@@ -127,21 +128,25 @@ const getReserves = async () => {
   rows.splice(0, rows.length)
   let i = 0
   for (i = 0; i < data.data.message.length; i++) {
-    rows.push({
-      date: data.data.message[i].date,
-      time: data.data.message[i].time,
-      member: data.data.message[i].member,
-      id: data.data.message[i]._id,
-      name: data.data.message[i].name
-    })
+    if (moment(data.data.message[i].date).isBefore(moment().format('YYYY/MM/DD'))) {
+      continue
+    } else {
+      rows.push({
+        date: data.data.message[i].date,
+        time: data.data.message[i].time,
+        member: data.data.message[i].member,
+        id: data.data.message[i]._id,
+        name: data.data.message[i].name
+      })
     // console.log(rows)
+    }
+    $q.notify({
+      color: 'green-4',
+      textColor: 'white',
+      icon: 'cloud_done',
+      message: '預約取得成功'
+    })
   }
-  $q.notify({
-    color: 'green-4',
-    textColor: 'white',
-    icon: 'cloud_done',
-    message: '預約取得成功'
-  })
 }
 getReserves()
 function zero () {

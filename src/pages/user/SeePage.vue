@@ -12,11 +12,10 @@
         bordered
         no-data-label="哭阿，你尚未預約任何時間"
       >
-    <template v-slot:body-cell-success>
-      <q-icon name="check" size="40px" color="primary"/>
-
-    </template>
-    </q-table>
+        <template v-slot:body-cell-success>
+          <q-icon name="check" size="40px" color="primary" />
+        </template>
+      </q-table>
     </div>
   </section>
 </template>
@@ -24,27 +23,31 @@
 import { reactive } from 'vue'
 import { apiAuth } from 'src/boot/axios'
 import { useQuasar } from 'quasar'
+import moment from 'moment'
 // -------------------------------
 const $q = useQuasar()
 const getUser = async () => {
   try {
     const { data } = await apiAuth.get('/users')
-    console.log(data.result.reserve)
     let i = 0
     for (i = 0; i < data.result.reserve.length; i++) {
-      rows.push({
-        date: data.result.reserve[i].date,
-        time: data.result.reserve[i].time,
-        name: data.result.reserve[i].name,
-        member: data.result.reserve[i].member,
-        success: '成功'
-      })
-      $q.notify({
-        color: 'green-4',
-        textColor: 'white',
-        icon: 'cloud_done',
-        message: '取得成功'
-      })
+      if (moment(data.result.reserve[i].date).isBefore(moment().format('YYYY/MM/DD'))) {
+        continue
+      } else {
+        rows.push({
+          date: data.result.reserve[i].date,
+          time: data.result.reserve[i].time,
+          name: data.result.reserve[i].name,
+          member: data.result.reserve[i].member,
+          success: '成功'
+        })
+        $q.notify({
+          color: 'green-4',
+          textColor: 'white',
+          icon: 'cloud_done',
+          message: '取得成功'
+        })
+      }
     }
   } catch (error) {
     console.log(error)
@@ -94,6 +97,4 @@ const columns = [
 const rows = reactive([])
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>
