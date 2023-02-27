@@ -31,7 +31,10 @@
             </q-tr>
             <q-tr v-show="props.row.expand" :props="props">
               <q-td auto-width="true" colspan="100%">
-                <div class="text-center">
+                <div
+                  class="text-left inside"
+
+                >
                   {{ props.row.inside }}
                 </div>
               </q-td>
@@ -67,11 +70,9 @@ const columns = [
     sortable: true
   }
 ]
-// console.log(user.articles.title.length, user.articles.date.length)
 
 const getArticles = async () => {
   const data = await api.get('/articles')
-  console.log(data)
   let i = 0
   for (i = 0; i < data.data.result.length; i++) {
     rows.push({
@@ -85,6 +86,4 @@ const getArticles = async () => {
 getArticles()
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>

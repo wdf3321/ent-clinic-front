@@ -12,11 +12,8 @@
         v-model:selected="selected"
       >
       </q-table>
-      <div class="q-mt-xl">內容預覽：{{ selected[0]?.inside }}</div>
     </div>
-
-    <!-- --------------------- -->
-    <!--新增  -->
+      <!-- ------------------------------- -->
     <section>
       <div class="text-center" id="btns">
         <q-btn
@@ -45,9 +42,14 @@
           class="q-mr-md-xl q-my-xs-xs"
         />
       </div>
+      <div class="q-mt-xl">內容預覽：</div>
+      <div class="inside text-left">{{ selected[0]?.inside }}</div>
     </section>
   </section>
-  <!-- ------------------------------- -->
+
+    <!-- --------------------- -->
+    <!--新增  -->
+
   <q-dialog v-model="prompt" persistent>
     <q-card style="min-width: 400px">
       <q-card-section>

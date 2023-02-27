@@ -7,7 +7,7 @@
         v-model="slide"
         thumbnails
         infinite
-        autoplay
+        :autoplay="2000"
         arrows
         transition-prev="slide-right"
         transition-next="slide-left"
