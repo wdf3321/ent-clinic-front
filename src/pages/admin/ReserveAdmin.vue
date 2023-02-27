@@ -60,6 +60,7 @@
       </div>
       <div class="row justify-center">
         <q-btn
+        v-if="selected[0] || filter !=='' "
         icon="reply"
         label="返回"
         class="q-mt-xl"

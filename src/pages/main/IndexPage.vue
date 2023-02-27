@@ -174,7 +174,9 @@
 <script setup>
 import { ref, reactive } from 'vue'
 import { api } from 'src/boot/axios'
+import { useQuasar, QSpinnerHourglass } from 'quasar'
 
+const $q = useQuasar()
 const slide = ref(1)
 
 const columns2 = [
@@ -230,6 +232,13 @@ const columns2 = [
 const images = reactive([])
 const rowsdoctor = reactive([])
 const getBanner = async () => {
+  $q.loading.show({
+    spinner: QSpinnerHourglass,
+    spinnerColor: 'primary',
+    spinnerSize: 170,
+    message: 'Loading...',
+    messageColor: 'black'
+  })
   const data = await api.get('/banner')
   console.log(data.data.result)
   let i = 0
@@ -240,6 +249,7 @@ const getBanner = async () => {
       image: data.data.result[i].image
     })
   }
+  $q.loading.hide()
 }
 getBanner()
 // eslint-disable-next-line
