@@ -39,7 +39,7 @@
         @click="deleteSubmit"
         class="q-mr-md-xl q-my-xs-xs"
       />
-      <q-btn v-if="!selected[0]" icon="delete" color="teal" label="一鍵全刪" @click="confirm=true" />
+      <q-btn v-if="!selected[0]" icon="delete" color="teal" label="一鍵全刪" @click="confirm=true" class="q-mr-md-xl q-my-xs-xs"/>
 
     </div>
   </section>

@@ -3,7 +3,7 @@
     <h3>最新消息</h3>
     <div class="row items-center justify-center">
       <div id="table1" class="q-ma-md-xl">
-        <q-table :rows="rows" :columns="columns" row-key="name" virtual-scroll>
+        <q-table :rows="rows" :columns="columns" row-key="name" virtual-scroll hide-header>
           <template v-slot:header="props">
             <q-tr :props="props">
               <q-th auto-width />
@@ -18,23 +18,21 @@
               <q-td auto-width>
                 <q-btn
                   size="md"
-                  color="accent"
+                  color="primary"
                   round
                   dense
                   @click="props.row.expand = !props.row.expand"
                   :icon="props.row.expand ? 'remove' : 'add'"
                 />
               </q-td>
-              <q-td v-for="col in props.cols" :key="col.name" :props="props">
-                {{ col.value }}
+              <q-td v-for="col in props.cols" :key="col.name" :props="props" >
+                <div class="inside">{{ col.value }}</div>
               </q-td>
             </q-tr>
             <q-tr v-show="props.row.expand" :props="props">
               <q-td auto-width="true" colspan="100%">
                 <div
-                  class="text-left inside"
-
-                >
+                  class="text-left inside">
                   {{ props.row.inside }}
                 </div>
               </q-td>
@@ -82,6 +80,7 @@ const getArticles = async () => {
     })
     // console.log(rows)
   }
+  rows.reverse()
 }
 getArticles()
 </script>
