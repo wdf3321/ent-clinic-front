@@ -1,9 +1,9 @@
 {
-  "name": "quasar-project",
-  "version": "0.0.1",
-  "description": "A Quasar Project",
-  "productName": "Quasar App",
-  "author": "wdf <wdf332@gmail.com>",
+  "name": "ent-clinic-front",
+  "version": "1.0",
+  "description": "ent-clinic-front",
+  "productName": "ENT-clinic",
+  "author": "wdf332 <wdf332@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "quasar dev",
