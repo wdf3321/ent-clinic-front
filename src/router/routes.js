@@ -11,7 +11,7 @@ const routes = [
         name: 'index',
         component: () => import('src/pages/main/IndexPage.vue'),
         meta: {
-          title: '泰山耳鼻喉科 | 首頁',
+          title: '泰山耳鼻喉科',
           login: false,
           admin: false
         }
