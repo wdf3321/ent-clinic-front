@@ -20,6 +20,14 @@ export default {
   time: '時間',
   member: '人',
   title: 'タイトル',
-  limit: '何員まで'
+  limit: '何員まで',
+  preview: '下見',
+  mon: '月',
+  tue: '火',
+  wed: '水',
+  thur: '木',
+  fri: '金',
+  sat: '土',
+  sun: '日'
 
 }

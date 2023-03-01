@@ -20,6 +20,13 @@ export default {
   time: '時間',
   member: '人數',
   title: '標題',
-  limit: '尚可預約人數'
-
+  limit: '尚可預約人數',
+  preview: '預覽',
+  mon: '一',
+  tue: '二',
+  wed: '三',
+  thur: '四',
+  fri: '五',
+  sat: '六',
+  sun: '日'
 }

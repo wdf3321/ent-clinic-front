@@ -67,7 +67,6 @@
         </template>
       </q-table>
     </div>
-    <div class="text-h6 q-mt-xl">代號a:王醫師 代號b:張醫師 代號c:李醫師</div>
   </section>
 
   <q-dialog v-model="prompt" persistent>
@@ -159,7 +158,9 @@
 import { apiAuth, api } from 'src/boot/axios'
 import { reactive, ref } from 'vue'
 import { useQuasar } from 'quasar'
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n()
 const $q = useQuasar()
 const form = reactive({
   time: '',
@@ -178,24 +179,24 @@ const columns2 = [
   {
     name: 'name',
     required: true,
-    label: '預覽',
+    label: t('preview'),
     align: 'left',
     field: 'time',
     sortable: false
   },
-  { name: 'mon', label: '一', field: 'mon', sortable: false, align: 'center' },
-  { name: 'tue', label: '二', field: 'tue', sortable: false, align: 'center' },
-  { name: 'wed', label: '三', field: 'wed', sortable: false, align: 'center' },
+  { name: 'mon', label: t('mon'), field: 'mon', sortable: false, align: 'center' },
+  { name: 'tue', label: t('tue'), field: 'tue', sortable: false, align: 'center' },
+  { name: 'wed', label: t('wed'), field: 'wed', sortable: false, align: 'center' },
   {
     name: 'thur',
-    label: '四',
+    label: t('thur'),
     field: 'thur',
     sortable: false,
     align: 'center'
   },
-  { name: 'fri', label: '五', field: 'fri', sortable: false, align: 'center' },
-  { name: 'sat', label: '六', field: 'sat', sortable: false, align: 'center' },
-  { name: 'sun', label: '日', field: 'sun', sortable: false, align: 'center' }
+  { name: 'fri', label: t('fri'), field: 'fri', sortable: false, align: 'center' },
+  { name: 'sat', label: t('sat'), field: 'sat', sortable: false, align: 'center' },
+  { name: 'sun', label: t('sun'), field: 'sun', sortable: false, align: 'center' }
 ]
 const submit = async () => {
   try {
