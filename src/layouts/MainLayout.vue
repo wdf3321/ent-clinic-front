@@ -8,7 +8,7 @@
             flat
             size="lg"
             to="#"
-            class="text-weight-bold"
+            class="indexbtn"
             style="padding-top: 10px"
             >泰山耳鼻喉科
           </q-btn>
