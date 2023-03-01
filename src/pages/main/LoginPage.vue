@@ -18,13 +18,19 @@
         />
         <q-input
           outlined
-          type="password"
           v-model="form.password"
           label="密碼"
           hint="請輸入密碼"
           lazy-rules
           :rules="[(val) => (val && val.length >= 4) || '最少4位數以上']"
-        />
+          :type="isPwd ? 'password' : 'text' "
+        ><template v-slot:append>
+          <q-icon
+            :name="isPwd ? 'visibility_off' : 'visibility'"
+            class="cursor-pointer"
+            @click="isPwd = !isPwd"
+          />
+        </template></q-input>
         <div>
           <q-btn
             @submit="login"
@@ -69,6 +75,7 @@ const router = useRouter()
 const $q = useQuasar()
 const user = useUserStore()
 const loading = ref(false)
+const isPwd = ref(true)
 // --------------
 const form = reactive({
   account: '',

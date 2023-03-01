@@ -29,10 +29,27 @@
             <q-route-tab name="contact" label="聯絡我們" to="contact" />
 
             <q-btn
+            v-if="!user.isLogin"
               to="/login"
               class="bg-orange q-mt-xs"
               text-color="white"
               label="會員登入"
+              name="login"
+            />
+            <q-btn
+            v-if="user.isLogin && !user.isAdmin"
+              to="/login"
+              class="bg-orange q-mt-xs"
+              text-color="white"
+              label="我要預約"
+              name="login"
+            />
+            <q-btn
+            v-if="user.isAdmin"
+              to="/login"
+              class="bg-orange q-mt-xs"
+              text-color="white"
+              label="管理頁面"
               name="login"
             />
           </q-tabs>
@@ -45,12 +62,28 @@
           <q-route-tab name="contact" label="聯絡我們" to="contact" />
         </q-tabs>
         <q-btn
+        v-if="!user.isLogin"
           class="gt-sm q-mx-10 bg-orange text-white"
           to="/login"
-          text-color=""
           label="會員登入"
           name="login"
         />
+        <q-btn
+            v-if="user.isLogin && !user.isAdmin"
+              to="/login"
+              class="bg-orange gt-sm q-mx-10 text-white"
+              text-color="white"
+              label="我要預約"
+              name="login"
+            />
+            <q-btn
+            v-if="user.isAdmin"
+              to="/login"
+              class="bg-orange gt-sm q-mx-10 text-white"
+              text-color="white"
+              label="管理頁面"
+              name="login"
+            />
         <q-btn
           flat
           icon="menu"
@@ -123,7 +156,9 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { ref } from 'vue'
 import { useArticleStore } from 'src/stores/articles'
+import { useUserStore } from 'src/stores/user'
 const article = useArticleStore()
+const user = useUserStore()
 const tab = ref('top')
 const rightDrawerOpen = ref(false)
 article.getArticles()
