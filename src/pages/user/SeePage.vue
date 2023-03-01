@@ -11,16 +11,26 @@
         flat
         bordered
         no-data-label="哭阿，你尚未預約任何時間"
+        selection="single"
+        v-model:selected="selected"
       >
         <template v-slot:body-cell-success>
-          <q-icon name="check" size="40px" color="primary" />
+          <q-icon name="check" size="50px" color="primary" />
         </template>
       </q-table>
+      <q-btn
+        v-if="selected[0]"
+        color="teal"
+        icon="delete"
+        @click="deleteSubmit"
+        label="刪除預約"
+        class="q-ma-md"
+      />
     </div>
   </section>
 </template>
 <script setup>
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import { apiAuth } from 'src/boot/axios'
 import { useQuasar } from 'quasar'
 import moment from 'moment'
@@ -31,10 +41,15 @@ const getUser = async () => {
     const { data } = await apiAuth.get('/users')
     let i = 0
     for (i = 0; i < data.result.reserve.length; i++) {
-      if (moment(data.result.reserve[i].date).isBefore(moment().format('YYYY/MM/DD'))) {
+      if (
+        moment(data.result.reserve[i].date).isBefore(
+          moment().format('YYYY/MM/DD')
+        )
+      ) {
         continue
       } else {
         rows.push({
+          id: data.result.reserve[i]._id,
           date: data.result.reserve[i].date,
           time: data.result.reserve[i].time,
           name: data.result.reserve[i].name,
@@ -56,6 +71,7 @@ const getUser = async () => {
 getUser()
 
 const columns = [
+
   {
     name: 'name',
     align: 'left',
@@ -95,6 +111,38 @@ const columns = [
 ]
 
 const rows = reactive([])
+const selected = ref([])
+const deleteSubmit = async () => {
+  try {
+    console.log(selected.value[0])
+    const body = {
+      id: selected.value[0].id,
+      time: selected.value[0].time,
+      date: selected.value[0].date,
+      member: selected.value[0].member
+    }
+    const result = await apiAuth.post('/reserve/cancel', body)
+    console.log(result)
+    $q.notify({
+      color: 'green-4',
+      textColor: 'white',
+      icon: 'cloud_done',
+      message: '預約刪除成功'
+    })
+    while (rows.length) {
+      rows.pop()
+    }
+    getUser()
+  } catch (error) {
+    console.log(error)
+    $q.notify({
+      color: 'red-4',
+      textColor: 'white',
+      icon: 'cloud_done',
+      message: '預約刪除失敗'
+    })
+  }
+}
 </script>
 
 <style lang="scss"></style>
