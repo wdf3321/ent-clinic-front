@@ -17,53 +17,53 @@
       >
         <!-- eslint-disable -->
         <template v-slot:body-cell-mon="props" id="template">
-          <q-td>
-            <q-img v-if="props.row.mon === 'a'" src="~assets/circlea.svg" />
-            <q-img v-if="props.row.mon === 'b'" src="~assets/circleb.svg" />
-            <q-img v-if="props.row.mon === 'c'" src="~assets/circlec.svg" />
-          </q-td>
+        <q-td>
+          <q-img v-if="props.row.mon==='王醫師'" src="~assets/circlea.svg"/>
+          <q-img v-if="props.row.mon==='張醫師'" src="~assets/circleb.svg"/>
+          <q-img v-if="props.row.mon==='李醫師'" src="~assets/circlec.svg"/>
+        </q-td>
         </template>
         <template v-slot:body-cell-tue="props">
-          <q-td>
-            <q-img v-if="props.row.tue === 'a'" src="~assets/circlea.svg" />
-            <q-img v-if="props.row.tue === 'b'" src="~assets/circleb.svg" />
-            <q-img v-if="props.row.tue === 'c'" src="~assets/circlec.svg" />
-          </q-td>
+        <q-td>
+          <q-img v-if="props.row.tue==='王醫師'" src="~assets/circlea.svg"/>
+          <q-img v-if="props.row.tue==='張醫師'" src="~assets/circleb.svg"/>
+          <q-img v-if="props.row.tue==='李醫師'" src="~assets/circlec.svg"/>
+        </q-td>
         </template>
         <template v-slot:body-cell-wed="props">
-          <q-td>
-            <q-img v-if="props.row.wed === 'a'" src="~assets/circlea.svg" />
-            <q-img v-if="props.row.wed === 'b'" src="~assets/circleb.svg" />
-            <q-img v-if="props.row.wed === 'c'" src="~assets/circlec.svg" />
-          </q-td>
+        <q-td>
+          <q-img v-if="props.row.wed==='王醫師'" src="~assets/circlea.svg"/>
+          <q-img v-if="props.row.wed==='張醫師'" src="~assets/circleb.svg"/>
+          <q-img v-if="props.row.wed==='李醫師'" src="~assets/circlec.svg"/>
+        </q-td>
         </template>
         <template v-slot:body-cell-thur="props">
-          <q-td>
-            <q-img v-if="props.row.thur === 'a'" src="~assets/circlea.svg" />
-            <q-img v-if="props.row.thur === 'b'" src="~assets/circleb.svg" />
-            <q-img v-if="props.row.thur === 'c'" src="~assets/circlec.svg" />
-          </q-td>
+        <q-td>
+          <q-img v-if="props.row.thur==='王醫師'" src="~assets/circlea.svg"/>
+          <q-img v-if="props.row.thur==='張醫師'" src="~assets/circleb.svg"/>
+          <q-img v-if="props.row.thur==='李醫師'" src="~assets/circlec.svg"/>
+        </q-td>
         </template>
         <template v-slot:body-cell-fri="props">
-          <q-td>
-            <q-img v-if="props.row.fri === 'a'" src="~assets/circlea.svg" />
-            <q-img v-if="props.row.fri === 'b'" src="~assets/circleb.svg" />
-            <q-img v-if="props.row.fri === 'c'" src="~assets/circlec.svg" />
-          </q-td>
+        <q-td>
+          <q-img v-if="props.row.fri==='王醫師'" src="~assets/circlea.svg"/>
+          <q-img v-if="props.row.fri==='張醫師'" src="~assets/circleb.svg"/>
+          <q-img v-if="props.row.fri==='李醫師'" src="~assets/circlec.svg"/>
+        </q-td>
         </template>
         <template v-slot:body-cell-sat="props">
-          <q-td>
-            <q-img v-if="props.row.sat === 'a'" src="~assets/circlea.svg" />
-            <q-img v-if="props.row.sat === 'b'" src="~assets/circleb.svg" />
-            <q-img v-if="props.row.sat === 'c'" src="~assets/circlec.svg" />
-          </q-td>
+        <q-td>
+          <q-img v-if="props.row.sat==='王醫師'" src="~assets/circlea.svg"/>
+          <q-img v-if="props.row.sat==='張醫師'" src="~assets/circleb.svg"/>
+          <q-img v-if="props.row.sat==='李醫師'" src="~assets/circlec.svg"/>
+        </q-td>
         </template>
         <template v-slot:body-cell-sun="props">
-          <q-td>
-            <q-img v-if="props.row.sun === 'a'" src="~assets/circlea.svg" />
-            <q-img v-if="props.row.sun === 'b'" src="~assets/circleb.svg" />
-            <q-img v-if="props.row.sun === 'c'" src="~assets/circlec.svg" />
-          </q-td>
+        <q-td>
+          <q-img v-if="props.row.sun==='王醫師'" src="~assets/circlea.svg"/>
+          <q-img v-if="props.row.sun==='張醫師'" src="~assets/circleb.svg"/>
+          <q-img v-if="props.row.sun==='李醫師'" src="~assets/circlec.svg"/>
+        </q-td>
         </template>
       </q-table>
     </div>
@@ -172,7 +172,7 @@ const form = reactive({
   sun: ''
 })
 const prompt = ref(false)
-const options = ['a', 'b', 'c']
+const options = ['王醫師', '張醫師', '李醫師']
 const optionstime = ['8:30-12:00', '15:00-18:00', '18:30-22:00']
 const columns2 = [
   {

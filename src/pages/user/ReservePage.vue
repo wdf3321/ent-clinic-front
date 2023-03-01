@@ -233,183 +233,183 @@ watch(selected, (newValue, oldValue) => {
   console.log(moment(newValue[0].date).format('dddd'))
   if (moment(newValue[0].date).format('dddd') === 'Monday') {
     if (time.isBetween(beforemorn, beforeTime) === true) {
-      if (rowsdoctor[0].mon === 'a') {
+      if (rowsdoctor[0].mon === '王醫師') {
         doctor.value = '王醫師'
-      } else if (rowsdoctor[0].mon === 'b') {
+      } else if (rowsdoctor[0].mon === '張醫師') {
         doctor.value = '張醫師'
-      } else if (rowsdoctor[0].mon === 'c') {
+      } else if (rowsdoctor[0].mon === '李醫師') {
         doctor.value = '李醫師'
       }
     } else if (time.isBetween(beforeTime, afterTime) === true) {
-      if (rowsdoctor[1].mon === 'a') {
+      if (rowsdoctor[1].mon === '王醫師') {
         doctor.value = '王醫師'
-      } else if (rowsdoctor[1].mon === 'b') {
+      } else if (rowsdoctor[1].mon === '張醫師') {
         doctor.value = '張醫師'
-      } else if (rowsdoctor[1].mon === 'c') {
+      } else if (rowsdoctor[1].mon === '李醫師') {
         doctor.value = '李醫師'
       }
     } else {
-      if (rowsdoctor[2].mon === 'a') {
+      if (rowsdoctor[2].mon === '王醫師') {
         doctor.value = '王醫師'
-      } else if (rowsdoctor[2].mon === 'b') {
+      } else if (rowsdoctor[2].mon === '張醫師') {
         doctor.value = '張醫師'
-      } else if (rowsdoctor[2].mon === 'c') {
+      } else if (rowsdoctor[2].mon === '李醫師') {
         doctor.value = '李醫師'
       }
     }
   } else if (moment(newValue[0].date).format('dddd') === 'Tuesday') {
     if (time.isBetween(beforemorn, beforeTime) === true) {
-      if (rowsdoctor[0].tue === 'a') {
+      if (rowsdoctor[0].tue === '王醫師') {
         doctor.value = '王醫師'
-      } else if (rowsdoctor[0].tue === 'b') {
+      } else if (rowsdoctor[0].tue === '張醫師') {
         doctor.value = '張醫師'
-      } else if (rowsdoctor[0].tue === 'c') {
+      } else if (rowsdoctor[0].tue === '李醫師') {
         doctor.value = '李醫師'
       }
     } else if (time.isBetween(beforeTime, afterTime) === true) {
-      if (rowsdoctor[1].tue === 'a') {
+      if (rowsdoctor[1].tue === '王醫師') {
         doctor.value = '王醫師'
-      } else if (rowsdoctor[1].tue === 'b') {
+      } else if (rowsdoctor[1].tue === '張醫師') {
         doctor.value = '張醫師'
-      } else if (rowsdoctor[1].tue === 'c') {
+      } else if (rowsdoctor[1].tue === '李醫師') {
         doctor.value = '李醫師'
       }
     } else {
-      if (rowsdoctor[2].tue === 'a') {
+      if (rowsdoctor[2].tue === '王醫師') {
         doctor.value = '王醫師'
-      } else if (rowsdoctor[2].tue === 'b') {
+      } else if (rowsdoctor[2].tue === '張醫師') {
         doctor.value = '張醫師'
-      } else if (rowsdoctor[2].tue === 'c') {
+      } else if (rowsdoctor[2].tue === '李醫師') {
         doctor.value = '李醫師'
       }
     }
   } else if (moment(newValue[0].date).format('dddd') === 'Wednesday') {
     if (time.isBetween(beforemorn, beforeTime) === true) {
-      if (rowsdoctor[0].wed === 'a') {
+      if (rowsdoctor[0].wed === '王醫師') {
         doctor.value = '王醫師'
-      } else if (rowsdoctor[0].wed === 'b') {
+      } else if (rowsdoctor[0].wed === '張醫師') {
         doctor.value = '張醫師'
-      } else if (rowsdoctor[0].wed === 'c') {
+      } else if (rowsdoctor[0].wed === '李醫師') {
         doctor.value = '李醫師'
       }
     } else if (time.isBetween(beforeTime, afterTime) === true) {
-      if (rowsdoctor[1].wed === 'a') {
+      if (rowsdoctor[1].wed === '王醫師') {
         doctor.value = '王醫師'
-      } else if (rowsdoctor[1].wed === 'b') {
+      } else if (rowsdoctor[1].wed === '張醫師') {
         doctor.value = '張醫師'
-      } else if (rowsdoctor[1].wed === 'c') {
+      } else if (rowsdoctor[1].wed === '李醫師') {
         doctor.value = '李醫師'
       }
     } else {
-      if (rowsdoctor[2].wed === 'a') {
+      if (rowsdoctor[2].wed === '王醫師') {
         doctor.value = '王醫師'
-      } else if (rowsdoctor[2].wed === 'b') {
+      } else if (rowsdoctor[2].wed === '張醫師') {
         doctor.value = '張醫師'
-      } else if (rowsdoctor[2].wed === 'c') {
+      } else if (rowsdoctor[2].wed === '李醫師') {
         doctor.value = '李醫師'
       }
     }
   } else if (moment(newValue[0].date).format('dddd') === 'Thursday') {
     if (time.isBetween(beforemorn, beforeTime) === true) {
-      if (rowsdoctor[0].thur === 'a') {
+      if (rowsdoctor[0].thur === '王醫師') {
         doctor.value = '王醫師'
-      } else if (rowsdoctor[0].thur === 'b') {
+      } else if (rowsdoctor[0].thur === '張醫師') {
         doctor.value = '張醫師'
-      } else if (rowsdoctor[0].thur === 'c') {
+      } else if (rowsdoctor[0].thur === '李醫師') {
         doctor.value = '李醫師'
       }
     } else if (time.isBetween(beforeTime, afterTime) === true) {
-      if (rowsdoctor[1].thur === 'a') {
+      if (rowsdoctor[1].thur === '王醫師') {
         doctor.value = '王醫師'
-      } else if (rowsdoctor[1].thur === 'b') {
+      } else if (rowsdoctor[1].thur === '張醫師') {
         doctor.value = '張醫師'
-      } else if (rowsdoctor[1].thur === 'c') {
+      } else if (rowsdoctor[1].thur === '李醫師') {
         doctor.value = '李醫師'
       }
     } else {
-      if (rowsdoctor[2].thur === 'a') {
+      if (rowsdoctor[2].thur === '王醫師') {
         doctor.value = '王醫師'
-      } else if (rowsdoctor[2].thur === 'b') {
+      } else if (rowsdoctor[2].thur === '張醫師') {
         doctor.value = '張醫師'
-      } else if (rowsdoctor[2].thur === 'c') {
+      } else if (rowsdoctor[2].thur === '李醫師') {
         doctor.value = '李醫師'
       }
     }
   } else if (moment(newValue[0].date).format('dddd') === 'Friday') {
     if (time.isBetween(beforemorn, beforeTime) === true) {
-      if (rowsdoctor[0].fri === 'a') {
+      if (rowsdoctor[0].fri === '王醫師') {
         doctor.value = '王醫師'
-      } else if (rowsdoctor[0].fri === 'b') {
+      } else if (rowsdoctor[0].fri === '張醫師') {
         doctor.value = '張醫師'
-      } else if (rowsdoctor[0].fri === 'c') {
+      } else if (rowsdoctor[0].fri === '李醫師') {
         doctor.value = '李醫師'
       }
     } else if (time.isBetween(beforeTime, afterTime) === true) {
-      if (rowsdoctor[1].fri === 'a') {
+      if (rowsdoctor[1].fri === '王醫師') {
         doctor.value = '王醫師'
-      } else if (rowsdoctor[1].fri === 'b') {
+      } else if (rowsdoctor[1].fri === '張醫師') {
         doctor.value = '張醫師'
-      } else if (rowsdoctor[1].fri === 'c') {
+      } else if (rowsdoctor[1].fri === '李醫師') {
         doctor.value = '李醫師'
       }
     } else {
-      if (rowsdoctor[2].fri === 'a') {
+      if (rowsdoctor[2].fri === '王醫師') {
         doctor.value = '王醫師'
-      } else if (rowsdoctor[2].fri === 'b') {
+      } else if (rowsdoctor[2].fri === '張醫師') {
         doctor.value = '張醫師'
-      } else if (rowsdoctor[2].fri === 'c') {
+      } else if (rowsdoctor[2].fri === '李醫師') {
         doctor.value = '李醫師'
       }
     }
   } else if (moment(newValue[0].date).format('dddd') === 'Saturday') {
     if (time.isBetween(beforemorn, beforeTime) === true) {
-      if (rowsdoctor[0].sat === 'a') {
+      if (rowsdoctor[0].sat === '王醫師') {
         doctor.value = '王醫師'
-      } else if (rowsdoctor[0].sat === 'b') {
+      } else if (rowsdoctor[0].sat === '張醫師') {
         doctor.value = '張醫師'
-      } else if (rowsdoctor[0].sat === 'c') {
+      } else if (rowsdoctor[0].sat === '李醫師') {
         doctor.value = '李醫師'
       }
     } else if (time.isBetween(beforeTime, afterTime) === true) {
-      if (rowsdoctor[1].sat === 'a') {
+      if (rowsdoctor[1].sat === '王醫師') {
         doctor.value = '王醫師'
-      } else if (rowsdoctor[1].sat === 'b') {
+      } else if (rowsdoctor[1].sat === '張醫師') {
         doctor.value = '張醫師'
-      } else if (rowsdoctor[1].sat === 'c') {
+      } else if (rowsdoctor[1].sat === '李醫師') {
         doctor.value = '李醫師'
       }
     } else {
-      if (rowsdoctor[2].sat === 'a') {
+      if (rowsdoctor[2].sat === '王醫師') {
         doctor.value = '王醫師'
-      } else if (rowsdoctor[2].sat === 'b') {
+      } else if (rowsdoctor[2].sat === '張醫師') {
         doctor.value = '張醫師'
-      } else if (rowsdoctor[2].sat === 'c') {
+      } else if (rowsdoctor[2].sat === '李醫師') {
         doctor.value = '李醫師'
       }
     }
   } else if (moment(newValue[0].date).format('dddd') === 'Sunday') {
     if (time.isBetween(beforemorn, beforeTime) === true) {
-      if (rowsdoctor[0].sun === 'a') {
+      if (rowsdoctor[0].sun === '王醫師') {
         doctor.value = '王醫師'
-      } else if (rowsdoctor[0].sun === 'b') {
+      } else if (rowsdoctor[0].sun === '張醫師') {
         doctor.value = '張醫師'
-      } else if (rowsdoctor[0].sun === 'c') {
+      } else if (rowsdoctor[0].sun === '李醫師') {
         doctor.value = '李醫師'
       }
     } else if (time.isBetween(beforeTime, afterTime) === true) {
-      if (rowsdoctor[1].sun === 'a') {
+      if (rowsdoctor[1].sun === '王醫師') {
         doctor.value = '王醫師'
-      } else if (rowsdoctor[1].sun === 'b') {
+      } else if (rowsdoctor[1].sun === '張醫師') {
         doctor.value = '張醫師'
-      } else if (rowsdoctor[1].sun === 'c') {
+      } else if (rowsdoctor[1].sun === '李醫師') {
         doctor.value = '李醫師'
       }
     } else {
-      if (rowsdoctor[2].sun === 'a') {
+      if (rowsdoctor[2].sun === '王醫師') {
         doctor.value = '王醫師'
-      } else if (rowsdoctor[2].sun === 'b') {
+      } else if (rowsdoctor[2].sun === '張醫師') {
         doctor.value = '張醫師'
-      } else if (rowsdoctor[2].sun === 'c') {
+      } else if (rowsdoctor[2].sun === '李醫師') {
         doctor.value = '李醫師'
       }
     }
