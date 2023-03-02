@@ -7,7 +7,7 @@
         title=""
         :rows="rows"
         :columns="columns"
-        row-key="name"
+        row-key="id"
         flat
         bordered
         no-data-label="哭阿，你尚未預約任何時間"
