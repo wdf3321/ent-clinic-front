@@ -37,6 +37,16 @@ const routes = [
         }
       },
       {
+        path: 'newsnews',
+        name: 'newsnews',
+        component: () => import('src/pages/main/NewsNews.vue'),
+        meta: {
+          title: '泰山耳鼻喉科 | 最新消息',
+          login: false,
+          admin: false
+        }
+      },
+      {
         path: 'contact',
         name: 'contact',
         component: () => import('src/pages/main/ContactPage.vue'),
