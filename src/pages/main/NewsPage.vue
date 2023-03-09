@@ -26,7 +26,7 @@
                 />
               </q-td>
               <q-td v-for="col in props.cols" :key="col.name" :props="props" >
-                <div class="inside">{{ col.value }}</div>
+                <div class="inside"><router-link :to="'/articles/' + props.row.id">{{ col.value }}</router-link></div>
               </q-td>
             </q-tr>
             <q-tr v-show="props.row.expand" :props="props">
@@ -74,6 +74,7 @@ const getArticles = async () => {
   let i = 0
   for (i = 0; i < data.data.result.length; i++) {
     rows.push({
+      id: data.data.result[i]._id,
       title: data.data.result[i].title,
       time: data.data.result[i].date,
       inside: data.data.result[i].inside

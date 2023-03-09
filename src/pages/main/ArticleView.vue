@@ -1,6 +1,6 @@
 <template>
   <section id="indexsection">
-    <q-breadcrumbs class="q-ma-xl" separator=">" active-color="orange-10">
+    <q-breadcrumbs class="q-ma-md-xl q-ma-md" separator=">" active-color="teal-7">
       <q-breadcrumbs-el icon="home" />
       <q-breadcrumbs-el label="最新消息" icon="widgets" />
       <q-breadcrumbs-el
@@ -9,18 +9,18 @@
         color="orange"
       />
     </q-breadcrumbs>
-    <div class="rowarticle q-pa-md q-mb-xl text-center">
-      <div class="text-h3 text-primary">
+    <div class="rowarticle q-pa-md-md q-mb-xl text-center">
+      <div class="text-h4 text-primary">
         {{ articles.title }}
       </div>
     </div>
     <div class="rowarticle q-pa-md q-mb-xl">
-      <div class="text-h6 text-primary ">
+      <div class="text-h6 text-primary">
         {{ articles.inside }}
       </div>
     </div>
     <div class="row justify-center q-ma-md">
-      <q-btn to="/newsnews/" label="回上頁" icon="arrow_back" color="primary"/>
+      <q-btn to="/news" label="回上頁" icon="arrow_back" color="primary" />
     </div>
   </section>
 </template>
@@ -50,7 +50,10 @@ get()
 
 <style lang="scss">
 .rowarticle {
-  width: 80%;
+  @media (min-width: 1024px) {
+    width: 80%;
+  }
+  width: 95%;
   margin: auto;
 }
 </style>
