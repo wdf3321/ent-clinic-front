@@ -24,9 +24,9 @@
           <q-tabs class="lt-md text-white" vertical v-model="tab">
             <q-route-tab name="top" label="首頁" to="/" />
             <q-route-tab name="intro" label="診所介紹" to="/intro" />
-            <q-route-tab name="doctor" label="醫師介紹" to="doctor" />
-            <q-route-tab name="news" label="最新消息" to="news" />
-            <q-route-tab name="contact" label="聯絡我們" to="contact" />
+            <q-route-tab name="doctor" label="醫師介紹" to="/doctor" />
+            <q-route-tab name="news" label="最新消息" to="/newsnews" />
+            <q-route-tab name="contact" label="聯絡我們" to="/contact" />
 
             <q-btn
             v-if="!user.isLogin"
@@ -57,9 +57,9 @@
         <q-tabs class="gt-sm" v-model="tab">
           <q-route-tab name="top" label="首頁" to="/" />
           <q-route-tab name="intro" label="診所介紹" to="/intro" />
-          <q-route-tab name="doctor" label="醫師介紹" to="doctor" />
-          <q-route-tab name="news" label="最新消息" to="news" />
-          <q-route-tab name="contact" label="聯絡我們" to="contact" />
+          <q-route-tab name="doctor" label="醫師介紹" to="/doctor" />
+          <q-route-tab name="news" label="最新消息" to="/newsnews" />
+          <q-route-tab name="contact" label="聯絡我們" to="/contact" />
         </q-tabs>
         <q-btn
         v-if="!user.isLogin"
