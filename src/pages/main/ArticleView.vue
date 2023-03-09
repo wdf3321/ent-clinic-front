@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="rowarticle q-pa-md q-mb-xl">
-      <div class="text-h6 text-primary">
+      <div class="text-h6 text-primary" style="white-space: pre-wrap;">
         {{ articles.inside }}
       </div>
     </div>
