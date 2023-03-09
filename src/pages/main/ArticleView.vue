@@ -1,8 +1,8 @@
 <template>
   <section id="indexsection">
     <q-breadcrumbs class="q-ma-md-xl q-ma-md" separator=">" active-color="teal-7">
-      <q-breadcrumbs-el icon="home" />
-      <q-breadcrumbs-el label="最新消息" icon="widgets" />
+      <q-breadcrumbs-el icon="home" to="/"/>
+      <q-breadcrumbs-el label="最新消息" icon="widgets" to="/news" />
       <q-breadcrumbs-el
         :label="articles.title"
         icon="navigation"
@@ -10,12 +10,12 @@
       />
     </q-breadcrumbs>
     <div class="rowarticle q-pa-md-md q-mb-xl text-center">
-      <div class="text-h4 text-primary">
+      <div class="text-h4">
         {{ articles.title }}
       </div>
     </div>
     <div class="rowarticle q-pa-md q-mb-xl">
-      <div class="text-h6 text-primary" style="white-space: pre-wrap;">
+      <div class="text-h6" style="white-space: pre-wrap;">
         {{ articles.inside }}
       </div>
     </div>
