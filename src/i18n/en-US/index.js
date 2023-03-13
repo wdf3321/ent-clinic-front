@@ -28,5 +28,14 @@ export default {
   thur: '四',
   fri: '五',
   sat: '六',
-  sun: '日'
+  sun: '日',
+  search: '搜尋',
+  searchtype: '搜尋類別',
+  back: '返回',
+  edit: '修改',
+  delete: '刪除',
+  csv: '產生csv',
+  alldelete: '全部刪除',
+  selectdelete: '刪除選擇'
+
 }

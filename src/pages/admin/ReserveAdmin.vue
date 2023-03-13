@@ -36,7 +36,7 @@
         <q-btn
         color="primary"
         icon="archive"
-        label="產生csv"
+        :label="t('csv')"
         no-caps
         @click="exportTable"
         class="q-mx-md"
@@ -46,7 +46,7 @@
         color="teal"
         icon="delete"
         @click="deleteSubmit"
-        label="刪除選擇"
+        :label="t('selectdelete')"
         class="q-mx-md"
       />
       <q-btn
@@ -54,7 +54,7 @@
         color="teal"
         icon="delete"
         @click="confirm=true"
-        label="一鍵全刪"
+        :label="t('alldelete')"
         class="q-mx-md"
       />
       </div>
@@ -62,7 +62,7 @@
         <q-btn
         v-if="selected[0] || filter !=='' "
         icon="reply"
-        label="返回"
+        :label="t('back')"
         class="q-mt-xl"
         @click="zero"
         color="teal"

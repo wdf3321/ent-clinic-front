@@ -21,7 +21,7 @@
       <q-btn
         v-if="selected[0]"
         icon="edit"
-        label="修改"
+        :label="t('edit')"
         @click="promptOpen"
         class="q-ma-xl"
         color="teal"
@@ -29,7 +29,7 @@
       <q-btn
         v-if="selected[0]"
         icon="delete"
-        label="刪除"
+        :label="t('delete')"
         @click="deleteUser"
         class="q-ma-xl"
         color="teal"
@@ -39,7 +39,7 @@
       <q-input
         outlined
         v-model="form.search"
-        label="搜尋"
+        :label="t('search')"
         stack-label
         style="margin: auto; width: 400px; margin-bottom: 8px"
       />
@@ -50,7 +50,7 @@
     >
       <q-btn
         icon="search"
-        label="搜尋"
+        :label="t('search')"
         @click="searchName"
         class="q-mr-md-xl q-my-md"
         color="primary"
@@ -59,14 +59,14 @@
         outlined
         v-model="form.select"
         :options="options"
-        label="搜尋類別"
+        :label="t('searchtype')"
         id="option"
       />
     </div>
     <div class="row justify-center">
       <q-btn
         icon="reply"
-        label="返回"
+        :label="t('back')"
         class="q-mt-xs"
         @click="cancel"
         color="teal"

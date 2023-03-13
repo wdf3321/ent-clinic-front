@@ -28,6 +28,14 @@ export default {
   thur: '木',
   fri: '金',
   sat: '土',
-  sun: '日'
+  sun: '日',
+  search: '検索',
+  searchtype: '検索タイプ',
+  back: '戻す',
+  edit: '変更',
+  delete: '消去',
+  csv: 'csv作成',
+  alldelete: '全部削除',
+  selectdelete: '削除'
 
 }
