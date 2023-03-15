@@ -2,7 +2,7 @@
   <section id="firstdr" data-aos="fade-down">
     <h3>醫師介紹</h3>
     <div id="picpic" class="row q-pa-md-xs">
-      <div class="col-xs-12 col-md-4 q-pa-md-lg">
+      <div class="col-xs-12 col-md-4 q-pa-md-md">
         <q-card class="my-card" flat bordered>
           <q-card-section>
             <q-img
@@ -12,15 +12,15 @@
               <div class="text-h5">王小明 院長</div>
               <div class="text-h6">
                 中華民國耳鼻喉科專科醫師<br />
-                台灣小兒耳鼻喉科醫學會會員<br />
-                台北榮總耳鼻喉頭頸部總醫師<br />
+                台灣小兒耳鼻喉科學會會員<br />
+                台北榮總耳鼻喉頸部總醫師<br />
                 台大醫院一般科住院醫師
               </div>
             </q-card-section>
           </q-card-section>
         </q-card>
       </div>
-      <div class="col-xs-12 col-md-4 q-pa-md-lg">
+      <div class="col-xs-12 col-md-4 q-pa-md-md">
         <q-card class="my-card" flat bordered>
           <q-card-section>
             <q-img
@@ -31,15 +31,15 @@
               <div class="text-h5">張小華 醫師</div>
               <div class="text-h6">
                 中華民國耳鼻喉科專科醫師<br />
-                台灣小兒耳鼻喉科醫學會會員<br />
-                台北榮總耳鼻喉頭頸部總醫師<br />
+                台灣小兒耳鼻喉科學會會員<br />
+                台北榮總耳鼻喉頸部總醫師<br />
                 台北榮總住院醫師
               </div>
             </q-card-section>
           </q-card-section>
         </q-card>
       </div>
-      <div class="col-xs-12 col-md-4 q-pa-md-lg">
+      <div class="col-xs-12 col-md-4 q-pa-md-md">
         <q-card class="my-card" flat bordered>
           <q-card-section>
             <q-img
@@ -51,7 +51,7 @@
               <div class="text-h6">
                 中華民國耳鼻喉科專科醫師<br />
                 台灣耳科醫學會會員<br />
-                台北榮總耳鼻喉頭頸部總醫師<br />
+                台北榮總耳鼻喉頸部總醫師<br />
                 台大醫院住院醫師
               </div>
             </q-card-section>
@@ -174,5 +174,12 @@ getDoctor()
 </script>
 
 <style lang="scss">
+@media (min-width: 601px) and (max-width:1439px) {
+.text-h6{
+font-size: 1rem;
+}
+.q-card__section--vert{
 
+padding: 14px;}
+}
 </style>
