@@ -8,6 +8,7 @@
 - 使用 Axios 處理 API 請求。
 - 使用 moment 作為時間格式處理。
 - 使用 i18n 處理多語言管理。
+- 使用 docker 進行打包
 
 ## 後端
 
@@ -22,5 +23,6 @@
 - 使用 Cors 解決資源跨域。
 - 使用 moment 處理時間格式及處理。
 - 使用 node-schudule 進行排程處理。
+- 使用 docker 進行打包
 
 [introduction](https://docs.google.com/presentation/d/e/2PACX-1vQ4Oa_I72WDhsIBPo4Y73tsBY7pmdjMFwXk0faPawLT7tglC7dSQ9BTH15pcQgryw/pub?start=false&loop=false&delayms=3000)
